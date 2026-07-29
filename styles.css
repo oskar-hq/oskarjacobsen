@@ -1,18 +1,49 @@
 /* ==========================================================================
    Jacobsen Digitalwerkstatt
    Weiß / Schwarz + ein Akzent. Space Grotesk für Wortmarke & Headlines.
-   Mobile first. Kein Framework.
+   Mobile first. Kein Framework, keine externen Requests.
    ========================================================================== */
+
+/* ---------- Schrift (lokal, kein Google-Request) --------------------------
+   Space Grotesk ist eine Variable Font (Achse wght 300–700). Deshalb steht im
+   font-weight ein BEREICH und keine Einzelzahl: nur so interpoliert der Browser
+   und 700 wird wirklich fetter als 500. Eine Datei deckt beide Gewichte ab.
+   Lizenz: SIL Open Font License 1.1, siehe fonts/OFL.txt
+   -------------------------------------------------------------------------- */
+
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url('fonts/space-grotesk-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url('fonts/space-grotesk-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF,
+    U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020,
+    U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* ---------- Grundlagen ---------------------------------------------------- */
 
 :root {
   --schwarz:    #14150f;
   --schwarz-80: #3c3d38;
   --grau:       #6f7069;
+  --grau-hell:  #c9c9c2;
   --linie:      #e2e2dd;
   --hell:       #f6f5f1;
   --weiss:      #ffffff;
 
-  /* Der eine Akzent. Signalfarbe wie auf einer Baustelle. */
+  /* Der eine Akzent. Signalfarbe. */
   --akzent:     #e2571f;
   --akzent-dkl: #c14513;
 
@@ -43,7 +74,6 @@ body {
 }
 
 img { max-width: 100%; height: auto; display: block; }
-
 a { color: inherit; }
 
 p { margin: 0 0 1rem; }
@@ -56,10 +86,7 @@ p:last-child { margin-bottom: 0; }
   padding-inline: var(--luft);
 }
 
-.skip {
-  position: absolute;
-  left: -9999px;
-}
+.skip { position: absolute; left: -9999px; }
 .skip:focus {
   left: 1rem; top: 1rem;
   z-index: 100;
@@ -67,18 +94,11 @@ p:last-child { margin-bottom: 0; }
   padding: .75rem 1rem;
 }
 
-:focus-visible {
-  outline: 3px solid var(--akzent);
-  outline-offset: 2px;
-}
+:focus-visible { outline: 3px solid var(--akzent); outline-offset: 2px; }
 
 /* ---------- Wortmarke ---------------------------------------------------- */
 
-.wortmarke {
-  display: block;
-  text-decoration: none;
-  line-height: 1;
-}
+.wortmarke { display: block; text-decoration: none; line-height: 1; }
 .wortmarke__name {
   display: block;
   font-family: var(--schrift-marke);
@@ -167,20 +187,12 @@ p:last-child { margin-bottom: 0; }
   font-size: 1.0625rem;
 }
 .nav a:hover { color: var(--akzent); }
-.nav__tel {
-  font-weight: 700;
-  color: var(--akzent) !important;
-}
+.nav__tel { font-weight: 700; color: var(--akzent) !important; }
 
-@media (min-width: 800px) {
+@media (min-width: 860px) {
   .burger { display: none; }
-  .nav {
-    display: block;
-    width: auto;
-    border-top: 0;
-    padding: 0;
-  }
-  .nav ul { flex-direction: row; gap: 1.6rem; align-items: center; }
+  .nav { display: block; width: auto; border-top: 0; padding: 0; }
+  .nav ul { flex-direction: row; gap: 1.5rem; align-items: center; }
   .nav a { padding: .25rem 0; font-size: .9375rem; }
   .nav__tel {
     border: 1px solid var(--akzent);
@@ -203,24 +215,13 @@ p:last-child { margin-bottom: 0; }
   border: 2px solid transparent;
   transition: background-color .15s ease, color .15s ease, border-color .15s ease;
 }
-.btn--voll {
-  background: var(--akzent);
-  border-color: var(--akzent);
-  color: var(--weiss);
-}
+.btn--voll { background: var(--akzent); border-color: var(--akzent); color: var(--weiss); }
 .btn--voll:hover { background: var(--akzent-dkl); border-color: var(--akzent-dkl); }
 
-.btn--linie {
-  border-color: var(--schwarz);
-  color: var(--schwarz);
-}
+.btn--linie { border-color: var(--schwarz); color: var(--schwarz); }
 .btn--linie:hover { background: var(--schwarz); color: var(--weiss); }
 
-.btn--hell {
-  background: var(--weiss);
-  border-color: var(--weiss);
-  color: var(--schwarz);
-}
+.btn--hell { background: var(--weiss); border-color: var(--weiss); color: var(--schwarz); }
 .btn--hell:hover { background: var(--akzent); border-color: var(--akzent); color: var(--weiss); }
 
 .btn--linie-hell {
@@ -237,7 +238,7 @@ p:last-child { margin-bottom: 0; }
   margin-top: 1.75rem;
 }
 
-/* ---------- Platzhalter für echte Fotos ---------------------------------- */
+/* ---------- Platzhalter für Fotos, die noch fehlen ----------------------- */
 
 .platzhalter {
   position: relative;
@@ -252,16 +253,9 @@ p:last-child { margin-bottom: 0; }
   padding: 1.5rem;
   border: 2px dashed #c9c9c2;
   border-radius: var(--radius);
-  background:
-    repeating-linear-gradient(
-      45deg,
-      var(--hell) 0 10px,
-      #eceae4 10px 20px
-    );
+  background: repeating-linear-gradient(45deg, var(--hell) 0 10px, #eceae4 10px 20px);
   color: var(--grau);
 }
-.platzhalter--klein { min-height: 150px; }
-
 .platzhalter__label {
   font-family: var(--schrift-marke);
   font-size: .625rem;
@@ -272,26 +266,15 @@ p:last-child { margin-bottom: 0; }
   padding: .2rem .5rem;
   border-radius: 2px;
 }
-.platzhalter__text {
-  font-size: .9375rem;
-  max-width: 22ch;
-}
+.platzhalter__text { font-size: .9375rem; max-width: 22ch; }
 
-/* Platzhalter im Fließtext */
+/* Platzhalter mitten im Fließtext */
 .ph-inline {
   background: #fff3cd;
   border-bottom: 1px dashed #d0a800;
   padding: 0 .15em;
   color: #6b5400;
   font-style: italic;
-}
-.ph-inline--hell {
-  display: block;
-  font-size: .75rem;
-  font-style: normal;
-  letter-spacing: .18em;
-  text-transform: uppercase;
-  margin-bottom: .35rem;
 }
 
 /* ---------- Hero --------------------------------------------------------- */
@@ -316,7 +299,7 @@ h1 {
 .lead {
   font-size: 1.1875rem;
   color: var(--schwarz-80);
-  max-width: 34ch;
+  max-width: 38ch;
 }
 
 .mikro {
@@ -330,11 +313,7 @@ h1 {
 
 @media (min-width: 900px) {
   .hero { padding-block: 4.5rem 5rem; }
-  .hero__inner {
-    grid-template-columns: 1.05fr .95fr;
-    align-items: center;
-    gap: 3.5rem;
-  }
+  .hero__inner { grid-template-columns: 1.05fr .95fr; align-items: center; gap: 3.5rem; }
   .bild--hero .platzhalter { min-height: 420px; }
 }
 
@@ -344,12 +323,9 @@ h1 {
 @media (min-width: 900px) { .abschnitt { padding-block: 5.5rem; } }
 
 .abschnitt--grau { background: var(--hell); }
-
-.abschnitt--dunkel {
-  background: var(--schwarz);
-  color: var(--weiss);
-}
+.abschnitt--dunkel { background: var(--schwarz); color: var(--weiss); }
 .abschnitt--dunkel .h2 { color: var(--weiss); }
+.abschnitt--dunkel .abschnitt__lead { color: var(--grau-hell); }
 
 .h2 {
   font-family: var(--schrift-marke);
@@ -363,19 +339,14 @@ h1 {
 .abschnitt__lead {
   color: var(--grau);
   font-size: 1.0625rem;
-  max-width: 46ch;
+  max-width: 48ch;
   margin-bottom: 2.25rem;
 }
 
 /* ---------- Die zwei Wege ------------------------------------------------ */
 
-.karten {
-  display: grid;
-  gap: 1.25rem;
-}
-@media (min-width: 800px) {
-  .karten { grid-template-columns: 1fr 1fr; gap: 1.75rem; }
-}
+.karten { display: grid; gap: 1.25rem; }
+@media (min-width: 800px) { .karten { grid-template-columns: 1fr 1fr; gap: 1.75rem; } }
 
 .karte {
   border: 1px solid var(--linie);
@@ -408,6 +379,28 @@ h1 {
   font-weight: 600;
 }
 
+/* ---------- Was ich mache ------------------------------------------------ */
+
+.leistungen {
+  list-style: none;
+  margin: 0; padding: 0;
+  display: grid;
+  gap: 1.75rem;
+}
+@media (min-width: 700px) { .leistungen { grid-template-columns: 1fr 1fr; gap: 2rem 3rem; } }
+@media (min-width: 1000px) { .leistungen { grid-template-columns: repeat(4, 1fr); gap: 2rem; } }
+
+.leistungen h3 {
+  font-family: var(--schrift-marke);
+  font-weight: 700;
+  font-size: 1.1875rem;
+  line-height: 1.25;
+  margin: 0 0 .5rem;
+  padding-top: .9rem;
+  border-top: 2px solid var(--schwarz);
+}
+.leistungen p { color: var(--schwarz-80); font-size: 1rem; }
+
 /* ---------- Wie ich arbeite ---------------------------------------------- */
 
 .punkte {
@@ -417,12 +410,8 @@ h1 {
   display: grid;
   gap: 2rem;
 }
-@media (min-width: 700px) {
-  .punkte { grid-template-columns: 1fr 1fr; gap: 2.25rem 3rem; }
-}
-@media (min-width: 1000px) {
-  .punkte { grid-template-columns: repeat(3, 1fr); }
-}
+@media (min-width: 700px) { .punkte { grid-template-columns: 1fr 1fr; gap: 2.25rem 3rem; } }
+@media (min-width: 1000px) { .punkte { grid-template-columns: repeat(3, 1fr); } }
 
 .punkte h3 {
   font-family: var(--schrift-marke);
@@ -433,69 +422,108 @@ h1 {
   padding-top: 1rem;
   border-top: 2px solid var(--akzent);
 }
-.punkte p {
-  color: #c9c9c2;
-  font-size: 1rem;
+.punkte p { color: var(--grau-hell); font-size: 1rem; }
+
+/* ---------- Arbeiten / Videos -------------------------------------------- */
+
+.arbeiten { display: grid; gap: 2.5rem; }
+.arbeiten--quer { margin-bottom: 3.5rem; }
+@media (min-width: 800px) {
+  .arbeiten--quer { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
 }
+.arbeiten--hoch { grid-template-columns: 1fr 1fr; gap: 1rem; }
+@media (min-width: 800px) { .arbeiten--hoch { gap: 1.5rem; } }
 
-/* ---------- Referenzen --------------------------------------------------- */
-
-.refs { display: grid; gap: 3rem; }
-
-.ref { display: grid; gap: 1.5rem; }
-@media (min-width: 900px) {
-  .ref { grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
-  .refs { gap: 4.5rem; }
-}
-
-.ref__bilder {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: .75rem;
-}
-.ref__bild { margin: 0; }
-.ref__bild--voll { grid-column: 1 / -1; }
-.ref__bild figcaption {
-  margin-top: .4rem;
+.arbeit__wer {
   font-family: var(--schrift-marke);
-  font-size: .6875rem;
-  letter-spacing: .16em;
+  font-weight: 500;
+  font-size: .75rem;
+  letter-spacing: .18em;
   text-transform: uppercase;
-  color: var(--grau);
+  color: var(--akzent);
+  margin: 1.1rem 0 .4rem;
 }
-
-.ref__wer {
-  font-size: .875rem;
-  letter-spacing: .04em;
-  color: var(--grau);
-  margin-bottom: .4rem;
-}
-.ref__titel {
+.arbeit__titel {
   font-family: var(--schrift-marke);
   font-weight: 700;
-  font-size: 1.375rem;
+  font-size: 1.3125rem;
   line-height: 1.25;
   letter-spacing: -0.015em;
-  margin: 0 0 .8rem;
+  margin: 0 0 .6rem;
 }
-.ref__text p { color: var(--schwarz-80); }
+.arbeit__text { color: var(--schwarz-80); max-width: 46ch; }
 
-blockquote {
-  margin: 1.25rem 0 0;
-  padding-left: 1.1rem;
-  border-left: 3px solid var(--akzent);
+.arbeit-gruppe { display: grid; gap: 1.75rem; }
+@media (min-width: 800px) {
+  .arbeit-gruppe {
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+  .arbeit-gruppe__text .arbeit__wer { margin-top: 0; }
 }
-blockquote p {
-  font-size: 1.0625rem;
-  color: var(--schwarz) !important;
+
+/* Zwei-Klick-Lösung: vor dem Klick geht kein Byte an YouTube. */
+.video {
+  position: relative;
+  background: var(--schwarz);
+  border-radius: var(--radius);
+  overflow: hidden;
 }
-blockquote cite {
-  display: block;
-  margin-top: .5rem;
-  font-style: normal;
-  font-size: .875rem;
-  color: var(--grau);
+.video--quer { aspect-ratio: 16 / 9; }
+.video--hoch { aspect-ratio: 9 / 16; }
+
+.video__flaeche {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: .75rem;
+  background: var(--schwarz);
+  background-image: radial-gradient(circle at 50% 45%, #2a2b24 0%, var(--schwarz) 70%);
+  border: 0;
+  color: var(--weiss);
+  font: inherit;
+  cursor: pointer;
+  padding: 1rem;
 }
+.video__play {
+  width: 62px; height: 62px;
+  border-radius: 50%;
+  background: var(--akzent);
+  position: relative;
+  transition: transform .15s ease, background-color .15s ease;
+}
+.video__play::after {
+  content: "";
+  position: absolute;
+  top: 50%; left: 54%;
+  transform: translate(-50%, -50%);
+  border-style: solid;
+  border-width: 11px 0 11px 18px;
+  border-color: transparent transparent transparent var(--weiss);
+}
+.video__flaeche:hover .video__play { transform: scale(1.08); background: var(--akzent-dkl); }
+
+.video__label {
+  font-family: var(--schrift-marke);
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: -0.01em;
+}
+.video__hinweis {
+  font-size: .75rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: #8e8f88;
+}
+.video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+
+/* ---------- Hinweiskasten (verschwindet vor dem Livegang) ---------------- */
 
 .hinweis {
   margin-top: 3rem;
@@ -511,11 +539,7 @@ blockquote cite {
 
 .ueber { display: grid; gap: 2rem; }
 @media (min-width: 900px) {
-  .ueber {
-    grid-template-columns: .8fr 1.2fr;
-    gap: 3.5rem;
-    align-items: center;
-  }
+  .ueber { grid-template-columns: .8fr 1.2fr; gap: 3.5rem; align-items: center; }
 }
 .bild--portrait { margin: 0; }
 .bild--portrait .platzhalter { min-height: 340px; }
@@ -548,7 +572,7 @@ blockquote cite {
 
 .kontakt__inner { text-align: center; }
 .kontakt__lead {
-  color: #c9c9c2;
+  color: var(--grau-hell);
   font-size: 1.0625rem;
   max-width: 40ch;
   margin-inline: auto;
@@ -597,6 +621,48 @@ blockquote cite {
 .fuss__zeile--klein { font-size: .875rem; }
 .fuss a { color: var(--grau); }
 .fuss a:hover { color: var(--akzent); }
+
+/* ---------- Impressum / Datenschutz -------------------------------------- */
+
+.recht { padding-block: 2.5rem 4rem; max-width: 44rem; }
+.recht h1 {
+  font-size: clamp(1.8rem, 6vw, 2.6rem);
+  margin-bottom: 1.5rem;
+}
+.recht h2 {
+  font-family: var(--schrift-marke);
+  font-weight: 700;
+  font-size: 1.25rem;
+  line-height: 1.3;
+  letter-spacing: -0.015em;
+  margin: 2.5rem 0 .75rem;
+  padding-top: 1rem;
+  border-top: 2px solid var(--linie);
+}
+.recht h3 {
+  font-family: var(--schrift-marke);
+  font-weight: 700;
+  font-size: 1.0625rem;
+  margin: 1.75rem 0 .5rem;
+}
+.recht p, .recht li { color: var(--schwarz-80); }
+.recht ul { padding-left: 1.2rem; margin: 0 0 1rem; }
+.recht li { margin-bottom: .4rem; }
+.recht address {
+  font-style: normal;
+  margin-bottom: 1.25rem;
+  color: var(--schwarz);
+}
+.recht .stand { font-size: .875rem; color: var(--grau); margin-top: 3rem; }
+
+.zurueck {
+  display: inline-block;
+  margin-bottom: 2rem;
+  font-size: .9375rem;
+  color: var(--grau);
+  text-decoration: none;
+}
+.zurueck:hover { color: var(--akzent); }
 
 /* ---------- Bewegung reduzieren ------------------------------------------ */
 
