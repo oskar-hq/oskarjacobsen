@@ -9,11 +9,41 @@ datenschutz.html
 styles.css
 script.js           Mobile-Menü + Zwei-Klick-Videos (~2 kB)
 fonts/              Space Grotesk, lokal (OFL 1.1, Lizenz liegt bei)
+texte.md            Alle Seitentexte zum Bearbeiten
+.nojekyll           Sagt GitHub Pages, dass nichts vorverarbeitet werden soll
 ```
 
-Ansehen: `index.html` im Browser öffnen. Hochladen: alle Dateien samt `fonts/`-Ordner
-auf den Webspace kopieren, fertig. Die Seite lädt **keine einzige Datei von fremden
-Servern** — bis jemand ein Video anklickt.
+Ansehen: `index.html` im Browser öffnen. Die Seite lädt **keine einzige Datei von
+fremden Servern** — bis jemand ein Video anklickt.
+
+## Livegang über GitHub Pages
+
+Die Dateien liegen im Wurzelverzeichnis des Repos, damit funktioniert Pages ohne
+Umbau:
+
+1. Im Repo unter **Settings → Pages** als Quelle den Branch wählen, auf dem diese
+   Dateien liegen, und als Ordner `/ (root)`.
+2. Custom Domain auf `oskarjacobsen.de` setzen. GitHub legt dann selbst eine Datei
+   namens `CNAME` an — die ist bewusst noch nicht im Repo, weil sie zur DNS-Einstellung
+   passen muss und eine falsche Angabe die Seite sofort offline nimmt.
+3. Beim Domain-Anbieter die DNS-Einträge setzen:
+   - für `oskarjacobsen.de` vier **A**-Einträge auf `185.199.108.153`,
+     `185.199.109.153`, `185.199.110.153`, `185.199.111.153`
+   - für `www.oskarjacobsen.de` einen **CNAME** auf `<dein-github-name>.github.io`
+4. Danach in den Pages-Einstellungen **„Enforce HTTPS"** anhaken, sobald die Option
+   anklickbar wird (kann eine Stunde dauern, bis das Zertifikat da ist).
+
+Jeder Push auf den eingestellten Branch veröffentlicht die Seite neu, meist innerhalb
+einer Minute.
+
+**Was das für den Datenschutz bedeutet:** GitHub sitzt in den USA und protokolliert
+Besucher-IPs, ohne dass du an diese Logs herankommst oder sie abschalten kannst. Das
+steht so in `datenschutz.html` — ehrlich benannt, mit dem Data Privacy Framework als
+Grundlage. Rechtlich ist das eine vertretbare, aber nicht die sauberste Lösung; ein
+deutscher Hoster mit klassischem Auftragsverarbeitungsvertrag wäre unangreifbarer.
+Für den Anfang ist GitHub Pages völlig in Ordnung, du solltest es nur wissen. Ein
+späterer Umzug ist einfach: Dateien kopieren, DNS umstellen, im Datenschutz Abschnitt 2
+austauschen.
 
 ## Name
 
@@ -47,16 +77,19 @@ dir niemand außer dir ausfüllen:
 - [ ] **Impressum:** Umsatzsteuer-Zeile. Aktuell steht dort die Kleinunternehmer-
       regelung nach § 19 UStG. Falls du regelbesteuert bist, stattdessen die
       USt-IdNr. eintragen. Steuerberatung oder Finanzamt klärt das in zwei Minuten.
-- [ ] **Datenschutz:** Name und Anschrift deines Hosting-Anbieters, plus die
-      Speicherdauer der Server-Logs. Und du brauchst mit dem Hoster einen
-      Auftragsverarbeitungsvertrag (AVV) — bei allen deutschen Anbietern im
-      Kundenkonto anklickbar, dauert fünf Minuten, ist aber Pflicht.
-- [ ] Danach die gelben Hinweiskästen auf beiden Seiten löschen.
+- [ ] Danach den gelben Hinweiskasten im Impressum löschen. Im Datenschutz ist
+      keiner mehr offen — der Hosting-Abschnitt beschreibt GitHub Pages fertig.
 
 Die Texte sind nach bestem Wissen an der aktuellen Rechtslage gebaut (DDG statt
 des alten TMG, TDDDG, DSGVO) und decken genau das ab, was diese Seite tatsächlich
 tut. Sie sind trotzdem von mir und nicht von einer Anwältin. Wenn du ganz sicher
 gehen willst: Die IHK Flensburg prüft sowas für Mitglieder kostenlos.
+
+**Texte:**
+- [ ] `texte.md` enthält den kompletten Seitentext zum Überarbeiten. Änderungen
+      darin bau ich ein — die Datei ist die Vorlage, `index.html` das Ergebnis.
+      Wenn du selbst im HTML änderst, bitte auch `texte.md` nachziehen, sonst
+      laufen die beiden auseinander.
 
 **Referenzen:**
 - [ ] Ein, zwei Sätze von den Kunden selbst wären das Stärkste, was die Seite
@@ -99,6 +132,12 @@ bekommt `video--quer`, Hochformat `video--hoch`.
 Zielgruppe sind Betriebe, Gemeinden, Vermieter und Vereine hier aus der Gegend.
 Fachlich top, keine Zeit, kein Vorwissen, oft noch nie mit sowas zu tun gehabt.
 Danach ist jeder Satz gebaut:
+
+- **Zuverlässigkeit wird gezeigt, nie behauptet.** Der Abschnitt „Damit nichts mehr
+  untergeht" dreht das Thema bewusst so, dass es niemanden angreift: „Du bist nicht
+  unzuverlässig. Du hast nur zu viel im Kopf." Ein Satz wie „viele Handwerker sind
+  unzuverlässig" dürfte auf dieser Seite nie stehen — er würde genau die Leute
+  beleidigen, die anrufen sollen.
 
 - **Zeitmangel ist der Schmerzpunkt, nicht schlechte Qualität.** Die Botschaft
   lautet „darum musst du dich nicht mehr kümmern", nie „deine Seite ist schlecht".

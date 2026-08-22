@@ -302,6 +302,14 @@ h1 {
   max-width: 38ch;
 }
 
+.lead--zwei {
+  margin-top: .9rem;
+  font-size: 1.0625rem;
+  color: var(--schwarz);
+  font-weight: 600;
+  max-width: 34ch;
+}
+
 .mikro {
   margin-top: 1rem;
   font-size: .9375rem;
@@ -388,7 +396,7 @@ h1 {
   gap: 1.75rem;
 }
 @media (min-width: 700px) { .leistungen { grid-template-columns: 1fr 1fr; gap: 2rem 3rem; } }
-@media (min-width: 1000px) { .leistungen { grid-template-columns: repeat(4, 1fr); gap: 2rem; } }
+@media (min-width: 1000px) { .leistungen { grid-template-columns: repeat(3, 1fr); gap: 2.25rem 3rem; } }
 
 .leistungen h3 {
   font-family: var(--schrift-marke);
@@ -400,6 +408,67 @@ h1 {
   border-top: 2px solid var(--schwarz);
 }
 .leistungen p { color: var(--schwarz-80); font-size: 1rem; }
+
+
+/* ---------- Damit nichts mehr untergeht --------------------------------- */
+
+.ordnung { display: grid; gap: 2rem; }
+@media (min-width: 900px) {
+  .ordnung { grid-template-columns: 1.15fr .85fr; gap: 3.5rem; align-items: start; }
+}
+.ordnung__text p { color: var(--schwarz-80); max-width: 52ch; }
+
+/* Der Satz, um den es in dem Abschnitt geht. */
+.satz {
+  font-family: var(--schrift-marke);
+  font-weight: 700;
+  font-size: clamp(1.35rem, 3.6vw, 1.9rem);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--schwarz) !important;
+  margin: 1.75rem 0 !important;
+  padding-left: 1.1rem;
+  border-left: 4px solid var(--akzent);
+}
+
+.ordnung__liste {
+  border: 1px solid var(--linie);
+  border-top: 4px solid var(--schwarz);
+  border-radius: var(--radius);
+  padding: 1.6rem 1.5rem;
+  background: var(--hell);
+}
+.ordnung__label {
+  font-family: var(--schrift-marke);
+  font-weight: 500;
+  font-size: .6875rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--grau);
+  margin-bottom: 1rem;
+}
+.ordnung__liste ul { list-style: none; margin: 0; padding: 0; display: grid; gap: .75rem; }
+.ordnung__liste li {
+  padding-left: 1.4rem;
+  position: relative;
+  color: var(--schwarz);
+  font-size: 1rem;
+}
+.ordnung__liste li::before {
+  content: "";
+  position: absolute;
+  left: 0; top: .55em;
+  width: .55rem; height: .55rem;
+  background: var(--akzent);
+  border-radius: 1px;
+}
+.ordnung__fuss {
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--linie);
+  font-size: .9375rem;
+  color: var(--grau);
+}
 
 /* ---------- Wie ich arbeite ---------------------------------------------- */
 
