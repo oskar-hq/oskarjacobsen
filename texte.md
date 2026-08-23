@@ -26,12 +26,11 @@ danach zurück, dann bau ich es ein.
 
 ## Seitentitel (Browser-Tab und Google)
 
-Jacobsen Digitalwerkstatt – Videos, Website & Ordnung im Betrieb, in Angeln
+Jacobsen Digitalwerkstatt – Digitalisierung für Angeln
 
 Beschreibung für Google (max. ca. 160 Zeichen):
-Ich mache Videos, Websites und Social Media für Betriebe, Gemeinden und Vermieter
-in Angeln, Flensburg, Kappeln und Schleswig. Und ich bau dir was, damit nichts
-mehr untergeht.
+Videos, Websites, Social Media und eigene Software für Betriebe, Gemeinden und
+Vermieter in Angeln, Flensburg, Kappeln und Schleswig.
 
 ---
 
@@ -66,7 +65,7 @@ du willst.
 
 ---
 
-## 2 — Zwei Arten, bei mir anzurufen
+## 2 — Zwei Arten, sich zu melden
 
 [H2] Zwei Arten, bei mir anzurufen
 
@@ -127,50 +126,19 @@ sonst keiner zuständig fühlt.
 
 ---
 
-## 4 — Damit nichts mehr untergeht
+## 4 — (gelöscht)
 
-Das ist der neue Abschnitt zu den digitalen Systemen. Hier steckt der Gedanke
-drin, dass du deine Kunden zuverlässig machst — und zwar so, dass sich keiner
-angegriffen fühlt.
-
-[H2] Damit nichts mehr untergeht
-
-Der Teil, von dem die meisten gar nicht wissen, dass man ihn haben kann.
-
-Der Termin bei Frau Petersen steht in deinem Kopf. Die Maße von der Baustelle
-liegen in einem WhatsApp-Chat von vor drei Wochen. Und was mit dem Kunden aus
-Kappeln zuletzt besprochen war, weiß nur der Kollege, der gerade im Urlaub ist.
-
-Das geht gut, solange nichts dazwischenkommt. Und dann kommt was dazwischen.
-
-(Groß und mit orangem Strich davor — der wichtigste Satz des Abschnitts:)
-Du bist nicht unzuverlässig.
-Du hast nur zu viel im Kopf.
-
-Ich bau dir was, wo das alles an einer Stelle steht. Nichts Kompliziertes, nichts,
-wofür jemand eine Schulung braucht — was, das ihr auch noch benutzt, wenn ich
-längst wieder weg bin.
-
-Dann rufst du keinem mehr hinterher. Und dir ruft auch keiner mehr hinterher.
-
-### Kasten daneben
-
-[KLEIN] Zum Beispiel
-
-- Wer was wann bestellt hat — steht da.
-- Worauf ein Auftrag gerade wartet — steht da.
-- Was du dem Kunden zugesagt hast — steht da.
-- Wer sich als Nächstes melden muss — steht da.
-
-(Grau darunter:)
-Und zwar so, dass auch der es sieht, der nicht dabei war.
+Der Abschnitt „Damit nichts mehr untergeht" ist raus, wie gewünscht. Das Thema
+läuft jetzt nur noch über die Kachel „Ordnung im Betrieb" oben und über Agrarkit
+weiter unten.
 
 ---
 
 ## 5 — Wie das bei mir läuft
 
 Schwarzer Abschnitt. Hier steht deine Zuverlässigkeit — aber als Beispiel, nicht
-als Behauptung. Sechs Stück, immer eine fette Zeile plus zwei Sätze.
+als Behauptung. Jetzt vier Stück (zwei hast du gestrichen), immer eine fette Zeile
+plus zwei Sätze. Vier liegen als 2×2 nebeneinander, das geht auf.
 
 [H2] Wie das bei mir läuft
 
@@ -201,37 +169,86 @@ Handynummer, mein Handy.
 
 ## 6 — Sachen, die ich gemacht hab
 
+Der Abschnitt hat jetzt drei Gruppen: Filme, dann Website/Banner/Social Media,
+dann Agrarkit. Die Gruppentitel sind die kleinen grauen Zeilen mit Strich darunter.
+
 [H2] Sachen, die ich gemacht hab
 
-Alles hier aus der Gegend. Klick drauf, guck es dir an — dauert jeweils ein paar
-Minuten.
+Alles hier aus der Gegend. Guck es dir an — dauert nur ein paar Minuten, und du
+bekommst direkt einen Eindruck.
 
-### Gemeinde Gelting
+### Gruppe 1: FILME
 
-[H3] Ein Film über die Gemeinde
+**Gemeinde Gelting**
 
-Damit Leute sehen, wie es hier aussieht, bevor sie herkommen — und die, die schon
-da sind, es mal von außen sehen.
+[H3] Imagefilm
 
-### Petersens Ferienwohnungen
+Zeigen, was in einer Gemeinde klappen kann, wenn man zusammenarbeitet.
 
-[H3] Ein Film über die Ferienwohnungen
+**Petersens Ferienwohnungen**
+
+[H3] Imagefilm
 
 Gäste wollen vorher sehen, wo sie schlafen. Fotos zeigen das Zimmer, ein Film
-zeigt, wie es sich anfühlt, morgens da rauszugehen.
+zeigt, wie die Besitzer ticken.
 
-### Lasse.PTS
+(Zitat, mit orangem Strich davor:)
+„Das ging ja schnell! Mega! Vielen Dank für deine tolle Arbeit!"
+— Petersens Ferienwohnungen
 
-[H3] Kurze Videos fürs Handy
+**Lasse.PTS**
 
-Hochkant, schnell geschnitten, für Instagram und TikTok. Sowas läuft nicht einmal
-groß, sondern regelmäßig klein — deswegen mach ich gleich mehrere an einem
-Drehtag.
+[H3] Social-Media-Videos fürs Handy
 
-> Zu allen drei Kunden habe ich nur geschrieben, was ich sicher weiß: Format und
-> Zweck. Wenn du mir zu einem Betrieb noch sagen kannst, was sich dort konkret
-> geändert hat, schreib es einfach dazu — das ist stärker als jeder Satz über
-> mich. Am stärksten wäre ein Zitat von den Leuten selbst.
+Hochkant, schnell geschnitten, für Instagram und TikTok.
+
+(Zitat:)
+„Ah geil. Find ich super. Poste ich heute direkt mal 👍"
+— Lasse.PTS
+
+### Gruppe 2: WEBSITE, BANNER UND SOCIAL MEDIA
+
+Das ist der Kommunalpolitiker. Name fehlt noch, deshalb steht da ein gelber
+Platzhalter. Foto von den Bannern fehlt auch.
+
+[KLEIN] (Platzhalter: Name) · Kommunalpolitik
+
+[H3] Einmal alles, aus einer Hand
+
+Eine Website, auf der steht, wofür er steht. Banner, die man an die Straße stellen
+kann. Und die Konten, über die man ihn erreicht.
+
+Der Vorteil, wenn das einer macht: Es sieht überall gleich aus. Wer das Banner an
+der Landstraße sieht und danach die Seite aufmacht, erkennt sofort, dass das
+zusammengehört.
+
+### Gruppe 3: UND WAS EIGENES
+
+[KLEIN] Agrarkit · eigene Entwicklung
+
+[H3] Eine Ackerschlagkartei für Schleswig-Holstein
+
+Jeder Landwirt muss aufschreiben, was er wann auf welchem Feld gemacht hat, und
+das am Ende dem Land melden. Dafür gibt es fertige Programme — teuer, und selten
+passen sie zu dem, was hier oben verlangt wird.
+
+Also hab ich es selbst gebaut. Felder auf dem Luftbild einzeichnen, Knicks
+abziehen, Düngung buchen — und am Ende kommt genau die Datei raus, die das Land
+haben will.
+
+(Fett, mit Trennlinie darüber:)
+Falls du dich fragst, wie weit ich gehe, wenn es etwas nicht fertig zu kaufen
+gibt: so weit.
+
+Unterschriften unter den drei Screenshots:
+- Alle Flächen auf einen Blick, eingefärbt nach Kultur
+- Umrisse mit dem Finger ziehen, Knicks werden abgezogen
+- Am Ende die fertige Datei fürs Amt
+
+> Zu Agrarkit erklär ich bewusst nicht, was die Software alles kann — auf dieser
+> Seite ist sie kein Produkt, sondern der Beweis, wie weit du gehst. Der letzte
+> Satz macht genau das. Ausführlich wird es auf der eigenen Agrarkit-Website,
+> die du später bauen willst.
 
 ---
 

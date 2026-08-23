@@ -410,66 +410,6 @@ h1 {
 .leistungen p { color: var(--schwarz-80); font-size: 1rem; }
 
 
-/* ---------- Damit nichts mehr untergeht --------------------------------- */
-
-.ordnung { display: grid; gap: 2rem; }
-@media (min-width: 900px) {
-  .ordnung { grid-template-columns: 1.15fr .85fr; gap: 3.5rem; align-items: start; }
-}
-.ordnung__text p { color: var(--schwarz-80); max-width: 52ch; }
-
-/* Der Satz, um den es in dem Abschnitt geht. */
-.satz {
-  font-family: var(--schrift-marke);
-  font-weight: 700;
-  font-size: clamp(1.35rem, 3.6vw, 1.9rem);
-  line-height: 1.2;
-  letter-spacing: -0.02em;
-  color: var(--schwarz) !important;
-  margin: 1.75rem 0 !important;
-  padding-left: 1.1rem;
-  border-left: 4px solid var(--akzent);
-}
-
-.ordnung__liste {
-  border: 1px solid var(--linie);
-  border-top: 4px solid var(--schwarz);
-  border-radius: var(--radius);
-  padding: 1.6rem 1.5rem;
-  background: var(--hell);
-}
-.ordnung__label {
-  font-family: var(--schrift-marke);
-  font-weight: 500;
-  font-size: .6875rem;
-  letter-spacing: .2em;
-  text-transform: uppercase;
-  color: var(--grau);
-  margin-bottom: 1rem;
-}
-.ordnung__liste ul { list-style: none; margin: 0; padding: 0; display: grid; gap: .75rem; }
-.ordnung__liste li {
-  padding-left: 1.4rem;
-  position: relative;
-  color: var(--schwarz);
-  font-size: 1rem;
-}
-.ordnung__liste li::before {
-  content: "";
-  position: absolute;
-  left: 0; top: .55em;
-  width: .55rem; height: .55rem;
-  background: var(--akzent);
-  border-radius: 1px;
-}
-.ordnung__fuss {
-  margin-top: 1.25rem;
-  padding-top: 1rem;
-  border-top: 1px solid var(--linie);
-  font-size: .9375rem;
-  color: var(--grau);
-}
-
 /* ---------- Wie ich arbeite ---------------------------------------------- */
 
 .punkte {
@@ -479,8 +419,7 @@ h1 {
   display: grid;
   gap: 2rem;
 }
-@media (min-width: 700px) { .punkte { grid-template-columns: 1fr 1fr; gap: 2.25rem 3rem; } }
-@media (min-width: 1000px) { .punkte { grid-template-columns: repeat(3, 1fr); } }
+@media (min-width: 700px) { .punkte { grid-template-columns: 1fr 1fr; gap: 2.5rem 3.5rem; } }
 
 .punkte h3 {
   font-family: var(--schrift-marke);
@@ -591,6 +530,85 @@ h1 {
   color: #8e8f88;
 }
 .video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+
+
+/* ---------- Gruppentitel im Referenz-Abschnitt --------------------------- */
+
+.gruppe {
+  font-family: var(--schrift-marke);
+  font-weight: 500;
+  font-size: .75rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--grau);
+  margin: 0 0 1.75rem;
+  padding-bottom: .6rem;
+  border-bottom: 1px solid var(--linie);
+}
+.gruppe:not(:first-of-type) { margin-top: 4rem; }
+
+/* ---------- Kundenzitate ------------------------------------------------- */
+
+.zitat {
+  margin: 1.25rem 0 0;
+  padding-left: 1.1rem;
+  border-left: 3px solid var(--akzent);
+}
+.zitat p {
+  font-size: 1.0625rem;
+  color: var(--schwarz);
+  margin-bottom: .4rem;
+}
+.zitat cite {
+  display: block;
+  font-style: normal;
+  font-size: .875rem;
+  color: var(--grau);
+}
+
+/* ---------- Größere Fälle (Politiker, Agrarkit) -------------------------- */
+
+.fall { display: grid; gap: 1.75rem; }
+.fall > * { min-width: 0; }
+@media (min-width: 900px) {
+  .fall { grid-template-columns: .9fr 1.1fr; gap: 3rem; align-items: center; }
+  .fall--breit { grid-template-columns: .85fr 1.15fr; align-items: start; }
+}
+.fall__text .arbeit__wer { margin-top: 0; }
+.fall__schluss {
+  margin-top: 1.25rem;
+  padding-top: 1.1rem;
+  border-top: 1px solid var(--linie);
+  font-weight: 600;
+  color: var(--schwarz);
+  max-width: 46ch;
+}
+
+/* Screenshots bekommen einen dunklen Rahmen, damit helle Oberflächen
+   nicht in die weiße Seite ausfransen. */
+.fall__schirme { display: grid; gap: 1rem; min-width: 0; }
+.schirm { margin: 0; }
+.schirm img,
+.schirm .platzhalter {
+  border-radius: var(--radius);
+  border: 1px solid var(--linie);
+  box-shadow: 0 12px 28px -18px rgba(20, 21, 15, .55);
+}
+/* height:100% von .platzhalter zurücknehmen — zusammen mit aspect-ratio
+   würde der Browser sonst die Breite aus der Höhe rechnen und ausbrechen. */
+.platzhalter--schirm {
+  height: auto;
+  width: 100%;
+  min-height: 0;
+  aspect-ratio: 16 / 9;
+}
+.schirm figcaption {
+  margin-top: .5rem;
+  font-size: .875rem;
+  color: var(--grau);
+}
+.schirm-paar { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.schirm-paar > * { min-width: 0; }
 
 /* ---------- Hinweiskasten (verschwindet vor dem Livegang) ---------------- */
 

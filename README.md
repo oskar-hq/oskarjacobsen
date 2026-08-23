@@ -59,9 +59,15 @@ DIGITALWERKSTATT. Funktioniert genauso auf einer Autotür, wenn es mal so weit i
 Alles Fehlende ist auf der Seite sichtbar markiert — gestreifte Flächen für Fotos,
 gelbe Kästen für offene Punkte.
 
-**Fotos** (reichst du nach):
+**Bilder** (reichst du nach) — alle in einen Ordner `bilder/` neben die HTML-Dateien:
 - [ ] Hero-Foto — du draußen, Tageslicht, Region erkennbar. Quer, ca. 1600 × 1200.
 - [ ] Portraitfoto — freundlich, draußen, kein Studio.
+- [ ] Foto von den aufgestellten Bannern des Kommunalpolitikers.
+- [ ] Drei Agrarkit-Screenshots, **ohne Browserleiste** — also den Bereich ab
+      Höhe der Agrarkit-Kopfzeile abwärts, Safari-Adressleiste und Lesezeichen
+      weg. Am besten mit `cmd+shift+4` direkt den Fensterinhalt aufnehmen.
+      Gebraucht werden: die Kartenansicht (die hattest du schon ohne Leiste),
+      „Umriss bearbeiten" und der ENDO-SH-Export.
 
 Ersetzen: den `<div class="platzhalter">`-Block durch ein `<img>` tauschen, z. B.
 
@@ -92,14 +98,28 @@ gehen willst: Die IHK Flensburg prüft sowas für Mitglieder kostenlos.
       laufen die beiden auseinander.
 
 **Referenzen:**
-- [ ] Ein, zwei Sätze von den Kunden selbst wären das Stärkste, was die Seite
-      haben kann — stärker als jedes Video. Ruf bei Gelting, Petersens und Lasse an
-      und frag, ob sie einen Satz sagen wollen. Und ob du ihren Namen nennen darfst.
+- [ ] Name des Kommunalpolitikers — steht aktuell als gelber Platzhalter drin.
+- [ ] Einverständnis einholen: beim Politiker, dass er auf der Seite auftaucht,
+      und bei Petersens und Lasse für ihre Zitate mit Namen. Ein kurzer Anruf
+      reicht, aber er sollte stattgefunden haben, bevor es online geht.
 
 **Sonstiges:**
 - [ ] Der WhatsApp-Button im Kontaktbereich zeigt auf deine Handynummer. Falls du
       WhatsApp geschäftlich nicht nutzen willst, den Link einfach löschen —
       Telefon und E-Mail tragen den Abschnitt auch allein.
+
+## Der Referenz-Abschnitt
+
+Drei Gruppen, in dieser Reihenfolge: **Filme** (die vier YouTube-Videos),
+**Website, Banner und Social Media** (Kommunalpolitiker), **Und was Eigenes**
+(Agrarkit).
+
+Agrarkit steht bewusst zum Schluss und erklärt nicht, was die Software alles kann.
+Auf dieser Seite ist sie kein Produkt, sondern der Beweis dafür, wie weit du gehst,
+wenn es etwas nicht fertig zu kaufen gibt — genau das sagt der letzte Satz. Für die
+eigene Agrarkit-Website, die du später bauen willst, ist das eine andere Seite mit
+einer anderen Zielgruppe (Landwirte, die das Programm suchen). Die beiden nicht
+vermischen.
 
 ## Die Videos
 
