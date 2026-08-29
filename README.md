@@ -237,6 +237,23 @@ Kommen später Fotos dazu, müssen sie nichts reparieren, sondern kommen zu eine
 Seite hinzu, die schon steht. An den drei Stellen oben steht jeweils ein Kommentar
 im HTML, wo genau.
 
+## Wichtig: der Versionsstempel hinter styles.css
+
+In allen drei HTML-Dateien steht die Gestaltungsdatei so drin:
+
+```html
+<link rel="stylesheet" href="styles.css?v=2026-08-29">
+```
+
+Das `?v=...` ist Absicht. Browser merken sich `styles.css` tagelang. Ohne den
+Stempel bekommt jemand, der schon mal auf der Seite war, das neue HTML mit der
+**alten** Gestaltung serviert — die Seite sieht dann kaputt aus, obwohl alles
+richtig hochgeladen ist. Genau das ist einmal passiert.
+
+**Regel: Wer `styles.css` oder `script.js` ändert, setzt das Datum hoch — in allen
+drei HTML-Dateien.** Irgendein neuer Wert reicht, das Datum ist nur bequem zu lesen.
+Am HTML selbst musst du nichts machen, das holt der Browser ohnehin jedes Mal neu.
+
 ## Tonalität — falls Texte geändert werden
 
 Zielgruppe sind Betriebe, Gemeinden, Vermieter und Vereine hier aus der Gegend.
