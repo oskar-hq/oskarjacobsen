@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Jacobsen Digitalwerkstatt – Digitalisierung für Angeln</title>
 <meta name="description" content="Videos, Websites, Social Media und eigene Software für Betriebe, Gemeinden und Vermieter in Angeln, Flensburg, Kappeln und Schleswig.">
-<meta name="theme-color" content="#ffffff">
+<meta name="theme-color" content="#faf8f2">
 <link rel="preload" href="fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="styles.css">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%2314150f'/><text x='16' y='23' font-family='sans-serif' font-size='20' font-weight='700' fill='%23fff' text-anchor='middle'>J</text></svg>">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%2326311f'/><text x='16' y='23' font-family='sans-serif' font-size='19' font-weight='700' fill='%23faf8f2' text-anchor='middle'>J</text></svg>">
 </head>
 <body>
 
@@ -41,44 +41,70 @@
 
 <main id="inhalt">
 
-  <!-- ============ HERO ============ -->
+  <!-- ============ HERO ============================================================
+       Kein Foto. Rechts steht stattdessen die grüne Karte mit der Nummer — das ist
+       ohnehin das Wichtigste auf der Seite. Wenn du irgendwann ein gutes Foto von
+       dir draußen hast, kann es hier zwischen Text und Karte rutschen; die Karte
+       darf dabei bleiben, sie trägt sich auch neben einem Bild.
+       ============================================================================= -->
   <section class="hero" id="top">
     <div class="wrap hero__inner">
       <div class="hero__text">
+        <p class="vorzeile">Angeln · Flensburg · Kappeln · Schleswig</p>
         <h1>Digitalisierung für <span class="hl">Angeln</span>!</h1>
         <p class="lead">
-          Videos, Website, Social Media und der ganze Computerkram — für alles,
+          Videos, Website, Social Media und der ganze Computerkram für alles,
           was hier in Angeln zwischen Flensburg, Kappeln und Schleswig aufmacht,
           anpackt und Gäste hat.
         </p>
-        <p class="lead lead--zwei">Zuverlässigkeit steht an erster Stelle.</p>
         <div class="cta-reihe">
-          <a class="btn btn--voll" href="tel:+4915151223742">Ruf mich an: 0151 5122 3742</a>
+          <a class="btn btn--voll" href="tel:+4915151223742">Ruf mich an</a>
           <a class="btn btn--linie" href="#arbeiten">Erst mal gucken, was ich mache</a>
         </div>
+        <p class="mikro">
+          Kostet nichts und verpflichtet zu nichts. Auch wenn du noch gar nicht weißt,
+          was du willst.
+        </p>
       </div>
 
-      <figure class="bild bild--hero">
-        <!-- PLATZHALTER: echtes Foto — Oskar draußen, Tageslicht, Region erkennbar (Wasser, Feld, Hafen).
-             Querformat, ca. 1600x1200. Ersetzen durch:
-             <img src="bilder/oskar.jpg" alt="Oskar Jacobsen" width="1600" height="1200"> -->
-        <div class="platzhalter" role="img" aria-label="Platzhalter für ein Foto">
-          <span class="platzhalter__label">Platzhalter</span>
-          <span class="platzhalter__text">Foto: Oskar draußen, Region erkennbar</span>
-        </div>
-      </figure>
+      <div class="visitenkarte">
+        <p class="visitenkarte__satz">Zuverlässigkeit steht an erster Stelle.</p>
+        <a class="visitenkarte__tel" href="tel:+4915151223742">0151 5122 3742</a>
+        <p class="visitenkarte__klein">
+          Meistens meld ich mich am selben Tag. Wenn ich nicht rangehe, ruf ich zurück.
+        </p>
+        <ul class="visitenkarte__liste">
+          <li>Einer, der rangeht. Kein Ticket, keine Warteschleife.</li>
+          <li>Preis steht, bevor ich anfange.</li>
+          <li>Ich komm zu dir raus.</li>
+        </ul>
+      </div>
     </div>
   </section>
+
+  <!-- ============ LEISTE MIT DEN NAMEN ============ -->
+  <div class="belege">
+    <div class="wrap belege__inner">
+      <p class="belege__titel">Gearbeitet für</p>
+      <ul class="belege__liste">
+        <li>Gemeinde Gelting</li>
+        <li>Petersens Ferienwohnungen</li>
+        <li>Lasse.PTS</li>
+        <li>Agrarkit · eigene Entwicklung</li>
+      </ul>
+    </div>
+  </div>
 
   <!-- ============ ZWEI WEGE ============ -->
   <section class="abschnitt" id="wege">
     <div class="wrap">
+      <p class="vorzeile">Der erste Anruf</p>
       <h2 class="h2">Zwei Arten, sich zu melden</h2>
       <p class="abschnitt__lead">Je nachdem, wie es bei dir aussieht.</p>
 
       <div class="karten">
         <article class="karte">
-          <p class="karte__nr">1</p>
+          <p class="karte__nr" aria-hidden="true">1</p>
           <h3 class="karte__titel">„Ich hab ein konkretes Problem.“</h3>
           <p>
             Die Website ist zu alt. Ich vergesse es manchmal, mich beim Kunden zu melden.
@@ -89,7 +115,7 @@
         </article>
 
         <article class="karte">
-          <p class="karte__nr">2</p>
+          <p class="karte__nr" aria-hidden="true">2</p>
           <h3 class="karte__titel">„Ich weiß nur, dass mal was passieren muss.“</h3>
           <p>
             Du hörst überall, dass man online was machen sollte. Nur weißt du nicht, was
@@ -107,8 +133,9 @@
   </section>
 
   <!-- ============ WAS ICH MACHE ============ -->
-  <section class="abschnitt abschnitt--grau" id="leistungen">
+  <section class="abschnitt abschnitt--creme" id="leistungen">
     <div class="wrap">
+      <p class="vorzeile">Leistungen</p>
       <h2 class="h2">Was ich mache</h2>
       <p class="abschnitt__lead">Falls du wissen willst, wofür man mich überhaupt anrufen kann.</p>
 
@@ -133,39 +160,47 @@
           <h3>Wenn was klemmt</h3>
           <p>Google-Eintrag, E-Mail-Adressen, QR-Codes, Fotos. Immer wenn etwas Digitales nicht läuft.</p>
         </li>
+        <li>
+          <h3>Eigene Software</h3>
+          <p>Wenn es das, was ihr braucht, nirgends fertig zu kaufen gibt. Siehe Agrarkit weiter unten.</p>
+        </li>
       </ul>
     </div>
   </section>
 
   <!-- ============ WIE ICH ARBEITE ============ -->
-  <section class="abschnitt abschnitt--dunkel" id="arbeit">
+  <section class="abschnitt" id="arbeit">
     <div class="wrap">
-      <h2 class="h2">Wie das bei mir läuft</h2>
+      <div class="panel">
+        <p class="vorzeile vorzeile--hell">Wie es läuft</p>
+        <h2 class="h2">Wie das bei mir läuft</h2>
 
-      <ul class="punkte">
-        <li>
-          <h3>Wenn ich was zusage, steht das.</h3>
-          <p>Sag ich Dienstag, bin ich Dienstag da. Und wenn wirklich mal was dazwischenkommt, hörst du das vorher von mir!</p>
-        </li>
-        <li>
-          <h3>Du musst nichts vorbereiten.</h3>
-          <p>Vor dem ersten Anruf brauchst du nichts vorzubereiten. Ruf an und erzähl einfach drauflos.</p>
-        </li>
-        <li>
-          <h3>Du wartest nicht lang auf Antwort.</h3>
-          <p>Ich mach das allein. Da muss keiner erst Rücksprache halten. Meistens meld ich mich am selben Tag.</p>
-        </li>
-        <li>
-          <h3>Du weißt vorher, was es kostet.</h3>
-          <p>Ich sag dir einen Preis, bevor ich anfange. Und dabei bleibt es dann auch.</p>
-        </li>
-      </ul>
+        <ul class="punkte">
+          <li>
+            <h3>Wenn ich was zusage, steht das.</h3>
+            <p>Sag ich Dienstag, bin ich Dienstag da. Und wenn wirklich mal was dazwischenkommt, hörst du das vorher von mir!</p>
+          </li>
+          <li>
+            <h3>Du musst nichts vorbereiten.</h3>
+            <p>Vor dem ersten Anruf brauchst du nichts vorzubereiten. Ruf an und erzähl einfach drauflos.</p>
+          </li>
+          <li>
+            <h3>Du wartest nicht lang auf Antwort.</h3>
+            <p>Ich mach das allein. Da muss keiner erst Rücksprache halten. Meistens meld ich mich am selben Tag.</p>
+          </li>
+          <li>
+            <h3>Du weißt vorher, was es kostet.</h3>
+            <p>Ich sag dir einen Preis, bevor ich anfange. Und dabei bleibt es dann auch.</p>
+          </li>
+        </ul>
+      </div>
     </div>
   </section>
 
   <!-- ============ ARBEITEN / REFERENZEN ============ -->
   <section class="abschnitt" id="arbeiten">
     <div class="wrap">
+      <p class="vorzeile">Arbeitsproben</p>
       <h2 class="h2">Sachen, die ich gemacht hab</h2>
       <p class="abschnitt__lead">
         Alles hier aus der Gegend. Guck es dir an — dauert nur ein paar Minuten,
@@ -253,21 +288,19 @@
         </div>
       </div>
 
-      <!-- --- Website, Banner, Social Media --- -->
+      <!-- --- Website, Banner, Social Media ---
+           Bewusst ohne Bild: solange kein Foto von den Bannern da ist, stünde hier
+           ein leerer Kasten. Der Rahmen trägt den Fall auch ohne. Wenn du das Foto
+           hast, kannst du es als <figure> vor .fall__text setzen und die Klasse
+           .fall--karte auf zwei Spalten lassen — es passt dann von selbst. -->
       <h3 class="gruppe">Website, Banner und Social Media</h3>
 
-      <article class="fall">
-        <div class="fall__bild">
-          <!-- PLATZHALTER: Foto von einem aufgestellten Banner an der Straße,
-               am besten bei Tageslicht. Quer, ca. 1600x1000. -->
-          <div class="platzhalter" role="img" aria-label="Platzhalter für ein Foto der Banner">
-            <span class="platzhalter__label">Platzhalter</span>
-            <span class="platzhalter__text">Foto: Banner an der Straße</span>
-          </div>
-        </div>
-        <div class="fall__text">
+      <article class="fall fall--karte">
+        <div>
           <p class="arbeit__wer"><span class="ph-inline">Platzhalter: Name</span> · Kommunalpolitik</p>
           <h4 class="arbeit__titel">Einmal alles, aus einer Hand</h4>
+        </div>
+        <div class="fall__text">
           <p class="arbeit__text">
             Eine Website, auf der steht, wofür er steht. Banner, die man an die Straße
             stellen kann. Und die Konten, über die man ihn erreicht.
@@ -297,38 +330,31 @@
             abziehen, Düngung buchen — und am Ende kommt genau die Datei raus, die das
             Land haben will.
           </p>
-          <p class="arbeit__schluss">
+          <p class="fall__schluss">
             Falls du dich fragst, wie weit ich gehe, wenn es etwas nicht fertig zu kaufen
             gibt: so weit.
           </p>
         </div>
 
-        <div class="fall__schirme">
-          <figure class="schirm schirm--gross">
-            <!-- PLATZHALTER: Screenshot Kartenansicht (der ohne Browserleiste).
-                 Ersetzen durch: <img src="bilder/agrarkit-karte.png" alt="Kartenansicht in Agrarkit mit farbig markierten Feldern" width="1920" height="878"> -->
-            <div class="platzhalter platzhalter--schirm" role="img" aria-label="Platzhalter: Screenshot der Kartenansicht">
-              <span class="platzhalter__label">Platzhalter</span>
-              <span class="platzhalter__text">Screenshot: Karte mit den Schlägen</span>
-            </div>
+        <div class="schirme">
+          <figure class="schirm">
+            <img src="bilder/agrarkit-karte.webp"
+                 alt="Kartenansicht in Agrarkit: Luftbild von Angeln mit farbig markierten Feldern und einer Legende der Kulturen"
+                 width="1600" height="878" loading="lazy" decoding="async">
             <figcaption>Alle Flächen auf einen Blick, eingefärbt nach Kultur</figcaption>
           </figure>
 
           <div class="schirm-paar">
             <figure class="schirm">
-              <!-- PLATZHALTER: Screenshot Umriss bearbeiten, Browserleiste oben abschneiden -->
-              <div class="platzhalter platzhalter--schirm" role="img" aria-label="Platzhalter: Screenshot Umriss bearbeiten">
-                <span class="platzhalter__label">Platzhalter</span>
-                <span class="platzhalter__text">Umriss zeichnen</span>
-              </div>
-              <figcaption>Umrisse mit dem Finger ziehen, Knicks werden abgezogen</figcaption>
+              <img src="bilder/agrarkit-umriss.webp"
+                   alt="Umriss eines Feldes wird auf dem Luftbild mit einzelnen Punkten gezogen, rechts die Liste der abgezogenen Knicks"
+                   width="1500" height="840" loading="lazy" decoding="async">
+              <figcaption>Umrisse ziehen, Knicks werden abgezogen</figcaption>
             </figure>
             <figure class="schirm">
-              <!-- PLATZHALTER: Screenshot ENDO-SH-Export, Browserleiste oben abschneiden -->
-              <div class="platzhalter platzhalter--schirm" role="img" aria-label="Platzhalter: Screenshot Meldedatei">
-                <span class="platzhalter__label">Platzhalter</span>
-                <span class="platzhalter__text">Meldung ans Land</span>
-              </div>
+              <img src="bilder/agrarkit-export.webp"
+                   alt="Exportseite in Agrarkit mit der Zahl 179 Düngungen und dem Hinweis, dass keine Probleme gefunden wurden"
+                   width="980" height="549" loading="lazy" decoding="async">
               <figcaption>Am Ende die fertige Datei fürs Amt</figcaption>
             </figure>
           </div>
@@ -338,26 +364,23 @@
       <p class="hinweis">
         <strong>Noch offen:</strong> Beim Kommunalpolitiker fehlen Name und ein Foto von den
         Bannern — und bevor beides online geht, kurz bei ihm nachfragen, ob er damit
-        einverstanden ist. Bei Agrarkit fehlen die drei Screenshots (siehe Kommentare im
-        Quelltext). Und bei den beiden Zitaten von Petersens und Lasse: einmal kurz
-        durchklingeln, ob ich sie mit Namen zeigen darf.
+        einverstanden ist. Bei Petersens und Lasse einmal durchklingeln, ob ich die Zitate
+        mit Namen zeigen darf; die Namen stehen oben in der Leiste „Gearbeitet für“ ja auch
+        schon. Die Agrarkit-Bildschirmfotos sind drin, da ist nichts mehr offen.
+        <strong>Diesen Kasten vor dem Livegang löschen.</strong>
       </p>
     </div>
   </section>
 
-  <!-- ============ ÜBER MICH ============ -->
-  <section class="abschnitt abschnitt--grau" id="ueber">
+  <!-- ============ ÜBER MICH ======================================================
+       Auch hier bewusst kein Portraitfoto. Rechts steht stattdessen der Satz, an dem
+       du gemessen werden willst. Wenn du irgendwann ein Portrait hast, kann es über
+       die grüne Karte — dann bleibt die Reihenfolge Text, Foto, Versprechen.
+       ============================================================================= -->
+  <section class="abschnitt abschnitt--creme" id="ueber">
     <div class="wrap ueber">
-      <figure class="bild bild--portrait">
-        <!-- PLATZHALTER: echtes Portraitfoto, freundlich, draußen, kein Studiobild.
-             Ersetzen durch: <img src="bilder/portrait.jpg" alt="Oskar Jacobsen" width="1000" height="1200"> -->
-        <div class="platzhalter" role="img" aria-label="Platzhalter für ein Portraitfoto">
-          <span class="platzhalter__label">Platzhalter</span>
-          <span class="platzhalter__text">Portraitfoto, draußen</span>
-        </div>
-      </figure>
-
       <div class="ueber__text">
+        <p class="vorzeile">Über mich</p>
         <h2 class="h2">Moin, ich bin Oskar Jacobsen</h2>
         <p>
           Ich wohne schon mein ganzes Leben in Angeln. Die Leute, für die ich arbeite,
@@ -370,11 +393,6 @@
           Verständlich.
         </p>
         <p>
-          Womit ich es selber genau nehme: zurückrufen, Termine halten, Bescheid sagen,
-          wenn was nicht klappt. Klingt selbstverständlich. Ist es aber nicht immer —
-          und deshalb schreib ich es hier hin, damit du mich daran messen kannst.
-        </p>
-        <p>
           Ich bin jung genug, dass mir der ganze digitale Kram leichtfällt, und ich bin
           von hier. Man kann mich einfach anrufen und fragen. Auch wenn es am Ende nur
           zwei Minuten dauert.
@@ -385,28 +403,46 @@
           <li><strong>Erreichbar</strong> auch mal abends, wenn tagsüber nichts geht.</li>
         </ul>
       </div>
+
+      <div class="versprechen">
+        <p class="vorzeile vorzeile--hell">Woran du mich messen kannst</p>
+        <p class="versprechen__satz">
+          Womit ich es selber genau nehme: <span class="hl">zurückrufen, Termine halten,
+          Bescheid sagen, wenn was nicht klappt.</span>
+        </p>
+        <p>
+          Klingt selbstverständlich. Ist es aber nicht immer und deshalb schreib ich es
+          hier hin, damit du mich daran messen kannst.
+        </p>
+        <p class="versprechen__fuss">
+          <a href="tel:+4915151223742">0151 5122 3742</a> — probier es aus.
+        </p>
+      </div>
     </div>
   </section>
 
   <!-- ============ KONTAKT ============ -->
-  <section class="abschnitt abschnitt--dunkel kontakt" id="kontakt">
-    <div class="wrap kontakt__inner">
-      <h2 class="h2">Einfach anrufen</h2>
-      <p class="kontakt__lead">
-        Am besten kurz durchklingeln. Wenn ich gerade nicht rangehe, ruf ich zurück.
-      </p>
+  <section class="abschnitt" id="kontakt">
+    <div class="wrap">
+      <div class="panel kontakt__inner">
+        <p class="vorzeile vorzeile--hell">Kontakt</p>
+        <h2 class="h2">Einfach anrufen</h2>
+        <p class="kontakt__lead">
+          Am besten kurz durchklingeln. Wenn ich gerade nicht rangehe, ruf ich zurück.
+        </p>
 
-      <a class="tel-gross" href="tel:+4915151223742">0151 5122 3742</a>
+        <a class="tel-gross" href="tel:+4915151223742">0151 5122 3742</a>
 
-      <div class="kontakt__weiter">
-        <a class="btn btn--hell" href="https://wa.me/4915151223742">Per WhatsApp schreiben</a>
-        <a class="btn btn--linie-hell" href="mailto:info@oskarjacobsen.de">info@oskarjacobsen.de</a>
+        <div class="kontakt__weiter">
+          <a class="btn btn--hell" href="https://wa.me/4915151223742">Per WhatsApp schreiben</a>
+          <a class="btn btn--linie-hell" href="mailto:info@oskarjacobsen.de">info@oskarjacobsen.de</a>
+        </div>
+
+        <p class="kontakt__mikro">
+          Du musst dir vorher nichts überlegen. „Wir müssten mal was machen, weiß aber nicht was“
+          reicht als Einstieg völlig.
+        </p>
       </div>
-
-      <p class="kontakt__mikro">
-        Du musst dir vorher nichts überlegen. „Wir müssten mal was machen, weiß aber nicht was“
-        reicht als Einstieg völlig.
-      </p>
     </div>
   </section>
 

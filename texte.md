@@ -45,19 +45,35 @@ Zwei Wege · Was ich mache · Wie ich arbeite · Arbeiten · Über mich
 ## 1 — Hero (das Erste, was man sieht)
 
 [H1]
-Du kümmerst dich um deine Arbeit.
-Um den Rest kümmer ich mich.
+Digitalisierung für Angeln!
 
-(Der zweite Teil steht in Orange. Zusammen sollten es höchstens acht bis zehn
-Wörter sein, sonst wird die Zeile auf dem Handy zu hoch.)
+(„Angeln" steht in Orange.)
 
-Videos, Website, Social Media und der ganze Computerkram — für alles, was hier in
+Videos, Website, Social Media und der ganze Computerkram für alles, was hier in
 Angeln zwischen Flensburg, Kappeln und Schleswig aufmacht, anpackt und Gäste hat.
 
-Du kriegst gesagt, was es kostet und wann es fertig ist. Und dann stimmt das auch.
-
-[BUTTON] Ruf mich an: 0151 5122 3742
+[BUTTON] Ruf mich an
 [BUTTON] Erst mal gucken, was ich mache
+
+### Die grüne Karte rechts daneben
+
+Sie steht da, wo sonst ein Foto von dir wäre. Solange es keins gibt, trägt sie den
+Platz allein — und stellt gleich das Wichtigste nach vorn.
+
+(Fett, groß:) Zuverlässigkeit steht an erster Stelle.
+
+(Riesig:) 0151 5122 3742
+
+Meistens meld ich mich am selben Tag. Wenn ich nicht rangehe, ruf ich zurück.
+
+- Einer, der rangeht. Kein Ticket, keine Warteschleife.
+- Preis steht, bevor ich anfange.
+- Ich komm zu dir raus.
+
+### Leiste direkt darunter
+
+[KLEIN] Gearbeitet für
+Gemeinde Gelting · Petersens Ferienwohnungen · Lasse.PTS · Agrarkit · eigene Entwicklung
 
 [KLEIN]
 Kostet nichts und verpflichtet zu nichts. Auch wenn du noch gar nicht weißt, was
@@ -264,13 +280,25 @@ Sachen — und wenn man nach ihnen sucht, findet man nichts. Nicht weil sie schl
 sind, sondern weil abends um acht keiner mehr Lust hat, sich um sowas zu kümmern.
 Verständlich.
 
-Womit ich es selber genau nehme: zurückrufen, Termine halten, Bescheid sagen, wenn
-was nicht klappt. Klingt selbstverständlich. Ist es aber nicht immer — und deshalb
-schreib ich es hier hin, damit du mich daran messen kannst.
-
 Ich bin jung genug, dass mir der ganze digitale Kram leichtfällt, und ich bin von
 hier. Man kann mich einfach anrufen und fragen. Auch wenn es am Ende nur zwei
 Minuten dauert.
+
+### Die grüne Karte neben „Über mich"
+
+Sie ersetzt das Portraitfoto. Darin steht der Satz, an dem du gemessen werden willst
+— wörtlich so, wie du ihn geschrieben hast:
+
+[KLEIN] Woran du mich messen kannst
+
+(Fett, groß, der zweite Teil in Orange:)
+Womit ich es selber genau nehme: zurückrufen, Termine halten, Bescheid sagen, wenn
+was nicht klappt.
+
+Klingt selbstverständlich. Ist es aber nicht immer und deshalb schreib ich es hier
+hin, damit du mich daran messen kannst.
+
+0151 5122 3742 — probier es aus.
 
 ### Drei kurze Zeilen darunter
 

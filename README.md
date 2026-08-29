@@ -8,6 +8,8 @@ impressum.html
 datenschutz.html
 styles.css
 script.js           Mobile-Menü + Zwei-Klick-Videos (~2 kB)
+bilder/             Bildschirmfotos aus Agrarkit (webp, klein gerechnet)
+bilder/original/    die Originaldateien, so wie du sie hochgeladen hast
 fonts/              Space Grotesk, lokal (OFL 1.1, Lizenz liegt bei)
 texte.md            Alle Seitentexte zum Bearbeiten
 .nojekyll           Sagt GitHub Pages, dass nichts vorverarbeitet werden soll
@@ -23,9 +25,9 @@ Umbau:
 
 1. Im Repo unter **Settings → Pages** als Quelle den Branch wählen, auf dem diese
    Dateien liegen, und als Ordner `/ (root)`.
-2. Custom Domain auf `oskarjacobsen.de` setzen. GitHub legt dann selbst eine Datei
-   namens `CNAME` an — die ist bewusst noch nicht im Repo, weil sie zur DNS-Einstellung
-   passen muss und eine falsche Angabe die Seite sofort offline nimmt.
+2. Custom Domain auf `oskarjacobsen.de` setzen. Die Datei `CNAME` liegt inzwischen
+   im Repo und enthält genau diese Domain — sie muss zur DNS-Einstellung passen, eine
+   falsche Angabe nimmt die Seite sofort offline.
 3. Beim Domain-Anbieter die DNS-Einträge setzen:
    - für `oskarjacobsen.de` vier **A**-Einträge auf `185.199.108.153`,
      `185.199.109.153`, `185.199.110.153`, `185.199.111.153`
@@ -56,40 +58,45 @@ DIGITALWERKSTATT. Funktioniert genauso auf einer Autotür, wenn es mal so weit i
 
 ## Was noch fehlt
 
-Alles Fehlende ist auf der Seite sichtbar markiert — gestreifte Flächen für Fotos,
-gelbe Kästen für offene Punkte.
+Es gibt **keine gestreiften Platzhalterflächen mehr**. Die Seite ist so gebaut, dass
+sie ohne ein einziges Foto von dir vollständig aussieht — Schrift, Flächen und die
+echten Arbeiten tragen sie allein. Offen ist nur noch das, was im gelben Kasten im
+Referenz-Abschnitt steht.
 
-**Bilder** (reichst du nach) — alle in einen Ordner `bilder/` neben die HTML-Dateien:
-- [ ] Hero-Foto — du draußen, Tageslicht, Region erkennbar. Quer, ca. 1600 × 1200.
-- [ ] Portraitfoto — freundlich, draußen, kein Studio.
-- [ ] Foto von den aufgestellten Bannern des Kommunalpolitikers.
-- [ ] Drei Agrarkit-Screenshots, **ohne Browserleiste** — also den Bereich ab
-      Höhe der Agrarkit-Kopfzeile abwärts, Safari-Adressleiste und Lesezeichen
-      weg. Am besten mit `cmd+shift+4` direkt den Fensterinhalt aufnehmen.
-      Gebraucht werden: die Kartenansicht (die hattest du schon ohne Leiste),
-      „Umriss bearbeiten" und der ENDO-SH-Export.
+**Fotos** (wenn du welche hast, nicht vorher):
+- [ ] Ein Foto von dir draußen. Platz dafür ist im Hero zwischen Text und grüner
+      Karte; im HTML steht an der Stelle ein Kommentar. Die grüne Karte kann bleiben,
+      sie trägt sich auch neben einem Bild.
+- [ ] Ein Portrait. Platz dafür ist bei „Über mich" über der grünen Karte.
+- [ ] Foto von den aufgestellten Bannern des Kommunalpolitikers. Der Fall steht
+      derzeit bewusst als reine Textkarte da — auch dort steht ein Kommentar im HTML.
 
-Ersetzen: den `<div class="platzhalter">`-Block durch ein `<img>` tauschen, z. B.
+Einbauen geht immer gleich:
 
 ```html
-<img src="bilder/oskar.jpg" alt="Oskar Jacobsen" width="1600" height="1200">
+<figure class="bild">
+  <img src="bilder/oskar.jpg" alt="Oskar Jacobsen" width="1600" height="1200">
+</figure>
 ```
 
-Wenn beide Fotos drin sind, können `.platzhalter`, `.ph-inline` und `.hinweis`
-aus dem CSS raus.
+Bilder vorher auf ca. 1600 px Breite bringen und als `.webp` speichern, sonst lädt
+die Seite auf dem Handy im Funkloch ewig. Die Agrarkit-Bildschirmfotos in `bilder/`
+sind genau so entstanden: aus den Originalen in `bilder/original/` beschnitten und
+umgerechnet, zusammen keine 300 kB.
 
-**Rechtstexte** — beide Seiten sind fertig geschrieben, aber zwei Felder kann
-dir niemand außer dir ausfüllen:
-- [ ] **Impressum:** Umsatzsteuer-Zeile. Aktuell steht dort die Kleinunternehmer-
-      regelung nach § 19 UStG. Falls du regelbesteuert bist, stattdessen die
-      USt-IdNr. eintragen. Steuerberatung oder Finanzamt klärt das in zwei Minuten.
-- [ ] Danach den gelben Hinweiskasten im Impressum löschen. Im Datenschutz ist
-      keiner mehr offen — der Hosting-Abschnitt beschreibt GitHub Pages fertig.
+**Erledigt:**
+- [x] Agrarkit-Bildschirmfotos — Karte, „Umriss bearbeiten" und ENDO-SH-Export
+      sind drin. Die beiden kleinen sind auf dasselbe Seitenverhältnis beschnitten,
+      damit sie im Zweier-Raster gleich hoch stehen.
+- [x] Impressum, Umsatzsteuer — du bist Kleinunternehmer, also steht dort jetzt
+      fest die Regelung nach § 19 UStG. Die Alternative und beide gelben Kästen
+      sind raus, das Impressum ist fertig.
 
-Die Texte sind nach bestem Wissen an der aktuellen Rechtslage gebaut (DDG statt
-des alten TMG, TDDDG, DSGVO) und decken genau das ab, was diese Seite tatsächlich
-tut. Sie sind trotzdem von mir und nicht von einer Anwältin. Wenn du ganz sicher
-gehen willst: Die IHK Flensburg prüft sowas für Mitglieder kostenlos.
+**Rechtstexte:** Beide Seiten sind fertig. Sie sind nach bestem Wissen an der
+aktuellen Rechtslage gebaut (DDG statt des alten TMG, TDDDG, DSGVO) und decken
+genau das ab, was diese Seite tatsächlich tut. Sie sind trotzdem von mir und nicht
+von einer Anwältin. Wenn du ganz sicher gehen willst: Die IHK Flensburg prüft sowas
+für Mitglieder kostenlos.
 
 **Texte:**
 - [ ] `texte.md` enthält den kompletten Seitentext zum Überarbeiten. Änderungen
@@ -100,8 +107,11 @@ gehen willst: Die IHK Flensburg prüft sowas für Mitglieder kostenlos.
 **Referenzen:**
 - [ ] Name des Kommunalpolitikers — steht aktuell als gelber Platzhalter drin.
 - [ ] Einverständnis einholen: beim Politiker, dass er auf der Seite auftaucht,
-      und bei Petersens und Lasse für ihre Zitate mit Namen. Ein kurzer Anruf
-      reicht, aber er sollte stattgefunden haben, bevor es online geht.
+      und bei Petersens und Lasse für ihre Zitate mit Namen. Die drei stehen jetzt
+      auch oben in der Leiste „Gearbeitet für". Ein kurzer Anruf reicht, aber er
+      sollte stattgefunden haben, bevor es online geht.
+- [ ] Danach den gelben Kasten unten im Referenz-Abschnitt löschen. Wenn er weg ist,
+      können auch `.hinweis` und `.ph-inline` aus dem CSS raus.
 
 **Sonstiges:**
 - [ ] Der WhatsApp-Button im Kontaktbereich zeigt auf deine Handynummer. Falls du
@@ -138,14 +148,50 @@ bekommt `video--quer`, Hochformat `video--hoch`.
 
 ## Design
 
-- Weiß/Schwarz plus **ein** Akzent: `#e2571f`. Steht in `styles.css` ganz oben als
-  `--akzent` — an einer Stelle ändern reicht für die ganze Seite.
-- Space Grotesk nur für Wordmark und Überschriften, Fließtext in der System-Schrift
-  des Geräts: lädt sofort, wirkt auf jedem Handy vertraut.
+Stand August 2026 einmal überarbeitet: gleiche Einfachheit, moderneres Bild.
+
+- **Drei Farben, mehr nicht.** Warmes Creme als Grundfläche (`--papier`, `#faf8f2`),
+  dunkles Grün für die hervorgehobenen Flächen (`--gruen`, `#26311f`), Orange als
+  Signal (`--akzent`, `#c4491a`). Alle drei stehen in `styles.css` ganz oben — an
+  einer Stelle ändern reicht für die ganze Seite. Das Grün ist dasselbe wie in
+  Agrarkit, dadurch passen die Bildschirmfotos ohne Bruch in die Seite.
+- **Creme statt Weiß.** Reines Weiß bleibt den Karten vorbehalten. Dadurch heben
+  sich Karten von der Fläche ab, ohne dass es dafür schwere Rahmen braucht.
+- **Runde Ecken und Pillenknöpfe.** Karten 24 px, die dunklen Flächen 28 px,
+  Knöpfe komplett rund. Das ist der größte Teil des „moderner" — Form statt Farbe.
+- **Die dunklen Abschnitte sind gerundete Flächen im Papier**, nicht randlose
+  Bänder. Nimmt der Seite die Strenge, ohne dass Farbe dazukommt.
+- **Space Grotesk jetzt durchgehend**, auch im Fließtext. Vorher nur Überschriften.
+  Die Schrift liegt lokal, es wird nichts von Google geladen.
 - Space Grotesk ist eine Variable Font (Gewichtsachse 300–700). Deshalb steht im
   `@font-face` ein Bereich (`font-weight: 300 700`) und keine Einzelzahl — sonst
   interpoliert der Browser nicht und „Bold" wäre gar nicht fett.
-- Kein Kontaktformular. Die Telefonnummer ist der Haupt-Call-to-Action.
+- **Kontrast ist durchgerechnet.** Keine Textfarbe auf dieser Seite liegt unter
+  4,5:1 gegen ihren Untergrund. Deshalb gibt es zwei Orangetöne: das dunklere für
+  Creme, das hellere nur auf Grün.
+- Kein Kontaktformular. Die Telefonnummer ist der Haupt-Call-to-Action — und steht
+  deshalb im Hero in einer eigenen grünen Karte, im Kontaktabschnitt riesig und
+  oben in der Navigation als Knopf.
+
+### Warum die Seite ohne Fotos von dir funktioniert
+
+Solange es keine Bilder von dir bei der Arbeit gibt, wären Platzhalter das
+Schlechteste: Eine Seite mit gestreiften Kästen sieht unfertig aus, und unfertig
+ist das Gegenteil von zuverlässig. Deshalb ist der Bildbedarf einfach aus dem
+Entwurf herausgenommen worden:
+
+- **Im Hero** steht rechts die grüne Karte mit der Nummer statt eines Fotos.
+- **Direkt darunter** die Leiste „Gearbeitet für" mit den Namen. Übernimmt die
+  Aufgabe einer Logo-Leiste, braucht aber keine Logos.
+- **Bei „Über mich"** steht statt des Portraits der Satz, an dem du gemessen
+  werden willst, auf grüner Fläche.
+- **Beim Kommunalpolitiker** ist der Fall eine reine Textkarte mit Rahmen.
+- Bilder gibt es nur da, wo es echte gibt: die Videoflächen und die drei
+  Agrarkit-Bildschirmfotos.
+
+Kommen später Fotos dazu, müssen sie nichts reparieren, sondern kommen zu einer
+Seite hinzu, die schon steht. An den drei Stellen oben steht jeweils ein Kommentar
+im HTML, wo genau.
 
 ## Tonalität — falls Texte geändert werden
 
@@ -153,11 +199,10 @@ Zielgruppe sind Betriebe, Gemeinden, Vermieter und Vereine hier aus der Gegend.
 Fachlich top, keine Zeit, kein Vorwissen, oft noch nie mit sowas zu tun gehabt.
 Danach ist jeder Satz gebaut:
 
-- **Zuverlässigkeit wird gezeigt, nie behauptet.** Der Abschnitt „Damit nichts mehr
-  untergeht" dreht das Thema bewusst so, dass es niemanden angreift: „Du bist nicht
-  unzuverlässig. Du hast nur zu viel im Kopf." Ein Satz wie „viele Handwerker sind
-  unzuverlässig" dürfte auf dieser Seite nie stehen — er würde genau die Leute
-  beleidigen, die anrufen sollen.
+- **Zuverlässigkeit wird gezeigt, nie behauptet.** Unter „Wie das bei mir läuft"
+  steht deshalb nicht „ich bin zuverlässig", sondern „sag ich Dienstag, bin ich
+  Dienstag da". Ein Satz wie „viele Handwerker sind unzuverlässig" dürfte auf dieser
+  Seite nie stehen — er würde genau die Leute beleidigen, die anrufen sollen.
 
 - **Zeitmangel ist der Schmerzpunkt, nicht schlechte Qualität.** Die Botschaft
   lautet „darum musst du dich nicht mehr kümmern", nie „deine Seite ist schlecht".
@@ -173,8 +218,10 @@ Danach ist jeder Satz gebaut:
 ## Technisches
 
 - Mobile-first, Layout über CSS Grid.
-- Getestet in Chromium auf 390 px und 1280 px: kein horizontales Scrollen, keine
+- Getestet in Chromium auf 390 px und 1440 px: kein horizontales Scrollen, keine
   Konsolenfehler, null Requests an Dritte vor dem Video-Klick.
+- Die Bildschirmfotos haben `width`/`height` im HTML und `loading="lazy"`. Dadurch
+  springt beim Laden nichts, und geladen werden sie erst kurz bevor man sie sieht.
 - Barrierefreiheit: Skip-Link, sichtbarer Fokus, `aria-expanded` am Menü,
   sprechende `aria-label` an den Video-Knöpfen, `prefers-reduced-motion` beachtet.
 - Impressum und Datenschutz stehen auf `noindex` — sie sollen nicht bei Google
