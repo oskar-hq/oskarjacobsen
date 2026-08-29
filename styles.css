@@ -751,20 +751,11 @@ h1 {
 @media (min-width: 620px) { .schirm-paar { grid-template-columns: 1fr 1fr; } }
 .schirm-paar > * { min-width: 0; }
 
-/* ---------- Hinweiskasten (verschwindet vor dem Livegang) ---------------- */
+/* ---------- Platzhalter mitten im Fließtext ------------------------------
+   Nur noch für den stillgelegten Fall des Kommunalpolitikers gebraucht: dort
+   steht der Name noch nicht. Wenn der Name eingetragen ist, kann das hier raus.
+   ------------------------------------------------------------------------ */
 
-.hinweis {
-  margin-top: 3rem;
-  padding: 1.1rem 1.25rem;
-  background: #fdf6e3;
-  border: 1px dashed #c9a227;
-  border-radius: var(--r);
-  font-size: .9375rem;
-  color: #5c4a00;
-}
-.hinweis a { color: #5c4a00; }
-
-/* Platzhalter mitten im Fließtext */
 .ph-inline {
   background: #fdf3d0;
   border-bottom: 1px dashed #c9a227;

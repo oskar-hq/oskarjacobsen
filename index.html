@@ -288,11 +288,31 @@
         </div>
       </div>
 
-      <!-- --- Website, Banner, Social Media ---
-           Bewusst ohne Bild: solange kein Foto von den Bannern da ist, stünde hier
-           ein leerer Kasten. Der Rahmen trägt den Fall auch ohne. Wenn du das Foto
-           hast, kannst du es als <figure> vor .fall__text setzen und die Klasse
-           .fall--karte auf zwei Spalten lassen — es passt dann von selbst. -->
+      <!-- ============================================================================
+           STILLGELEGT: Website, Banner und Social Media (Kommunalpolitiker)
+
+           Der Fall ist fertig geschrieben, aber noch nicht freigeschaltet: seine
+           Website ist im Bau, Fotos von den Bannern und Bildschirmfotos der Seite
+           kommen später, sein Name fehlt und sein Einverständnis auch. Bis dahin
+           liegt alles hier drin und wird vom Browser nicht angezeigt — <template>
+           wird geparst, aber nicht gerendert; der Text taucht auch bei Google nicht
+           als Seiteninhalt auf.
+
+           WIEDER FREISCHALTEN, wenn seine Seite fertig ist:
+             1. Die Zeile <template ...> und das </template> weiter unten löschen.
+                Sonst nichts. Alles dazwischen bleibt, wie es ist.
+             2. Namen eintragen: den <span class="ph-inline">-Platzhalter durch
+                seinen Namen ersetzen (das span-Element ganz weg, nur der Name bleibt).
+             3. Bilder einbauen — Anleitung steht unten im Block.
+             4. Ihn vorher anrufen und fragen, ob er einverstanden ist.
+           ============================================================================ -->
+      <template id="fall-kommunalpolitiker">
+
+      <!-- Wenn die Fotos da sind: ein <figure class="bild"> mit dem Bild vor
+           .fall__text setzen. Das Zweispalten-Raster von .fall--karte nimmt es
+           von selbst auf, da muss nichts am CSS geändert werden.
+           Gut wären zwei Sachen: ein Banner an der Straße (quer) und ein
+           Bildschirmfoto seiner fertigen Website. -->
       <h3 class="gruppe">Website, Banner und Social Media</h3>
 
       <article class="fall fall--karte">
@@ -312,6 +332,9 @@
           </p>
         </div>
       </article>
+
+      </template>
+      <!-- ===================== Ende stillgelegter Block ===================== -->
 
       <!-- --- Eigene Software --- -->
       <h3 class="gruppe">Und was Eigenes</h3>
@@ -361,14 +384,15 @@
         </div>
       </article>
 
-      <p class="hinweis">
-        <strong>Noch offen:</strong> Beim Kommunalpolitiker fehlen Name und ein Foto von den
-        Bannern — und bevor beides online geht, kurz bei ihm nachfragen, ob er damit
-        einverstanden ist. Bei Petersens und Lasse einmal durchklingeln, ob ich die Zitate
-        mit Namen zeigen darf; die Namen stehen oben in der Leiste „Gearbeitet für“ ja auch
-        schon. Die Agrarkit-Bildschirmfotos sind drin, da ist nichts mehr offen.
-        <strong>Diesen Kasten vor dem Livegang löschen.</strong>
-      </p>
+      <!-- NOCH OFFEN (steht bewusst nicht mehr sichtbar auf der Seite, damit sie
+           jederzeit online gehen kann; dieselbe Liste steht auch im README):
+
+           1. Petersens und Lasse anrufen und fragen, ob ich ihre Zitate mit Namen
+              zeigen darf. Ihre Namen stehen oben auch in der Leiste "Gearbeitet für".
+              Solange das nicht geklärt ist: entweder kurz durchklingeln oder die
+              beiden <blockquote class="zitat">-Blöcke oben rausnehmen.
+           2. Der Kommunalpolitiker liegt fertig im Quelltext, ist aber stillgelegt,
+              bis seine Website fertig ist. Siehe den Kommentar weiter oben. -->
     </div>
   </section>
 

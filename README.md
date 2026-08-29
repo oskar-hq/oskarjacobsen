@@ -68,8 +68,8 @@ Referenz-Abschnitt steht.
       Karte; im HTML steht an der Stelle ein Kommentar. Die grüne Karte kann bleiben,
       sie trägt sich auch neben einem Bild.
 - [ ] Ein Portrait. Platz dafür ist bei „Über mich" über der grünen Karte.
-- [ ] Foto von den aufgestellten Bannern des Kommunalpolitikers. Der Fall steht
-      derzeit bewusst als reine Textkarte da — auch dort steht ein Kommentar im HTML.
+- [ ] Fotos vom Kommunalpolitiker: Banner an der Straße und ein Bildschirmfoto
+      seiner fertigen Website. Der ganze Fall ist stillgelegt, siehe unten.
 
 Einbauen geht immer gleich:
 
@@ -105,13 +105,39 @@ für Mitglieder kostenlos.
       laufen die beiden auseinander.
 
 **Referenzen:**
-- [ ] Name des Kommunalpolitikers — steht aktuell als gelber Platzhalter drin.
-- [ ] Einverständnis einholen: beim Politiker, dass er auf der Seite auftaucht,
-      und bei Petersens und Lasse für ihre Zitate mit Namen. Die drei stehen jetzt
-      auch oben in der Leiste „Gearbeitet für". Ein kurzer Anruf reicht, aber er
-      sollte stattgefunden haben, bevor es online geht.
-- [ ] Danach den gelben Kasten unten im Referenz-Abschnitt löschen. Wenn er weg ist,
-      können auch `.hinweis` und `.ph-inline` aus dem CSS raus.
+- [ ] Petersens und Lasse anrufen, ob ihre Zitate mit Namen gezeigt werden dürfen.
+      Ihre Namen stehen auch oben in der Leiste „Gearbeitet für". Solange das nicht
+      geklärt ist: entweder kurz durchklingeln oder die beiden
+      `<blockquote class="zitat">`-Blöcke rausnehmen. **Das ist der letzte Punkt,
+      der vor dem Livegang wirklich erledigt sein sollte.**
+- [x] Der gelbe Hinweiskasten ist von der Seite runter. Dieselbe Liste steht jetzt
+      als Kommentar im Quelltext und hier. Die Seite kann also jederzeit online,
+      ohne dass ein Besucher Baustellenzettel sieht. `.hinweis` ist aus dem CSS raus,
+      `.ph-inline` bleibt, solange der Name des Politikers fehlt.
+
+### Stillgelegt: der Kommunalpolitiker
+
+Seine Website ist gerade im Bau, die Bilder kommen in etwa einem Monat. Damit die
+Seite trotzdem sofort benutzbar ist, ist der ganze Fall vorübergehend abgeschaltet —
+**nicht gelöscht**. Der komplette Block steht weiter in `index.html`, nur eben in
+einem `<template>`. Das heißt: der Browser liest ihn, zeigt ihn aber nicht an, und
+bei Google taucht der Text nicht als Seiteninhalt auf.
+
+Wenn seine Seite fertig ist, freischalten in vier Schritten (steht genauso als
+Kommentar direkt über dem Block):
+
+1. Die Zeile `<template id="fall-kommunalpolitiker">` und das zugehörige
+   `</template>` löschen. Sonst nichts — alles dazwischen bleibt, wie es ist.
+2. Namen eintragen: das `<span class="ph-inline">…</span>` durch seinen Namen
+   ersetzen, das span-Element selbst kommt weg.
+3. Bilder einbauen: ein `<figure class="bild">` vor `.fall__text` setzen. Das
+   Zweispalten-Raster nimmt es von selbst auf, am CSS ist nichts zu ändern.
+4. Vorher anrufen und fragen, ob er einverstanden ist.
+
+Danach steht im Referenz-Abschnitt wieder die Gruppe „Website, Banner und Social
+Media" zwischen den Filmen und Agrarkit. Ohne sie zeigt die Seite momentan keine
+Website-Arbeit — das ist bewusst in Kauf genommen, weil ein halber Fall schlechter
+wirkt als gar keiner.
 
 **Sonstiges:**
 - [ ] Der WhatsApp-Button im Kontaktbereich zeigt auf deine Handynummer. Falls du
