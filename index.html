@@ -82,15 +82,28 @@
     </div>
   </section>
 
-  <!-- ============ LEISTE MIT DEN NAMEN ============ -->
+  <!-- ============ LOGOLEISTE ======================================================
+       Die drei echten Kundenlogos. Sie sind unterschiedlich geformt — ein hohes
+       Wappen, eine breite Wortmarke, ein quadratisches Logo — deshalb bekommt
+       jedes im CSS seine eigene Höhe. Nicht alle gleich hoch setzen, dann wirkt
+       das Wappen riesig und Petersens verschwindet.
+       ============================================================================= -->
   <div class="belege">
     <div class="wrap belege__inner">
       <p class="belege__titel">Gearbeitet für</p>
       <ul class="belege__liste">
-        <li>Gemeinde Gelting</li>
-        <li>Petersens Ferienwohnungen</li>
-        <li>Lasse.PTS</li>
-        <li>Agrarkit · eigene Entwicklung</li>
+        <li>
+          <img class="logo logo--gelting" src="bilder/logos/gemeinde-gelting.svg"
+               alt="Gemeinde Gelting" width="380" height="426" loading="lazy">
+        </li>
+        <li>
+          <img class="logo logo--petersens" src="bilder/logos/petersens.svg"
+               alt="Petersens Ferienwohnungen" width="490" height="76" loading="lazy">
+        </li>
+        <li>
+          <img class="logo logo--lasse" src="bilder/logos/lasse-pts.png"
+               alt="Lasse.PTS" width="626" height="406" loading="lazy">
+        </li>
       </ul>
     </div>
   </div>
@@ -288,6 +301,8 @@
         </div>
       </div>
 
+      <h3 class="gruppe">Websites</h3>
+
       <!-- ============================================================================
            STILLGELEGT: Website, Banner und Social Media (Kommunalpolitiker)
 
@@ -297,6 +312,9 @@
            liegt alles hier drin und wird vom Browser nicht angezeigt — <template>
            wird geparst, aber nicht gerendert; der Text taucht auch bei Google nicht
            als Seiteninhalt auf.
+
+           Er gehört in die Gruppe "Websites", die gleich darunter anfängt — deshalb
+           steht die Überschrift jetzt außerhalb des Blocks und nicht mehr darin.
 
            WIEDER FREISCHALTEN, wenn seine Seite fertig ist:
              1. Die Zeile <template ...> und das </template> weiter unten löschen.
@@ -313,8 +331,6 @@
            von selbst auf, da muss nichts am CSS geändert werden.
            Gut wären zwei Sachen: ein Banner an der Straße (quer) und ein
            Bildschirmfoto seiner fertigen Website. -->
-      <h3 class="gruppe">Website, Banner und Social Media</h3>
-
       <article class="fall fall--karte">
         <div>
           <p class="arbeit__wer"><span class="ph-inline">Platzhalter: Name</span> · Kommunalpolitik</p>
@@ -336,8 +352,52 @@
       </template>
       <!-- ===================== Ende stillgelegter Block ===================== -->
 
+      <article class="fall fall--breit">
+        <div class="fall__text">
+          <p class="arbeit__wer">agrarkit.de · eigene Entwicklung</p>
+          <h4 class="arbeit__titel">Die Website zu meiner Software</h4>
+          <p class="arbeit__text">
+            Zu Agrarkit gehört eine Seite, die Landwirten erklärt, was das Programm
+            macht, wenn sie zum ersten Mal draufgucken. Was drin ist, was es kostet,
+            wie man anfängt. Kein Fachchinesisch und keine Preisliste mit acht Paketen.
+          </p>
+          <p class="arbeit__text">
+            So eine Seite bau ich dir genauso. Der Aufbau ist eigentlich immer der
+            gleiche: oben in einem Satz, worum es geht, darunter der Reihe nach die
+            Fragen, die die Leute wirklich stellen, und ganz unten, wie man dich erreicht.
+          </p>
+          <p class="fall__schluss">
+            Und was das Programm dahinter kann, steht gleich darunter.
+          </p>
+        </div>
+
+        <div class="schirme">
+          <figure class="schirm schirm--offen">
+            <img src="bilder/agrarkit-web.webp"
+                 alt="Die Startseite von agrarkit.de am Rechner und daneben dieselbe Seite auf einem Handy"
+                 width="1600" height="954" loading="lazy" decoding="async">
+            <figcaption>Am Rechner und auf dem Handy dieselbe Seite</figcaption>
+          </figure>
+
+          <div class="schirm-paar">
+            <figure class="schirm">
+              <img src="bilder/agrarkit-web-hell.webp"
+                   alt="Der Preis-Kasten der Seite in der hellen Fassung"
+                   width="900" height="689" loading="lazy" decoding="async">
+              <figcaption>Am Tag hell</figcaption>
+            </figure>
+            <figure class="schirm">
+              <img src="bilder/agrarkit-web-dunkel.webp"
+                   alt="Derselbe Preis-Kasten in der dunklen Fassung"
+                   width="900" height="689" loading="lazy" decoding="async">
+              <figcaption>Am Abend dunkel</figcaption>
+            </figure>
+          </div>
+        </div>
+      </article>
+
       <!-- --- Eigene Software --- -->
-      <h3 class="gruppe">Und was Eigenes</h3>
+      <h3 class="gruppe">Eigene Software</h3>
 
       <article class="fall fall--breit">
         <div class="fall__text">

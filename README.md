@@ -8,7 +8,8 @@ impressum.html
 datenschutz.html
 styles.css
 script.js           Mobile-Menü + Zwei-Klick-Videos (~2 kB)
-bilder/             Bildschirmfotos aus Agrarkit (webp, klein gerechnet)
+bilder/             Bildschirmfotos aus Agrarkit und von agrarkit.de (webp)
+bilder/logos/       die drei Kundenlogos
 bilder/original/    die Originaldateien, so wie du sie hochgeladen hast
 fonts/              Space Grotesk, lokal (OFL 1.1, Lizenz liegt bei)
 texte.md            Alle Seitentexte zum Bearbeiten
@@ -91,6 +92,13 @@ umgerechnet, zusammen keine 300 kB.
 - [x] Impressum, Umsatzsteuer — du bist Kleinunternehmer, also steht dort jetzt
       fest die Regelung nach § 19 UStG. Die Alternative und beide gelben Kästen
       sind raus, das Impressum ist fertig.
+- [x] Kundenlogos — Gemeinde Gelting, Petersens und Lasse.PTS stehen jetzt als
+      echte Logos in der Leiste unter dem Hero. Geholt aus dem Repo
+      `oskar-hq/jacobsen-website`, Ordner `kunden-logos/`. Beim Lasse-Logo war
+      ein weißer Kasten drumherum, der ist freigestellt.
+- [x] agrarkit.de — die Website zur Software ist als eigene Referenz drin, in
+      der neuen Gruppe „Websites". Damit zeigt die Seite wieder Website-Arbeit,
+      auch solange der Kommunalpolitiker stillgelegt ist.
 
 **Rechtstexte:** Beide Seiten sind fertig. Sie sind nach bestem Wissen an der
 aktuellen Rechtslage gebaut (DDG statt des alten TMG, TDDDG, DSGVO) und decken
@@ -134,10 +142,10 @@ Kommentar direkt über dem Block):
    Zweispalten-Raster nimmt es von selbst auf, am CSS ist nichts zu ändern.
 4. Vorher anrufen und fragen, ob er einverstanden ist.
 
-Danach steht im Referenz-Abschnitt wieder die Gruppe „Website, Banner und Social
-Media" zwischen den Filmen und Agrarkit. Ohne sie zeigt die Seite momentan keine
-Website-Arbeit — das ist bewusst in Kauf genommen, weil ein halber Fall schlechter
-wirkt als gar keiner.
+Er landet dann in der Gruppe „Websites", direkt über agrarkit.de. Die Überschrift
+steht deshalb außerhalb des `<template>`, nicht darin. Wenn du magst, kannst du die
+Gruppe danach in „Websites, Banner und Social Media" umbenennen — dann passt sie
+auch zu den Bannern.
 
 **Sonstiges:**
 - [ ] Der WhatsApp-Button im Kontaktbereich zeigt auf deine Handynummer. Falls du
@@ -147,8 +155,17 @@ wirkt als gar keiner.
 ## Der Referenz-Abschnitt
 
 Drei Gruppen, in dieser Reihenfolge: **Filme** (die vier YouTube-Videos),
-**Website, Banner und Social Media** (Kommunalpolitiker), **Und was Eigenes**
-(Agrarkit).
+**Websites** (agrarkit.de, und später der Kommunalpolitiker), **Eigene Software**
+(Agrarkit selbst).
+
+Die Reihenfolge erzählt absichtlich etwas: erst eine Website, die ich gebaut habe —
+und dann, gleich darunter, die Software, für die diese Website wirbt. Wer bis dahin
+gelesen hat, versteht ohne einen Satz Erklärung, wie weit das reicht.
+
+Bei agrarkit.de sind drei Bilder drin: die Startseite an Rechner und Handy in einem
+Bild, und zweimal derselbe Preis-Kasten, hell und dunkel. Beide Ausschnitte sind
+exakt gleich beschnitten — nur deshalb liest man auf einen Blick, dass es dieselbe
+Stelle in zwei Fassungen ist.
 
 Agrarkit steht bewusst zum Schluss und erklärt nicht, was die Software alles kann.
 Auf dieser Seite ist sie kein Produkt, sondern der Beweis dafür, wie weit du gehst,
@@ -207,13 +224,14 @@ ist das Gegenteil von zuverlässig. Deshalb ist der Bildbedarf einfach aus dem
 Entwurf herausgenommen worden:
 
 - **Im Hero** steht rechts die grüne Karte mit der Nummer statt eines Fotos.
-- **Direkt darunter** die Leiste „Gearbeitet für" mit den Namen. Übernimmt die
-  Aufgabe einer Logo-Leiste, braucht aber keine Logos.
+- **Direkt darunter** die Leiste „Gearbeitet für" mit den drei Kundenlogos. Jedes
+  hat im CSS seine eigene Höhe — ein hohes Wappen und eine flache Wortmarke wirken
+  bei gleicher Pixelhöhe völlig unterschiedlich groß.
 - **Bei „Über mich"** steht statt des Portraits der Satz, an dem du gemessen
   werden willst, auf grüner Fläche.
 - **Beim Kommunalpolitiker** ist der Fall eine reine Textkarte mit Rahmen.
-- Bilder gibt es nur da, wo es echte gibt: die Videoflächen und die drei
-  Agrarkit-Bildschirmfotos.
+- Bilder gibt es nur da, wo es echte gibt: die Videoflächen, die drei
+  Agrarkit-Bildschirmfotos und die drei von agrarkit.de.
 
 Kommen später Fotos dazu, müssen sie nichts reparieren, sondern kommen zu einer
 Seite hinzu, die schon steht. An den drei Stellen oben steht jeweils ein Kommentar

@@ -73,7 +73,9 @@ Meistens meld ich mich am selben Tag. Wenn ich nicht rangehe, ruf ich zurück.
 ### Leiste direkt darunter
 
 [KLEIN] Gearbeitet für
-Gemeinde Gelting · Petersens Ferienwohnungen · Lasse.PTS · Agrarkit · eigene Entwicklung
+
+Darunter die drei Kundenlogos: Gemeinde Gelting, Petersens Ferienwohnungen,
+Lasse.PTS. Kein Text, nur die Logos.
 
 [KLEIN]
 Kostet nichts und verpflichtet zu nichts. Auch wenn du noch gar nicht weißt, was
@@ -222,10 +224,30 @@ Hochkant, schnell geschnitten, für Instagram und TikTok.
 „Ah geil. Find ich super. Poste ich heute direkt mal 👍"
 — Lasse.PTS
 
-### Gruppe 2: WEBSITE, BANNER UND SOCIAL MEDIA
+### Gruppe 2: WEBSITES
 
-Das ist der Kommunalpolitiker. Name fehlt noch, deshalb steht da ein gelber
-Platzhalter. Foto von den Bannern fehlt auch.
+**agrarkit.de**
+
+[H3] Die Website zu meiner Software
+
+Zu Agrarkit gehört eine Seite, die Landwirten erklärt, was das Programm macht, wenn
+sie zum ersten Mal draufgucken. Was drin ist, was es kostet, wie man anfängt. Kein
+Fachchinesisch und keine Preisliste mit acht Paketen.
+
+So eine Seite bau ich dir genauso. Der Aufbau ist eigentlich immer der gleiche: oben
+in einem Satz, worum es geht, darunter der Reihe nach die Fragen, die die Leute
+wirklich stellen, und ganz unten, wie man dich erreicht.
+
+(Fett, mit Trennlinie darüber:)
+Und was das Programm dahinter kann, steht gleich darunter.
+
+Unterschriften unter den drei Bildern:
+- Am Rechner und auf dem Handy dieselbe Seite
+- Am Tag hell
+- Am Abend dunkel
+
+**Der Kommunalpolitiker** steht in derselben Gruppe, ist aber stillgelegt, bis seine
+Website fertig ist. Der Text dazu (unverändert, kommt wieder):
 
 [KLEIN] (Platzhalter: Name) · Kommunalpolitik
 
@@ -238,7 +260,7 @@ Der Vorteil, wenn das einer macht: Es sieht überall gleich aus. Wer das Banner 
 der Landstraße sieht und danach die Seite aufmacht, erkennt sofort, dass das
 zusammengehört.
 
-### Gruppe 3: UND WAS EIGENES
+### Gruppe 3: EIGENE SOFTWARE
 
 [KLEIN] Agrarkit · eigene Entwicklung
 
