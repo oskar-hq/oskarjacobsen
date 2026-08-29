@@ -12,7 +12,7 @@
      der schon mal hier war, die neue Seite mit der alten Gestaltung — und es sieht
      kaputt aus. WICHTIG: bei jeder Änderung an styles.css oder script.js das Datum
      hier hochsetzen, in allen drei HTML-Dateien. -->
-<link rel="stylesheet" href="styles.css?v=2026-08-29">
+<link rel="stylesheet" href="styles.css?v=2026-08-29c">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%2326311f'/><text x='16' y='23' font-family='sans-serif' font-size='19' font-weight='700' fill='%23faf8f2' text-anchor='middle'>J</text></svg>">
 </head>
 <body>
@@ -77,12 +77,8 @@
         <a class="visitenkarte__tel" href="tel:+4915151223742">0151 5122 3742</a>
         <p class="visitenkarte__klein">
           Meistens meld ich mich am selben Tag. Wenn ich nicht rangehe, ruf ich zurück.
+          Kein Ticket, keine Warteschleife.
         </p>
-        <ul class="visitenkarte__liste">
-          <li>Einer, der rangeht. Kein Ticket, keine Warteschleife.</li>
-          <li>Preis steht, bevor ich anfange.</li>
-          <li>Ich komm zu dir raus.</li>
-        </ul>
       </div>
     </div>
   </section>
@@ -125,9 +121,8 @@
           <p class="karte__nr" aria-hidden="true">1</p>
           <h3 class="karte__titel">„Ich hab ein konkretes Problem.“</h3>
           <p>
-            Die Website ist zu alt. Ich vergesse es manchmal, mich beim Kunden zu melden.
-            Keiner kommt mehr ins Instagram-Konto rein. Ich möchte mein neues Projekt auf
-            Social Media zeigen. Ich möchte mehr Azubis anziehen.
+            Die Website ist zu alt. Keiner kommt mehr ins Instagram-Konto rein. Das neue
+            Projekt soll auf Social Media. Es sollen mehr Azubis kommen.
           </p>
           <p class="karte__schluss">Sag mir kurz, was das Problem ist, und wir arbeiten an einer Lösung.</p>
         </article>
@@ -136,10 +131,8 @@
           <p class="karte__nr" aria-hidden="true">2</p>
           <h3 class="karte__titel">„Ich weiß nur, dass mal was passieren muss.“</h3>
           <p>
-            Du hörst überall, dass man online was machen sollte. Nur weißt du nicht, was
-            genau. Und ehrlich gesagt hast du auch keine Zeit, dich da reinzudenken. Oder
-            ihr erledigt Verwaltungsaufgaben noch mit Excel, obwohl du weißt, dass es
-            längst einfacher geht.
+            Du hörst überall, dass man online was machen sollte, weißt aber nicht was.
+            Und ehrlich gesagt hast du auch keine Zeit, dich da reinzudenken.
           </p>
           <p class="karte__schluss">
             Dann komm ich vorbei, guck mir an, wie ihr arbeitet, und sag dir hinterher,
@@ -306,6 +299,49 @@
         </div>
       </div>
 
+      <h3 class="gruppe">Eigene Software</h3>
+
+      <article class="fall fall--breit">
+        <div class="fall__text">
+          <p class="arbeit__wer">Agrarkit · eigene Entwicklung</p>
+          <h4 class="arbeit__titel">Eine Ackerschlagkartei für Schleswig-Holstein</h4>
+          <p class="arbeit__text">
+            Jeder Landwirt muss aufschreiben, was er wann auf welchem Feld gemacht hat,
+            und das am Ende dem Land melden. Dafür gibt es fertige Programme — teuer, und
+            selten passen sie zu dem, was hier oben verlangt wird.
+          </p>
+          <p class="arbeit__text">
+            Also hab ich es selbst gebaut. Felder auf dem Luftbild einzeichnen, Knicks
+            abziehen, Düngung buchen — und am Ende kommt genau die Datei raus, die das
+            Land haben will.
+          </p>
+          <p class="fall__schluss">
+            Falls du dich fragst, wie weit ich gehe, wenn es etwas nicht fertig zu kaufen
+            gibt: so weit. Die Website dazu steht gleich darunter.
+          </p>
+        </div>
+
+        <div class="geraete">
+          <div class="geraete__buehne">
+            <div class="fenster">
+              <div class="fenster__leiste" aria-hidden="true">
+                <span class="fenster__punkte"></span>
+                <span class="fenster__adresse">agrarkit.de/schlaege</span>
+              </div>
+              <img class="fenster__bild" src="bilder/agrarkit-karte.webp"
+                   alt="Kartenansicht in Agrarkit: Luftbild von Angeln mit farbig markierten Feldern und einer Legende der Kulturen"
+                   width="1600" height="878" loading="lazy" decoding="async">
+            </div>
+            <div class="handy geraete__handy">
+              <img class="handy__bild" src="bilder/agrarkit-handy.webp"
+                   alt="Dieselbe Software auf dem Handy: die Stickstoff-Obergrenze und die zuletzt erfassten Buchungen"
+                   width="620" height="1342" loading="lazy" decoding="async">
+            </div>
+          </div>
+          <p class="geraete__zeile">Am Rechner die Karte, am Feldrand dasselbe auf dem Handy</p>
+        </div>
+      </article>
+
       <h3 class="gruppe">Websites</h3>
 
       <!-- ============================================================================
@@ -331,11 +367,10 @@
            ============================================================================ -->
       <template id="fall-kommunalpolitiker">
 
-      <!-- Wenn die Fotos da sind: ein <figure class="bild"> mit dem Bild vor
-           .fall__text setzen. Das Zweispalten-Raster von .fall--karte nimmt es
-           von selbst auf, da muss nichts am CSS geändert werden.
-           Gut wären zwei Sachen: ein Banner an der Straße (quer) und ein
-           Bildschirmfoto seiner fertigen Website. -->
+      <!-- Wenn die Bilder da sind: seine Website in denselben Geräte-Rahmen
+           setzen wie agrarkit.de weiter unten — den <div class="geraete">-Block
+           kopieren, Bilder und Adresse austauschen, fertig. Ein Foto von den
+           Bannern an der Straße passt als <figure class="bild"> daneben. -->
       <article class="fall fall--karte">
         <div>
           <p class="arbeit__wer"><span class="ph-inline">Platzhalter: Name</span> · Kommunalpolitik</p>
@@ -372,80 +407,29 @@
             Fragen, die die Leute wirklich stellen, und ganz unten, wie man dich erreicht.
           </p>
           <p class="fall__schluss">
-            Und was das Programm dahinter kann, steht gleich darunter.
+            Dieselbe Handschrift wie das Programm darüber. Das ist kein Zufall,
+            sondern der Punkt.
           </p>
         </div>
 
-        <div class="schirme">
-          <figure class="schirm schirm--offen">
-            <img src="bilder/agrarkit-web.webp"
-                 alt="Die Startseite von agrarkit.de am Rechner und daneben dieselbe Seite auf einem Handy"
-                 width="1600" height="954" loading="lazy" decoding="async">
-            <figcaption>Am Rechner und auf dem Handy dieselbe Seite</figcaption>
-          </figure>
-
-          <div class="schirm-paar">
-            <figure class="schirm">
-              <img src="bilder/agrarkit-web-hell.webp"
-                   alt="Der Preis-Kasten der Seite in der hellen Fassung"
-                   width="900" height="689" loading="lazy" decoding="async">
-              <figcaption>Am Tag hell</figcaption>
-            </figure>
-            <figure class="schirm">
-              <img src="bilder/agrarkit-web-dunkel.webp"
-                   alt="Derselbe Preis-Kasten in der dunklen Fassung"
-                   width="900" height="689" loading="lazy" decoding="async">
-              <figcaption>Am Abend dunkel</figcaption>
-            </figure>
+        <div class="geraete">
+          <div class="geraete__buehne">
+            <div class="fenster">
+              <div class="fenster__leiste" aria-hidden="true">
+                <span class="fenster__punkte"></span>
+                <span class="fenster__adresse">agrarkit.de</span>
+              </div>
+              <img class="fenster__bild" src="bilder/agrarkit-web.webp"
+                   alt="Die Startseite von agrarkit.de: ein Trecker beim Pflügen, darüber die Überschrift Schläge, Düngung und ENDO-SH in einem Programm"
+                   width="1500" height="938" loading="lazy" decoding="async">
+            </div>
+            <div class="handy geraete__handy">
+              <img class="handy__bild" src="bilder/agrarkit-web-handy.webp"
+                   alt="Dieselbe Startseite auf dem Handy"
+                   width="620" height="1342" loading="lazy" decoding="async">
+            </div>
           </div>
-        </div>
-      </article>
-
-      <!-- --- Eigene Software --- -->
-      <h3 class="gruppe">Eigene Software</h3>
-
-      <article class="fall fall--breit">
-        <div class="fall__text">
-          <p class="arbeit__wer">Agrarkit · eigene Entwicklung</p>
-          <h4 class="arbeit__titel">Eine Ackerschlagkartei für Schleswig-Holstein</h4>
-          <p class="arbeit__text">
-            Jeder Landwirt muss aufschreiben, was er wann auf welchem Feld gemacht hat,
-            und das am Ende dem Land melden. Dafür gibt es fertige Programme — teuer, und
-            selten passen sie zu dem, was hier oben verlangt wird.
-          </p>
-          <p class="arbeit__text">
-            Also hab ich es selbst gebaut. Felder auf dem Luftbild einzeichnen, Knicks
-            abziehen, Düngung buchen — und am Ende kommt genau die Datei raus, die das
-            Land haben will.
-          </p>
-          <p class="fall__schluss">
-            Falls du dich fragst, wie weit ich gehe, wenn es etwas nicht fertig zu kaufen
-            gibt: so weit.
-          </p>
-        </div>
-
-        <div class="schirme">
-          <figure class="schirm">
-            <img src="bilder/agrarkit-karte.webp"
-                 alt="Kartenansicht in Agrarkit: Luftbild von Angeln mit farbig markierten Feldern und einer Legende der Kulturen"
-                 width="1600" height="878" loading="lazy" decoding="async">
-            <figcaption>Alle Flächen auf einen Blick, eingefärbt nach Kultur</figcaption>
-          </figure>
-
-          <div class="schirm-paar">
-            <figure class="schirm">
-              <img src="bilder/agrarkit-umriss.webp"
-                   alt="Umriss eines Feldes wird auf dem Luftbild mit einzelnen Punkten gezogen, rechts die Liste der abgezogenen Knicks"
-                   width="1500" height="840" loading="lazy" decoding="async">
-              <figcaption>Umrisse ziehen, Knicks werden abgezogen</figcaption>
-            </figure>
-            <figure class="schirm">
-              <img src="bilder/agrarkit-export.webp"
-                   alt="Exportseite in Agrarkit mit der Zahl 179 Düngungen und dem Hinweis, dass keine Probleme gefunden wurden"
-                   width="980" height="549" loading="lazy" decoding="async">
-              <figcaption>Am Ende die fertige Datei fürs Amt</figcaption>
-            </figure>
-          </div>
+          <p class="geraete__zeile">Eine Seite, die auf beidem funktioniert — nicht zwei Seiten</p>
         </div>
       </article>
 
@@ -554,6 +538,6 @@
   </div>
 </footer>
 
-<script src="script.js?v=2026-08-29" defer></script>
+<script src="script.js?v=2026-08-29c" defer></script>
 </body>
 </html>

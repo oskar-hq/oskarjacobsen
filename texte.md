@@ -224,7 +224,7 @@ Hochkant, schnell geschnitten, für Instagram und TikTok.
 „Ah geil. Find ich super. Poste ich heute direkt mal 👍"
 — Lasse.PTS
 
-### Gruppe 2: WEBSITES
+### Gruppe 3: WEBSITES
 
 **agrarkit.de**
 
@@ -241,10 +241,8 @@ wirklich stellen, und ganz unten, wie man dich erreicht.
 (Fett, mit Trennlinie darüber:)
 Und was das Programm dahinter kann, steht gleich darunter.
 
-Unterschriften unter den drei Bildern:
-- Am Rechner und auf dem Handy dieselbe Seite
-- Am Tag hell
-- Am Abend dunkel
+Unterschrift unter dem Geräte-Rahmen:
+- Eine Seite, die auf beidem funktioniert — nicht zwei Seiten
 
 **Der Kommunalpolitiker** steht in derselben Gruppe, ist aber stillgelegt, bis seine
 Website fertig ist. Der Text dazu (unverändert, kommt wieder):
@@ -260,7 +258,7 @@ Der Vorteil, wenn das einer macht: Es sieht überall gleich aus. Wer das Banner 
 der Landstraße sieht und danach die Seite aufmacht, erkennt sofort, dass das
 zusammengehört.
 
-### Gruppe 3: EIGENE SOFTWARE
+### Gruppe 2: EIGENE SOFTWARE
 
 [KLEIN] Agrarkit · eigene Entwicklung
 
@@ -278,10 +276,8 @@ haben will.
 Falls du dich fragst, wie weit ich gehe, wenn es etwas nicht fertig zu kaufen
 gibt: so weit.
 
-Unterschriften unter den drei Screenshots:
-- Alle Flächen auf einen Blick, eingefärbt nach Kultur
-- Umrisse mit dem Finger ziehen, Knicks werden abgezogen
-- Am Ende die fertige Datei fürs Amt
+Unterschrift unter dem Geräte-Rahmen:
+- Am Rechner die Karte, am Feldrand dasselbe auf dem Handy
 
 > Zu Agrarkit erklär ich bewusst nicht, was die Software alles kann — auf dieser
 > Seite ist sie kein Produkt, sondern der Beweis, wie weit du gehst. Der letzte

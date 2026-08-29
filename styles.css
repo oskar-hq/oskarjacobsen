@@ -158,7 +158,6 @@ p:last-child { margin-bottom: 0; }
   transform: rotate(45deg);
   flex: none;
 }
-.vorzeile--akzent { color: var(--akzent); }
 .vorzeile--hell { color: var(--auf-gruen-weich); }
 .vorzeile--hell::before { background: var(--akzent-hell); }
 
@@ -368,26 +367,6 @@ h1 {
   font-size: .9375rem;
   color: var(--auf-gruen-weich);
 }
-.visitenkarte__liste {
-  list-style: none;
-  margin: .25rem 0 0;
-  padding: .9rem 0 0;
-  border-top: 1px solid rgba(239,236,226,.18);
-  display: grid;
-  gap: .45rem;
-  font-size: .9375rem;
-  color: var(--auf-gruen-weich);
-}
-.visitenkarte__liste li { padding-left: 1.15rem; position: relative; }
-.visitenkarte__liste li::before {
-  content: "";
-  position: absolute;
-  left: 0; top: .62em;
-  width: .35rem; height: .35rem;
-  background: var(--akzent-hell);
-  transform: rotate(45deg);
-}
-
 @media (min-width: 900px) {
   .hero { padding-block: 4.5rem 4rem; }
   .hero__inner { grid-template-columns: 1.15fr .85fr; gap: 4rem; }
@@ -739,28 +718,115 @@ h1 {
   max-width: 46ch;
 }
 
-/* Bildschirmfotos: heller Rahmen, damit die helle Oberfläche der Software
-   nicht ins Papier ausfranst. */
-.schirme { display: grid; gap: 1rem; min-width: 0; }
-.schirm { margin: 0; min-width: 0; }
-.schirm img {
-  border-radius: var(--r);
-  border: 1px solid var(--linie-satt);
-  box-shadow: 0 18px 40px -26px rgba(25,29,20,.6);
-  background: var(--karte);
-}
-/* Bringt ein Bild seinen eigenen Hintergrund mit (das Präsentationsbild der
-   Agrarkit-Seite), wäre ein Rahmen ein Bild im Bild. Also weg damit. */
-.schirm--offen img { border: 0; box-shadow: none; background: transparent; }
+/* ---------- Geräte-Rahmen -------------------------------------------------
+   Bildschirmfotos stehen nicht nackt in der Seite, sondern in einem Browser-
+   fenster und einem Handy. Beide sind komplett in CSS gebaut — kein fremdes
+   Mockup-Bild, keine zusätzliche Datei, und sie nehmen die Farben der Seite an.
 
-.schirm figcaption {
-  margin-top: .6rem;
+   Aufbau: der Rechner liegt groß, das Handy überlappt ihn unten rechts. Auf
+   dem Handy selbst ist dafür kein Platz, da stehen beide untereinander.
+   -------------------------------------------------------------------------- */
+
+.geraete { min-width: 0; }
+
+/* Die Bühne trägt Rechner und Handy. Sie ist der Bezugspunkt fürs Handy —
+   nicht der ganze Block, sonst rutscht das Handy unter die Unterschrift. */
+.geraete__buehne { position: relative; }
+
+/* --- Browserfenster --- */
+.fenster {
+  border-radius: var(--r);
+  overflow: hidden;
+  border: 1px solid var(--linie-satt);
+  background: var(--karte);
+  box-shadow: 0 20px 44px -28px rgba(25,29,20,.65);
+}
+.fenster__leiste {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  padding: .45rem .7rem;
+  background: var(--papier-2);
+  border-bottom: 1px solid var(--linie);
+}
+/* Die drei Punkte links: ein Element, zwei Schatten. */
+.fenster__punkte {
+  flex: none;
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--linie-satt);
+  box-shadow: 11px 0 0 var(--linie-satt), 22px 0 0 var(--linie-satt);
+  margin-right: 22px;
+}
+.fenster__adresse {
+  flex: 1;
+  min-width: 0;
+  background: var(--karte);
+  border: 1px solid var(--linie);
+  border-radius: var(--pille);
+  padding: .1rem .6rem;
+  font-size: .625rem;
+  letter-spacing: .04em;
+  color: var(--grau);
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.fenster__bild { width: 100%; display: block; }
+
+/* --- Handy --- */
+.handy {
+  position: relative;
+  border: 5px solid var(--tinte);
+  border-radius: 22px;
+  background: var(--tinte);
+  overflow: hidden;
+  box-shadow: 0 18px 36px -22px rgba(25,29,20,.7);
+}
+.handy__bild { width: 100%; display: block; border-radius: 17px; }
+/* Der Lautsprecherschlitz oben — macht aus dem Kasten ein Handy. */
+.handy::after {
+  content: "";
+  position: absolute;
+  top: 5px; left: 50%;
+  transform: translateX(-50%);
+  width: 26%; height: 4px;
+  border-radius: 0 0 5px 5px;
+  background: var(--tinte);
+}
+
+/* --- Anordnung --- */
+/* Schmal: untereinander, das Handy etwas eingerückt und überlappend. */
+.geraete__handy {
+  width: 38%;
+  max-width: 150px;
+  margin: -2.5rem 0 0 auto;
+  position: relative;
+  z-index: 2;
+}
+@media (min-width: 620px) {
+  .geraete__buehne { padding-bottom: 2rem; }
+  .geraete__handy {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 21%;
+    max-width: 165px;
+    margin: 0;
+  }
+}
+
+/* Die Unterschrift steht unter dem Rahmen, nicht darin. Auf breiten
+   Bildschirmen bekommt sie rechts Platz, damit sie nicht unters Handy läuft. */
+.geraete__zeile {
+  margin: 1rem 0 0;
   font-size: .875rem;
   color: var(--grau);
 }
-.schirm-paar { display: grid; gap: 1rem; }
-@media (min-width: 620px) { .schirm-paar { grid-template-columns: 1fr 1fr; } }
-.schirm-paar > * { min-width: 0; }
+@media (min-width: 620px) {
+  .geraete__zeile { padding-right: 26%; }
+}
 
 /* ---------- Platzhalter mitten im Fließtext ------------------------------
    Nur noch für den stillgelegten Fall des Kommunalpolitikers gebraucht: dort

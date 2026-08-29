@@ -155,24 +155,45 @@ auch zu den Bannern.
 ## Der Referenz-Abschnitt
 
 Drei Gruppen, in dieser Reihenfolge: **Filme** (die vier YouTube-Videos),
-**Websites** (agrarkit.de, und später der Kommunalpolitiker), **Eigene Software**
-(Agrarkit selbst).
+**Eigene Software** (Agrarkit selbst), **Websites** (agrarkit.de, und später der
+Kommunalpolitiker).
 
-Die Reihenfolge erzählt absichtlich etwas: erst eine Website, die ich gebaut habe —
-und dann, gleich darunter, die Software, für die diese Website wirbt. Wer bis dahin
-gelesen hat, versteht ohne einen Satz Erklärung, wie weit das reicht.
+Die Reihenfolge erzählt absichtlich etwas: erst das Programm, das ich gebaut habe —
+und gleich darunter die Website, die dafür wirbt. Wer bis dahin gelesen hat,
+versteht ohne einen Satz Erklärung, wie weit das reicht.
 
-Bei agrarkit.de sind drei Bilder drin: die Startseite an Rechner und Handy in einem
-Bild, und zweimal derselbe Preis-Kasten, hell und dunkel. Beide Ausschnitte sind
-exakt gleich beschnitten — nur deshalb liest man auf einen Blick, dass es dieselbe
-Stelle in zwei Fassungen ist.
+### Geräte-Rahmen
 
-Agrarkit steht bewusst zum Schluss und erklärt nicht, was die Software alles kann.
-Auf dieser Seite ist sie kein Produkt, sondern der Beweis dafür, wie weit du gehst,
-wenn es etwas nicht fertig zu kaufen gibt — genau das sagt der letzte Satz. Für die
-eigene Agrarkit-Website, die du später bauen willst, ist das eine andere Seite mit
-einer anderen Zielgruppe (Landwirte, die das Programm suchen). Die beiden nicht
-vermischen.
+Bildschirmfotos stehen nicht mehr nackt in der Seite. Jeder der beiden Fälle zeigt
+**ein Browserfenster mit einem Handy davor** — der Rechner groß, das Handy überlappend
+unten rechts. Auf schmalen Bildschirmen stehen beide untereinander.
+
+Beide Rahmen sind komplett in CSS gebaut: kein fremdes Mockup-Bild, keine zusätzliche
+Datei, und sie nehmen die Farben der Seite an. Die Adresszeile im Browserfenster ist
+echter Text, den man einfach überschreibt.
+
+So sieht ein Block aus (in `index.html` zweimal vorhanden, zum Kopieren):
+
+```html
+<div class="geraete">
+  <div class="geraete__buehne">
+    <div class="fenster">
+      <div class="fenster__leiste" aria-hidden="true">
+        <span class="fenster__punkte"></span>
+        <span class="fenster__adresse">deine-domain.de</span>
+      </div>
+      <img class="fenster__bild" src="bilder/…" alt="…" width="…" height="…" loading="lazy">
+    </div>
+    <div class="handy geraete__handy">
+      <img class="handy__bild" src="bilder/…" alt="…" width="620" height="1342" loading="lazy">
+    </div>
+  </div>
+  <p class="geraete__zeile">Unterschrift</p>
+</div>
+```
+
+Für neue Referenzen brauchst du also genau zwei Bildschirmfotos: eins am Rechner
+(quer) und eins vom Handy (hochkant, etwa 620 px breit reicht).
 
 ## Die Videos
 
@@ -230,8 +251,8 @@ Entwurf herausgenommen worden:
 - **Bei „Über mich"** steht statt des Portraits der Satz, an dem du gemessen
   werden willst, auf grüner Fläche.
 - **Beim Kommunalpolitiker** ist der Fall eine reine Textkarte mit Rahmen.
-- Bilder gibt es nur da, wo es echte gibt: die Videoflächen, die drei
-  Agrarkit-Bildschirmfotos und die drei von agrarkit.de.
+- Bilder gibt es nur da, wo es echte gibt: die Videoflächen und die vier
+  Bildschirmfotos in den Geräte-Rahmen.
 
 Kommen später Fotos dazu, müssen sie nichts reparieren, sondern kommen zu einer
 Seite hinzu, die schon steht. An den drei Stellen oben steht jeweils ein Kommentar
