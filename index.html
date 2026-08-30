@@ -12,7 +12,7 @@
      der schon mal hier war, die neue Seite mit der alten Gestaltung — und es sieht
      kaputt aus. WICHTIG: bei jeder Änderung an styles.css oder script.js das Datum
      hier hochsetzen, in allen drei HTML-Dateien. -->
-<link rel="stylesheet" href="styles.css?v=2026-08-30">
+<link rel="stylesheet" href="styles.css?v=2026-08-30b">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%2326311f'/><text x='16' y='23' font-family='sans-serif' font-size='19' font-weight='700' fill='%23faf8f2' text-anchor='middle'>J</text></svg>">
 </head>
 <body>
@@ -194,10 +194,13 @@
   </section>
 
   <!-- ============ ARBEITEN: KARUSSELL ============================================
-       Alle Arbeiten liegen in einer Spur nebeneinander. Am Rechner klickt man
-       sich mit den Pfeilen durch, auf dem Handy wischt man. Beides ist derselbe
-       seitliche Scroll mit Einrastpunkten — ohne JavaScript bleibt die Spur
-       schiebbar, nur Pfeile und Punkte sind dann ausgeblendet.
+       Auf dem Handy stehen die Arbeiten schlicht untereinander — kein Karussell,
+       keine Knöpfe, nichts zu bedienen. Erst ab 820 px wird daraus eine Spur, die
+       seitlich scrollt, mit einem Pfeil links und einem rechts daneben.
+
+       Beides ist dieselbe Liste im Quelltext, nur anders angeordnet. Ohne
+       JavaScript bleibt die Spur mit dem Trackpad schiebbar; Pfeile und Punkte
+       sind dann ausgeblendet, weil sie nichts täten.
 
        Neue Arbeit: ein <article class="folie"> in die Spur hängen. Die Punkte
        zählt script.js selbst, da muss nichts nachgetragen werden.
@@ -209,7 +212,12 @@
       <p class="abschnitt__lead">Alles hier aus der Gegend.</p>
 
       <div class="karussell" data-karussell>
-        <div class="karussell__spur" data-spur tabindex="0" role="group"
+        <div class="karussell__buehne">
+          <button class="karussell__pfeil karussell__pfeil--zurueck" type="button"
+                  data-zurueck aria-label="Vorherige Arbeit">&#8249;</button>
+          <button class="karussell__pfeil karussell__pfeil--vor" type="button"
+                  data-vor aria-label="Nächste Arbeit">&#8250;</button>
+        <div class="karussell__spur" data-spur role="group"
              aria-label="Arbeitsproben, seitlich scrollbar">
 
           <article class="folie">
@@ -389,10 +397,9 @@
           </template>
 
         </div>
+        </div>
 
         <div class="karussell__steuer">
-          <button class="karussell__pfeil" type="button" data-zurueck aria-label="Vorherige Arbeit">&#8249;</button>
-          <button class="karussell__pfeil" type="button" data-vor aria-label="Nächste Arbeit">&#8250;</button>
           <ol class="karussell__punkte" data-punkte></ol>
           <p class="karussell__zaehler" data-zaehler aria-hidden="true"></p>
         </div>
@@ -484,6 +491,6 @@
   </div>
 </footer>
 
-<script src="script.js?v=2026-08-30" defer></script>
+<script src="script.js?v=2026-08-30b" defer></script>
 </body>
 </html>

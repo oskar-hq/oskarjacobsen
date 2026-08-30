@@ -567,33 +567,13 @@ h1 {
    man mit dem Finger oder dem Trackpad schieben kann.
    -------------------------------------------------------------------------- */
 
-.karussell { position: relative; }
-
-.karussell__spur {
-  display: flex;
-  gap: 1.5rem;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  overscroll-behavior-x: contain;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
-  padding-bottom: .5rem;
-}
-.karussell__spur::-webkit-scrollbar { display: none; }
-
+/* --- Die einzelne Folie --- */
 .folie {
-  flex: 0 0 100%;
   min-width: 0;
-  scroll-snap-align: start;
   display: grid;
   gap: 1.25rem;
   align-content: start;
 }
-@media (min-width: 820px) {
-  .folie { grid-template-columns: 1.2fr .8fr; gap: 3rem; align-items: center; }
-  .folie--umgekehrt .folie__text { order: -1; }
-}
-
 .folie__text { min-width: 0; }
 .folie__medium { min-width: 0; }
 
@@ -614,39 +594,86 @@ h1 {
 }
 .folie__text p { color: var(--tinte-70); font-size: 1rem; }
 
-/* Steuerung: Pfeile und Punkte. Ohne JavaScript versteckt, weil sie dann
-   nichts tun würden. */
+/* --- Handy: gar kein Karussell ---
+   Untereinander, ohne Knöpfe, ohne Wischen. Auf einem kleinen Bildschirm ist
+   scrollen die Bedienung, die jeder kennt. */
+.karussell__spur {
+  display: grid;
+  gap: 3.5rem;
+}
+.karussell__pfeil,
 .karussell__steuer { display: none; }
-.js .karussell__steuer {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-top: 1.75rem;
+
+/* --- Ab hier wird eine Spur daraus --- */
+@media (min-width: 820px) {
+  .karussell__buehne {
+    position: relative;
+    /* Platz links und rechts, damit die Pfeile neben der Spur stehen und
+       nicht auf dem Bild liegen. */
+    padding-inline: 4rem;
+  }
+
+  .karussell__spur {
+    display: flex;
+    gap: 2rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .karussell__spur::-webkit-scrollbar { display: none; }
+
+  .folie {
+    flex: 0 0 100%;
+    scroll-snap-align: start;
+    grid-template-columns: 1.15fr .85fr;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  /* Die Pfeile sitzen mittig neben der Spur — links zurück, rechts vor.
+     Ohne JavaScript täten sie nichts, deshalb erscheinen sie erst mit .js. */
+  .js .karussell__pfeil {
+    display: inline-flex;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+  }
+  .karussell__pfeil--zurueck { left: 0; }
+  .karussell__pfeil--vor { right: 0; }
+
+  .js .karussell__steuer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.25rem;
+    margin-top: 1.5rem;
+  }
 }
 
 .karussell__pfeil {
-  flex: none;
-  width: 2.75rem; height: 2.75rem;
+  width: 2.875rem; height: 2.875rem;
   border-radius: 50%;
   border: 1px solid var(--linie-satt);
   background: var(--karte);
   color: var(--tinte);
   font: inherit;
-  font-size: 1.125rem;
+  font-size: 1.25rem;
   line-height: 1;
   cursor: pointer;
-  display: inline-flex;
   align-items: center;
   justify-content: center;
-  transition: border-color .15s ease, background-color .15s ease, color .15s ease;
+  transition: border-color .15s ease, background-color .15s ease, opacity .15s ease;
 }
 .karussell__pfeil:hover:not(:disabled) { border-color: var(--tinte); }
-.karussell__pfeil:disabled { opacity: .35; cursor: default; }
+.karussell__pfeil:disabled { opacity: .3; cursor: default; }
 
 .karussell__punkte {
   display: flex;
   gap: .5rem;
-  margin: 0 auto 0 0;
+  margin: 0;
   padding: 0;
   list-style: none;
 }

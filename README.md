@@ -170,23 +170,34 @@ Die Reihenfolge erzählt absichtlich etwas: erst das Programm, das ich gebaut ha
 und gleich darunter die Website, die dafür wirbt. Wer bis dahin gelesen hat,
 versteht ohne einen Satz Erklärung, wie weit das reicht.
 
-### Das Karussell
+### Untereinander auf dem Handy, Karussell am Rechner
 
-Alle Arbeiten liegen in **einer Spur nebeneinander**, nicht mehr untereinander.
-Am Rechner klickt man sich mit den Pfeilen durch, auf dem Handy wischt man.
+Es ist **eine Liste im Quelltext**, nur zweimal anders angeordnet:
+
+- **Bis 820 px** stehen die Arbeiten schlicht untereinander. Keine Knöpfe, keine
+  Punkte, nichts zu bedienen — auf einem kleinen Bildschirm ist Scrollen die
+  Bedienung, die jeder kennt.
+- **Ab 820 px** wird daraus eine Spur, die seitlich scrollt, mit einem Pfeil
+  links und einem rechts daneben. Darunter Punkte und ein Zähler.
 
 Dahinter steckt kein nachgebautes Scrollen, sondern ein ganz normaler seitlicher
 Scroll-Bereich mit Einrastpunkten (`scroll-snap`). Die Pfeile schieben nur um eine
-Folie weiter. Dadurch funktionieren Wischen, Trackpad, Scrollrad und Tastatur ohne
-eine Zeile extra — und ohne JavaScript bleibt es eine Spur, die man schieben kann;
-nur Pfeile und Punkte sind dann ausgeblendet.
+Folie weiter. Dadurch funktionieren Trackpad, Scrollrad und Tastatur ohne eine
+Zeile extra.
+
+Das Skript prüft nur, **ob die Spur überhaupt scrollt**. Tut sie es nicht (Handy),
+hält es sich komplett raus und nimmt der Spur sogar den Tabstopp weg, damit man
+nicht ins Leere tabbt. Umschalten muss man nichts, das macht allein das CSS.
+
+Ohne JavaScript bleibt die Spur am Rechner mit dem Trackpad schiebbar; Pfeile und
+Punkte sind dann ausgeblendet, weil sie nichts täten.
 
 **Neue Arbeit einbauen:** ein `<article class="folie">` in die Spur hängen. Die
-Punkte darunter zählt `script.js` selbst, da ist nichts nachzutragen.
+Punkte zählt `script.js` selbst, da ist nichts nachzutragen.
 
-Alle Folien sind so hoch wie die höchste — deshalb ist das Paar Hochkant-Videos
-im CSS auf 430 px Breite begrenzt. Ohne die Grenze macht diese eine Folie das
-ganze Karussell unnötig hoch.
+Am Rechner sind alle Folien so hoch wie die höchste — deshalb ist das Paar
+Hochkant-Videos im CSS auf 430 px Breite begrenzt. Ohne die Grenze macht diese
+eine Folie das ganze Karussell unnötig hoch.
 
 ### Geräte-Rahmen
 

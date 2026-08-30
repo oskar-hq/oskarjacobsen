@@ -99,10 +99,14 @@
   })();
 
   /* --- Karussell ---------------------------------------------------------
-     Kein eigenes Scrollen nachgebaut: die Spur ist ein normaler seitlicher
-     Scroll-Bereich mit Einrastpunkten. Die Pfeile schieben nur um eine Folie
-     weiter, die Punkte zeigen, wo man ist. Dadurch funktioniert Wischen auf
-     dem Handy, Trackpad, Tastatur und Scrollrad ohne eine Zeile extra.
+     Kein eigenes Scrollen nachgebaut: die Spur ist ab 820 px ein normaler
+     seitlicher Scroll-Bereich mit Einrastpunkten. Die Pfeile schieben nur um
+     eine Folie weiter, die Punkte zeigen, wo man ist. Dadurch funktionieren
+     Trackpad, Tastatur und Scrollrad ohne eine Zeile extra.
+
+     Darunter stehen die Folien schlicht untereinander. Das entscheidet allein
+     das CSS — hier wird nur geprüft, ob die Spur überhaupt scrollt, und wenn
+     nicht, hält sich das Skript komplett raus.
      ---------------------------------------------------------------------- */
   Array.prototype.forEach.call(
     document.querySelectorAll('[data-karussell]'),
@@ -146,6 +150,7 @@
       }
 
       function zeige(i) {
+        if (!istSpur()) return;
         var folie = folien[Math.max(0, Math.min(folien.length - 1, i))];
         spur.scrollTo({
           left: folie.offsetLeft - spur.offsetLeft,
@@ -153,7 +158,19 @@
         });
       }
 
+      // Auf schmalen Bildschirmen stehen die Folien untereinander, die Spur
+      // scrollt also gar nicht. Dann gibt es nichts zu bedienen und nichts
+      // anzufassen — auch keinen Tabstopp ins Leere.
+      function istSpur() {
+        return spur.scrollWidth - spur.clientWidth > 4;
+      }
+
       function auffrischen() {
+        if (!istSpur()) {
+          spur.removeAttribute('tabindex');
+          return;
+        }
+        spur.setAttribute('tabindex', '0');
         var i = aktuell();
         punkte.forEach(function (knopf, n) {
           knopf.setAttribute('aria-current', n === i ? 'true' : 'false');
