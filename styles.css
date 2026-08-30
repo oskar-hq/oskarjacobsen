@@ -372,48 +372,77 @@ h1 {
   .hero__inner { grid-template-columns: 1.15fr .85fr; gap: 4rem; }
 }
 
-/* ---------- Leiste mit den Namen ----------------------------------------- */
+/* ---------- Logo-Laufleiste ----------------------------------------------
+   Die Logos laufen langsam durch. Ohne JavaScript und bei „Bewegung
+   reduzieren" stehen sie einfach umgebrochen nebeneinander — die Leiste
+   funktioniert also auch dann. Die Animation schaltet script.js frei,
+   indem es .ist-bewegt setzt und die Spur so oft verdoppelt, bis sie
+   nahtlos umläuft.
+   -------------------------------------------------------------------------- */
 
 .belege {
   border-block: 1px solid var(--linie);
-  padding-block: 1.5rem;
-}
-.belege__inner {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 1rem 2.5rem;
+  padding-block: 1.75rem;
 }
 .belege__titel {
-  margin: 0;
+  margin: 0 0 1.25rem;
   font-size: .6875rem;
   font-weight: 500;
   letter-spacing: .2em;
   text-transform: uppercase;
   color: var(--grau);
+  text-align: center;
 }
-.belege__liste {
-  list-style: none;
-  margin: 0; padding: 0;
+
+.laufband {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 7%, #000 93%, transparent);
+          mask-image: linear-gradient(to right, transparent, #000 7%, #000 93%, transparent);
+}
+.laufband__spur {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 1.5rem 2.5rem;
+  justify-content: center;
+  gap: 1.75rem 3rem;
+  margin: 0; padding: 0;
+  list-style: none;
 }
+.laufband__spur.ist-bewegt {
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  width: max-content;
+  gap: 3.5rem;
+  animation: laufband 40s linear infinite;
+}
+.laufband:hover .laufband__spur.ist-bewegt { animation-play-state: paused; }
+@keyframes laufband {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* Entsättigt und zurückgenommen, damit die Leiste ruhig bleibt und das
+   bunte Wappen nicht alles an sich zieht. Beim Darüberfahren echte Farbe. */
+.laufband__spur li { flex: 0 0 auto; display: flex; align-items: center; }
+.logo {
+  width: auto;
+  filter: grayscale(100%);
+  opacity: .55;
+  transition: filter .3s ease, opacity .3s ease;
+}
+.laufband__spur li:hover .logo { filter: grayscale(0); opacity: 1; }
 
 /* Jedes Logo bekommt seine eigene Höhe. Gleiche Höhe für alle wäre falsch:
    ein hohes Wappen und eine flache Wortmarke wirken bei gleicher Pixelhöhe
-   völlig unterschiedlich groß. Die Werte sind nach Augenmaß gesetzt, nicht
-   gerechnet — so, dass die drei gleich schwer wirken. */
-.logo { width: auto; }
-.logo--gelting   { height: 3.25rem; }
-.logo--petersens { height: 1.5rem; }
-.logo--lasse     { height: 2.5rem; }
+   völlig unterschiedlich groß. Nach Augenmaß gesetzt, nicht gerechnet. */
+.logo--gelting   { height: 3rem; }
+.logo--petersens { height: 1.4rem; }
+.logo--lasse     { height: 2.3rem; }
+.logo--agrarkit  { height: 1.9rem; }
+.logo--agrarkit text { font-family: var(--schrift); font-weight: 700; letter-spacing: -0.03em; }
 
-@media (max-width: 520px) {
-  .logo--gelting   { height: 2.75rem; }
-  .logo--petersens { height: 1.25rem; }
-  .logo--lasse     { height: 2.1rem; }
+@media (prefers-reduced-motion: reduce) {
+  .laufband { -webkit-mask-image: none; mask-image: none; }
 }
 
 /* ---------- Abschnitte ---------------------------------------------------- */
@@ -531,82 +560,120 @@ h1 {
 }
 .leistungen p { color: var(--tinte-70); font-size: 1rem; }
 
-/* ---------- Wie ich arbeite (grün) --------------------------------------- */
+/* ---------- Arbeiten: das Karussell ---------------------------------------
+   Eine Spur, die seitlich scrollt, mit Einrastpunkten. Am Rechner klickt man
+   sich mit den Pfeilen durch, auf dem Handy wischt man — beides dieselbe
+   Mechanik, nur andere Bedienung. Ohne JavaScript bleibt es eine Spur, die
+   man mit dem Finger oder dem Trackpad schieben kann.
+   -------------------------------------------------------------------------- */
 
-.punkte {
-  list-style: none;
-  margin: 2.25rem 0 0;
-  padding: 0;
-  display: grid;
-  gap: 1.75rem;
-}
-@media (min-width: 720px) { .punkte { grid-template-columns: 1fr 1fr; gap: 2.25rem 3rem; } }
+.karussell { position: relative; }
 
-.punkte h3 {
-  font-weight: 700;
-  font-size: 1.125rem;
-  line-height: 1.3;
-  letter-spacing: -0.02em;
-  margin: 0 0 .5rem;
-  padding-top: 1rem;
-  border-top: 2px solid var(--akzent-hell);
-}
-.punkte p { color: var(--auf-gruen-weich); font-size: 1rem; }
-
-/* ---------- Arbeiten ------------------------------------------------------ */
-
-.gruppe {
+.karussell__spur {
   display: flex;
-  align-items: center;
-  gap: 1rem;
-  font-weight: 500;
-  font-size: .6875rem;
-  letter-spacing: .2em;
-  text-transform: uppercase;
-  color: var(--grau);
-  margin: 0 0 2rem;
+  gap: 1.5rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding-bottom: .5rem;
 }
-.gruppe::after {
-  content: "";
-  flex: 1;
-  height: 1px;
-  background: var(--linie);
-}
-.gruppe:not(:first-of-type) { margin-top: 4.5rem; }
+.karussell__spur::-webkit-scrollbar { display: none; }
 
-.arbeiten { display: grid; gap: 2.5rem; }
-.arbeiten--quer { margin-bottom: 3.5rem; }
+.folie {
+  flex: 0 0 100%;
+  min-width: 0;
+  scroll-snap-align: start;
+  display: grid;
+  gap: 1.25rem;
+  align-content: start;
+}
 @media (min-width: 820px) {
-  .arbeiten--quer { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+  .folie { grid-template-columns: 1.2fr .8fr; gap: 3rem; align-items: center; }
+  .folie--umgekehrt .folie__text { order: -1; }
 }
-.arbeiten--hoch { grid-template-columns: 1fr 1fr; gap: 1rem; }
-@media (min-width: 820px) { .arbeiten--hoch { gap: 1.25rem; } }
 
-.arbeit__wer {
+.folie__text { min-width: 0; }
+.folie__medium { min-width: 0; }
+
+.folie__wer {
   font-weight: 500;
   font-size: .6875rem;
   letter-spacing: .2em;
   text-transform: uppercase;
   color: var(--akzent);
-  margin: 1.25rem 0 .5rem;
+  margin: 0 0 .5rem;
 }
-.arbeit__titel {
+.folie__titel {
   font-weight: 700;
-  font-size: 1.3125rem;
+  font-size: clamp(1.25rem, 3vw, 1.5rem);
   line-height: 1.25;
   letter-spacing: -0.025em;
   margin: 0 0 .6rem;
 }
-.arbeit__text { color: var(--tinte-70); max-width: 48ch; }
+.folie__text p { color: var(--tinte-70); font-size: 1rem; }
 
-.arbeit-gruppe { display: grid; gap: 1.75rem; }
-@media (min-width: 820px) {
-  .arbeit-gruppe {
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
-    align-items: center;
-  }
-  .arbeit-gruppe__text .arbeit__wer { margin-top: 0; }
+/* Steuerung: Pfeile und Punkte. Ohne JavaScript versteckt, weil sie dann
+   nichts tun würden. */
+.karussell__steuer { display: none; }
+.js .karussell__steuer {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.75rem;
+}
+
+.karussell__pfeil {
+  flex: none;
+  width: 2.75rem; height: 2.75rem;
+  border-radius: 50%;
+  border: 1px solid var(--linie-satt);
+  background: var(--karte);
+  color: var(--tinte);
+  font: inherit;
+  font-size: 1.125rem;
+  line-height: 1;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color .15s ease, background-color .15s ease, color .15s ease;
+}
+.karussell__pfeil:hover:not(:disabled) { border-color: var(--tinte); }
+.karussell__pfeil:disabled { opacity: .35; cursor: default; }
+
+.karussell__punkte {
+  display: flex;
+  gap: .5rem;
+  margin: 0 auto 0 0;
+  padding: 0;
+  list-style: none;
+}
+.karussell__punkt {
+  width: .55rem; height: .55rem;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: var(--linie-satt);
+  cursor: pointer;
+  transition: background-color .15s ease, transform .15s ease;
+}
+.karussell__punkt[aria-current="true"] { background: var(--akzent); transform: scale(1.25); }
+
+.karussell__zaehler {
+  font-size: .8125rem;
+  color: var(--grau);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Zwei Hochkant-Videos nebeneinander. Begrenzt, weil sonst diese eine Folie
+   das ganze Karussell hoch macht — alle Folien sind so hoch wie die höchste. */
+.videopaar {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  max-width: 430px;
 }
 
 /* Zwei-Klick-Lösung: vor dem Klick geht kein Byte an YouTube. */
@@ -637,7 +704,7 @@ h1 {
   padding: 1rem;
 }
 .video__play {
-  width: 64px; height: 64px;
+  width: 58px; height: 58px;
   border-radius: 50%;
   background: var(--akzent-hell);
   position: relative;
@@ -649,14 +716,14 @@ h1 {
   top: 50%; left: 54%;
   transform: translate(-50%, -50%);
   border-style: solid;
-  border-width: 11px 0 11px 18px;
+  border-width: 10px 0 10px 16px;
   border-color: transparent transparent transparent var(--gruen);
 }
 .video__flaeche:hover .video__play { transform: scale(1.08); background: var(--auf-gruen); }
 
-.video__label { font-weight: 700; font-size: 1rem; letter-spacing: -0.02em; }
+.video__label { font-weight: 700; font-size: .9375rem; letter-spacing: -0.02em; }
 .video__hinweis {
-  font-size: .6875rem;
+  font-size: .625rem;
   letter-spacing: .2em;
   text-transform: uppercase;
   color: var(--auf-gruen-weich);
@@ -684,39 +751,6 @@ h1 {
   color: var(--grau);
 }
 .panel .zitat, .fall--karte .zitat { background: transparent; }
-
-/* ---------- Größere Fälle ------------------------------------------------- */
-
-.fall { display: grid; gap: 2rem; }
-.fall > * { min-width: 0; }
-
-/* Der Fall ohne Bild bekommt einen Rahmen, damit er nicht wie loser Text
-   in der Seite hängt. */
-.fall--karte {
-  gap: 1rem;
-  background: var(--karte);
-  border: 1px solid var(--linie);
-  border-radius: var(--r-gross);
-  padding: clamp(1.75rem, 5vw, 2.75rem);
-  box-shadow: var(--schatten);
-}
-@media (min-width: 900px) {
-  .fall--karte { grid-template-columns: .85fr 1.15fr; gap: 3rem; align-items: center; }
-}
-
-.fall--breit { display: grid; gap: 2rem; }
-@media (min-width: 980px) {
-  .fall--breit { grid-template-columns: .8fr 1.2fr; gap: 3.5rem; align-items: start; }
-}
-.fall__text .arbeit__wer { margin-top: 0; }
-.fall__schluss {
-  margin-top: 1.5rem;
-  padding-top: 1.25rem;
-  border-top: 1px solid var(--linie);
-  font-weight: 600;
-  color: var(--tinte);
-  max-width: 46ch;
-}
 
 /* ---------- Geräte-Rahmen -------------------------------------------------
    Bildschirmfotos stehen nicht nackt in der Seite, sondern in einem Browser-
@@ -785,16 +819,6 @@ h1 {
   box-shadow: 0 18px 36px -22px rgba(25,29,20,.7);
 }
 .handy__bild { width: 100%; display: block; border-radius: 17px; }
-/* Der Lautsprecherschlitz oben — macht aus dem Kasten ein Handy. */
-.handy::after {
-  content: "";
-  position: absolute;
-  top: 5px; left: 50%;
-  transform: translateX(-50%);
-  width: 26%; height: 4px;
-  border-radius: 0 0 5px 5px;
-  background: var(--tinte);
-}
 
 /* --- Anordnung --- */
 /* Schmal: untereinander, das Handy etwas eingerückt und überlappend. */
@@ -817,17 +841,6 @@ h1 {
   }
 }
 
-/* Die Unterschrift steht unter dem Rahmen, nicht darin. Auf breiten
-   Bildschirmen bekommt sie rechts Platz, damit sie nicht unters Handy läuft. */
-.geraete__zeile {
-  margin: 1rem 0 0;
-  font-size: .875rem;
-  color: var(--grau);
-}
-@media (min-width: 620px) {
-  .geraete__zeile { padding-right: 26%; }
-}
-
 /* ---------- Platzhalter mitten im Fließtext ------------------------------
    Nur noch für den stillgelegten Fall des Kommunalpolitikers gebraucht: dort
    steht der Name noch nicht. Wenn der Name eingetragen ist, kann das hier raus.
@@ -843,57 +856,7 @@ h1 {
 
 /* ---------- Über mich ----------------------------------------------------- */
 
-.ueber { display: grid; gap: 2.5rem; }
-@media (min-width: 980px) {
-  .ueber { grid-template-columns: 1.15fr .85fr; gap: 4rem; align-items: start; }
-}
-.ueber__text p { color: var(--tinte-70); max-width: 58ch; }
-
-/* Statt Portraitfoto: der Satz, an dem er gemessen werden will. */
-.versprechen {
-  background: var(--gruen);
-  color: var(--auf-gruen);
-  border-radius: var(--r-panel);
-  padding: clamp(1.75rem, 5vw, 2.5rem);
-}
-.versprechen__satz {
-  font-size: clamp(1.25rem, 3.4vw, 1.6rem);
-  font-weight: 700;
-  line-height: 1.3;
-  letter-spacing: -0.025em;
-  margin: 0 0 1.1rem;
-  text-wrap: balance;
-}
-.versprechen__satz .hl { color: var(--akzent-hell); }
-.versprechen p { color: var(--auf-gruen-weich); font-size: 1rem; }
-.versprechen__fuss {
-  margin-top: 1.25rem;
-  padding-top: 1.1rem;
-  border-top: 1px solid rgba(239,236,226,.18);
-  font-size: .9375rem;
-}
-
-.fakten {
-  list-style: none;
-  margin: 2rem 0 0;
-  padding: 0;
-  display: grid;
-  gap: .7rem;
-}
-.fakten li {
-  padding-left: 1.4rem;
-  position: relative;
-  font-size: 1rem;
-  color: var(--tinte-70);
-}
-.fakten li::before {
-  content: "";
-  position: absolute;
-  left: 0; top: .62em;
-  width: .45rem; height: .45rem;
-  background: var(--akzent);
-  transform: rotate(45deg);
-}
+.ueber__text p { color: var(--tinte-70); max-width: 62ch; }
 
 /* ---------- Kontakt ------------------------------------------------------- */
 
@@ -996,4 +959,8 @@ h1 {
   html { scroll-behavior: auto; }
   * { transition: none !important; animation: none !important; }
   .btn:hover, .leistungen li:hover { transform: none; }
+  /* Laufleiste steht still und bricht wieder um, statt abgeschnitten
+     an einer Stelle zu verharren. */
+  .laufband__spur.ist-bewegt { flex-wrap: wrap; width: auto; justify-content: center; }
+  .karussell__spur { scroll-behavior: auto; }
 }

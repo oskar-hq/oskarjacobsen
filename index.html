@@ -12,7 +12,7 @@
      der schon mal hier war, die neue Seite mit der alten Gestaltung — und es sieht
      kaputt aus. WICHTIG: bei jeder Änderung an styles.css oder script.js das Datum
      hier hochsetzen, in allen drei HTML-Dateien. -->
-<link rel="stylesheet" href="styles.css?v=2026-08-29c">
+<link rel="stylesheet" href="styles.css?v=2026-08-30">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%2326311f'/><text x='16' y='23' font-family='sans-serif' font-size='19' font-weight='700' fill='%23faf8f2' text-anchor='middle'>J</text></svg>">
 </head>
 <body>
@@ -35,7 +35,6 @@
       <ul>
         <li><a href="#wege">Zwei Wege</a></li>
         <li><a href="#leistungen">Was ich mache</a></li>
-        <li><a href="#arbeit">Wie ich arbeite</a></li>
         <li><a href="#arbeiten">Arbeiten</a></li>
         <li><a href="#ueber">Über mich</a></li>
         <li><a class="nav__tel" href="tel:+4915151223742">0151 5122 3742</a></li>
@@ -83,16 +82,20 @@
     </div>
   </section>
 
-  <!-- ============ LOGOLEISTE ======================================================
-       Die drei echten Kundenlogos. Sie sind unterschiedlich geformt — ein hohes
-       Wappen, eine breite Wortmarke, ein quadratisches Logo — deshalb bekommt
-       jedes im CSS seine eigene Höhe. Nicht alle gleich hoch setzen, dann wirkt
-       das Wappen riesig und Petersens verschwindet.
+  <!-- ============ LOGO-LAUFLEISTE ================================================
+       Die Logos laufen langsam durch. script.js verdoppelt die Spur so oft, bis
+       sie nahtlos umläuft — im Quelltext steht jedes Logo also nur einmal.
+       Ohne JavaScript stehen sie einfach umgebrochen nebeneinander.
+
+       Neues Logo dazu: ein <li> mit <img class="logo logo--name"> ergänzen und
+       im CSS eine Höhe für .logo--name setzen. Nicht alle gleich hoch machen.
        ============================================================================= -->
   <div class="belege">
-    <div class="wrap belege__inner">
+    <div class="wrap">
       <p class="belege__titel">Gearbeitet für</p>
-      <ul class="belege__liste">
+    </div>
+    <div class="laufband">
+      <ul class="laufband__spur" data-laufband>
         <li>
           <img class="logo logo--gelting" src="bilder/logos/gemeinde-gelting.svg"
                alt="Gemeinde Gelting" width="380" height="426" loading="lazy">
@@ -104,6 +107,17 @@
         <li>
           <img class="logo logo--lasse" src="bilder/logos/lasse-pts.png"
                alt="Lasse.PTS" width="626" height="406" loading="lazy">
+        </li>
+        <li>
+          <!-- Agrarkit als SVG direkt im Quelltext: so nimmt die Wortmarke die
+               Schrift der Seite an und bleibt bei jeder Größe scharf. -->
+          <svg class="logo logo--agrarkit" viewBox="0 0 196 44" role="img" aria-label="Agrarkit">
+            <rect x="0" y="2" width="40" height="40" rx="11" fill="#26311f"/>
+            <rect x="9"  y="12"   width="19" height="4.4" rx="2.2" fill="#faf8f2"/>
+            <rect x="9"  y="19.8" width="22" height="4.4" rx="2.2" fill="#faf8f2"/>
+            <rect x="9"  y="27.6" width="25" height="4.4" rx="2.2" fill="#faf8f2"/>
+            <text x="50" y="33" font-size="29" fill="#26311f">Agrarkit</text>
+          </svg>
         </li>
       </ul>
     </div>
@@ -179,318 +193,250 @@
     </div>
   </section>
 
-  <!-- ============ WIE ICH ARBEITE ============ -->
-  <section class="abschnitt" id="arbeit">
-    <div class="wrap">
-      <div class="panel">
-        <p class="vorzeile vorzeile--hell">Wie es läuft</p>
-        <h2 class="h2">Wie das bei mir läuft</h2>
+  <!-- ============ ARBEITEN: KARUSSELL ============================================
+       Alle Arbeiten liegen in einer Spur nebeneinander. Am Rechner klickt man
+       sich mit den Pfeilen durch, auf dem Handy wischt man. Beides ist derselbe
+       seitliche Scroll mit Einrastpunkten — ohne JavaScript bleibt die Spur
+       schiebbar, nur Pfeile und Punkte sind dann ausgeblendet.
 
-        <ul class="punkte">
-          <li>
-            <h3>Wenn ich was zusage, steht das.</h3>
-            <p>Sag ich Dienstag, bin ich Dienstag da. Und wenn wirklich mal was dazwischenkommt, hörst du das vorher von mir!</p>
-          </li>
-          <li>
-            <h3>Du musst nichts vorbereiten.</h3>
-            <p>Vor dem ersten Anruf brauchst du nichts vorzubereiten. Ruf an und erzähl einfach drauflos.</p>
-          </li>
-          <li>
-            <h3>Du wartest nicht lang auf Antwort.</h3>
-            <p>Ich mach das allein. Da muss keiner erst Rücksprache halten. Meistens meld ich mich am selben Tag.</p>
-          </li>
-          <li>
-            <h3>Du weißt vorher, was es kostet.</h3>
-            <p>Ich sag dir einen Preis, bevor ich anfange. Und dabei bleibt es dann auch.</p>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ ARBEITEN / REFERENZEN ============ -->
+       Neue Arbeit: ein <article class="folie"> in die Spur hängen. Die Punkte
+       zählt script.js selbst, da muss nichts nachgetragen werden.
+       ============================================================================= -->
   <section class="abschnitt" id="arbeiten">
     <div class="wrap">
       <p class="vorzeile">Arbeitsproben</p>
       <h2 class="h2">Sachen, die ich gemacht hab</h2>
-      <p class="abschnitt__lead">
-        Alles hier aus der Gegend. Guck es dir an — dauert nur ein paar Minuten,
-        und du bekommst direkt einen Eindruck.
-      </p>
+      <p class="abschnitt__lead">Alles hier aus der Gegend.</p>
 
-      <!-- --- Filme --- -->
-      <h3 class="gruppe">Filme</h3>
+      <div class="karussell" data-karussell>
+        <div class="karussell__spur" data-spur tabindex="0" role="group"
+             aria-label="Arbeitsproben, seitlich scrollbar">
 
-      <div class="arbeiten arbeiten--quer">
+          <article class="folie">
+            <div class="folie__medium">
+              <div class="video video--quer">
+                <button class="video__flaeche" type="button"
+                        data-video="sSnNlWChtXg"
+                        data-titel="Imagefilm für die Gemeinde Gelting">
+                  <span class="video__play" aria-hidden="true"></span>
+                  <span class="video__label">Video starten</span>
+                  <span class="video__hinweis">Lädt YouTube</span>
+                </button>
+              </div>
+            </div>
+            <div class="folie__text">
+              <p class="folie__wer">Gemeinde Gelting</p>
+              <h3 class="folie__titel">Imagefilm</h3>
+              <p>Zeigen, was in einer Gemeinde klappen kann, wenn man zusammenarbeitet.</p>
+            </div>
+          </article>
 
-        <article class="arbeit">
-          <div class="video video--quer">
-            <button class="video__flaeche" type="button"
-                    data-video="sSnNlWChtXg"
-                    data-titel="Imagefilm für die Gemeinde Gelting">
-              <span class="video__play" aria-hidden="true"></span>
-              <span class="video__label">Video starten</span>
-              <span class="video__hinweis">Lädt YouTube</span>
-            </button>
-          </div>
-          <p class="arbeit__wer">Gemeinde Gelting</p>
-          <h4 class="arbeit__titel">Imagefilm</h4>
-          <p class="arbeit__text">
-            Zeigen, was in einer Gemeinde klappen kann, wenn man zusammenarbeitet.
-          </p>
-        </article>
+          <article class="folie">
+            <div class="folie__medium">
+              <div class="video video--quer">
+                <button class="video__flaeche" type="button"
+                        data-video="_LAC2w1k5po"
+                        data-titel="Imagefilm für Petersens Ferienwohnungen">
+                  <span class="video__play" aria-hidden="true"></span>
+                  <span class="video__label">Video starten</span>
+                  <span class="video__hinweis">Lädt YouTube</span>
+                </button>
+              </div>
+            </div>
+            <div class="folie__text">
+              <p class="folie__wer">Petersens Ferienwohnungen</p>
+              <h3 class="folie__titel">Imagefilm</h3>
+              <p>Fotos zeigen das Zimmer. Ein Film zeigt, wie die Besitzer ticken.</p>
+              <blockquote class="zitat">
+                <p>„Das ging ja schnell! Mega! Vielen Dank für deine tolle Arbeit!“</p>
+                <cite>Petersens Ferienwohnungen</cite>
+              </blockquote>
+            </div>
+          </article>
 
-        <article class="arbeit">
-          <div class="video video--quer">
-            <button class="video__flaeche" type="button"
-                    data-video="_LAC2w1k5po"
-                    data-titel="Imagefilm für Petersens Ferienwohnungen">
-              <span class="video__play" aria-hidden="true"></span>
-              <span class="video__label">Video starten</span>
-              <span class="video__hinweis">Lädt YouTube</span>
-            </button>
-          </div>
-          <p class="arbeit__wer">Petersens Ferienwohnungen</p>
-          <h4 class="arbeit__titel">Imagefilm</h4>
-          <p class="arbeit__text">
-            Gäste wollen vorher sehen, wo sie schlafen. Fotos zeigen das Zimmer,
-            ein Film zeigt, wie die Besitzer ticken.
-          </p>
-          <blockquote class="zitat">
-            <p>„Das ging ja schnell! Mega! Vielen Dank für deine tolle Arbeit!“</p>
-            <cite>Petersens Ferienwohnungen</cite>
-          </blockquote>
-        </article>
+          <article class="folie">
+            <div class="folie__medium">
+              <div class="videopaar">
+                <div class="video video--hoch">
+                  <button class="video__flaeche" type="button"
+                          data-video="CHl51cqaKss"
+                          data-titel="Social-Media-Video für Lasse.PTS">
+                    <span class="video__play" aria-hidden="true"></span>
+                    <span class="video__label">Video starten</span>
+                    <span class="video__hinweis">Lädt YouTube</span>
+                  </button>
+                </div>
+                <div class="video video--hoch">
+                  <button class="video__flaeche" type="button"
+                          data-video="nbValIpeoq8"
+                          data-titel="Zweites Social-Media-Video für Lasse.PTS">
+                    <span class="video__play" aria-hidden="true"></span>
+                    <span class="video__label">Video starten</span>
+                    <span class="video__hinweis">Lädt YouTube</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="folie__text">
+              <p class="folie__wer">Lasse.PTS</p>
+              <h3 class="folie__titel">Social-Media-Videos fürs Handy</h3>
+              <p>Hochkant, schnell geschnitten, für Instagram und TikTok.</p>
+              <blockquote class="zitat">
+                <p>„Ah geil. Find ich super. Poste ich heute direkt mal 👍“</p>
+                <cite>Lasse.PTS</cite>
+              </blockquote>
+            </div>
+          </article>
 
+          <article class="folie">
+            <div class="folie__medium">
+            <div class="geraete">
+              <div class="geraete__buehne">
+                <div class="fenster">
+                  <div class="fenster__leiste" aria-hidden="true">
+                    <span class="fenster__punkte"></span>
+                    <span class="fenster__adresse">agrarkit.de/schlaege</span>
+                  </div>
+                  <img class="fenster__bild" src="bilder/agrarkit-karte.webp"
+                       alt="Kartenansicht in Agrarkit: Luftbild von Angeln mit farbig markierten Feldern und einer Legende der Kulturen"
+                       width="1600" height="878" loading="lazy" decoding="async">
+                </div>
+                <div class="handy geraete__handy">
+                  <img class="handy__bild" src="bilder/agrarkit-handy.webp"
+                       alt="Dieselbe Software auf dem Handy: die Stickstoff-Obergrenze und die zuletzt erfassten Buchungen"
+                       width="620" height="1342" loading="lazy" decoding="async">
+                </div>
+              </div>
+            </div>
+            </div>
+            <div class="folie__text">
+              <p class="folie__wer">Agrarkit · eigene Entwicklung</p>
+              <h3 class="folie__titel">Eine Ackerschlagkartei für Schleswig-Holstein</h3>
+              <p>
+                Jeder Landwirt muss dem Land melden, was er wann auf welchem Feld gemacht
+                hat. Die fertigen Programme dafür sind teuer und passen selten hierher.
+                Also hab ich es selbst gebaut — am Rechner und am Feldrand aufm Handy.
+              </p>
+              <p><strong>So weit gehe ich, wenn es etwas nicht fertig zu kaufen gibt.</strong></p>
+            </div>
+          </article>
+
+          <article class="folie">
+            <div class="folie__medium">
+            <div class="geraete">
+              <div class="geraete__buehne">
+                <div class="fenster">
+                  <div class="fenster__leiste" aria-hidden="true">
+                    <span class="fenster__punkte"></span>
+                    <span class="fenster__adresse">agrarkit.de</span>
+                  </div>
+                  <img class="fenster__bild" src="bilder/agrarkit-web.webp"
+                       alt="Die Startseite von agrarkit.de: ein Trecker beim Pflügen, darüber die Überschrift Schläge, Düngung und ENDO-SH in einem Programm"
+                       width="1500" height="938" loading="lazy" decoding="async">
+                </div>
+                <div class="handy geraete__handy">
+                  <img class="handy__bild" src="bilder/agrarkit-web-handy.webp"
+                       alt="Dieselbe Startseite auf dem Handy"
+                       width="620" height="1342" loading="lazy" decoding="async">
+                </div>
+              </div>
+            </div>
+            </div>
+            <div class="folie__text">
+              <p class="folie__wer">agrarkit.de · eigene Entwicklung</p>
+              <h3 class="folie__titel">Die Website dazu</h3>
+              <p>
+                Oben in einem Satz, worum es geht. Darunter der Reihe nach die Fragen,
+                die die Leute wirklich stellen. Und ganz unten, wie man mich erreicht.
+                So eine Seite bau ich dir genauso.
+              </p>
+            </div>
+          </article>
+
+          <!-- ========================================================================
+               STILLGELEGT: der Kommunalpolitiker
+
+               Seine Website ist im Bau, Fotos von den Bannern und Bildschirmfotos
+               kommen später, sein Name fehlt und sein Einverständnis auch. Bis dahin
+               liegt die Folie hier und wird vom Browser nicht angezeigt: <template>
+               wird geparst, aber nicht gerendert, und der Text taucht auch bei Google
+               nicht als Seiteninhalt auf.
+
+               FREISCHALTEN, wenn seine Seite fertig ist:
+                 1. <template ...> und </template> löschen, sonst nichts.
+                 2. Den <span class="ph-inline">-Platzhalter durch seinen Namen ersetzen
+                    (das span-Element ganz weg, nur der Name bleibt).
+                 3. Bilder in die Geräte-Rahmen setzen — den Block einer der Folien
+                    oben kopieren, Bilder und Adresse austauschen.
+                 4. Ihn vorher anrufen und fragen, ob er einverstanden ist.
+
+               Die Punkte unter dem Karussell zählt script.js selbst, da ist nichts
+               nachzutragen.
+               ======================================================================== -->
+          <template id="folie-kommunalpolitiker">
+          <article class="folie">
+            <div class="folie__text">
+              <p class="folie__wer"><span class="ph-inline">Platzhalter: Name</span> · Kommunalpolitik</p>
+              <h3 class="folie__titel">Einmal alles, aus einer Hand</h3>
+              <p>
+                Eine Website, Banner für die Straße und die Konten, über die man ihn
+                erreicht. Der Vorteil, wenn das einer macht: Wer das Banner an der
+                Landstraße sieht und danach die Seite aufmacht, erkennt sofort, dass
+                das zusammengehört.
+              </p>
+            </div>
+          </article>
+          </template>
+
+        </div>
+
+        <div class="karussell__steuer">
+          <button class="karussell__pfeil" type="button" data-zurueck aria-label="Vorherige Arbeit">&#8249;</button>
+          <button class="karussell__pfeil" type="button" data-vor aria-label="Nächste Arbeit">&#8250;</button>
+          <ol class="karussell__punkte" data-punkte></ol>
+          <p class="karussell__zaehler" data-zaehler aria-hidden="true"></p>
+        </div>
       </div>
 
-      <div class="arbeit-gruppe">
-        <div class="arbeit-gruppe__text">
-          <p class="arbeit__wer">Lasse.PTS</p>
-          <h4 class="arbeit__titel">Social-Media-Videos fürs Handy</h4>
-          <p class="arbeit__text">
-            Hochkant, schnell geschnitten, für Instagram und TikTok.
-          </p>
-          <blockquote class="zitat">
-            <p>„Ah geil. Find ich super. Poste ich heute direkt mal 👍“</p>
-            <cite>Lasse.PTS</cite>
-          </blockquote>
-        </div>
-
-        <div class="arbeiten arbeiten--hoch">
-          <div class="video video--hoch">
-            <button class="video__flaeche" type="button"
-                    data-video="CHl51cqaKss"
-                    data-titel="Social-Media-Video für Lasse.PTS">
-              <span class="video__play" aria-hidden="true"></span>
-              <span class="video__label">Video starten</span>
-              <span class="video__hinweis">Lädt YouTube</span>
-            </button>
-          </div>
-          <div class="video video--hoch">
-            <button class="video__flaeche" type="button"
-                    data-video="nbValIpeoq8"
-                    data-titel="Social-Media-Video für Lasse.PTS">
-              <span class="video__play" aria-hidden="true"></span>
-              <span class="video__label">Video starten</span>
-              <span class="video__hinweis">Lädt YouTube</span>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <h3 class="gruppe">Eigene Software</h3>
-
-      <article class="fall fall--breit">
-        <div class="fall__text">
-          <p class="arbeit__wer">Agrarkit · eigene Entwicklung</p>
-          <h4 class="arbeit__titel">Eine Ackerschlagkartei für Schleswig-Holstein</h4>
-          <p class="arbeit__text">
-            Jeder Landwirt muss aufschreiben, was er wann auf welchem Feld gemacht hat,
-            und das am Ende dem Land melden. Dafür gibt es fertige Programme — teuer, und
-            selten passen sie zu dem, was hier oben verlangt wird.
-          </p>
-          <p class="arbeit__text">
-            Also hab ich es selbst gebaut. Felder auf dem Luftbild einzeichnen, Knicks
-            abziehen, Düngung buchen — und am Ende kommt genau die Datei raus, die das
-            Land haben will.
-          </p>
-          <p class="fall__schluss">
-            Falls du dich fragst, wie weit ich gehe, wenn es etwas nicht fertig zu kaufen
-            gibt: so weit. Die Website dazu steht gleich darunter.
-          </p>
-        </div>
-
-        <div class="geraete">
-          <div class="geraete__buehne">
-            <div class="fenster">
-              <div class="fenster__leiste" aria-hidden="true">
-                <span class="fenster__punkte"></span>
-                <span class="fenster__adresse">agrarkit.de/schlaege</span>
-              </div>
-              <img class="fenster__bild" src="bilder/agrarkit-karte.webp"
-                   alt="Kartenansicht in Agrarkit: Luftbild von Angeln mit farbig markierten Feldern und einer Legende der Kulturen"
-                   width="1600" height="878" loading="lazy" decoding="async">
-            </div>
-            <div class="handy geraete__handy">
-              <img class="handy__bild" src="bilder/agrarkit-handy.webp"
-                   alt="Dieselbe Software auf dem Handy: die Stickstoff-Obergrenze und die zuletzt erfassten Buchungen"
-                   width="620" height="1342" loading="lazy" decoding="async">
-            </div>
-          </div>
-          <p class="geraete__zeile">Am Rechner die Karte, am Feldrand dasselbe auf dem Handy</p>
-        </div>
-      </article>
-
-      <h3 class="gruppe">Websites</h3>
-
-      <!-- ============================================================================
-           STILLGELEGT: Website, Banner und Social Media (Kommunalpolitiker)
-
-           Der Fall ist fertig geschrieben, aber noch nicht freigeschaltet: seine
-           Website ist im Bau, Fotos von den Bannern und Bildschirmfotos der Seite
-           kommen später, sein Name fehlt und sein Einverständnis auch. Bis dahin
-           liegt alles hier drin und wird vom Browser nicht angezeigt — <template>
-           wird geparst, aber nicht gerendert; der Text taucht auch bei Google nicht
-           als Seiteninhalt auf.
-
-           Er gehört in die Gruppe "Websites", die gleich darunter anfängt — deshalb
-           steht die Überschrift jetzt außerhalb des Blocks und nicht mehr darin.
-
-           WIEDER FREISCHALTEN, wenn seine Seite fertig ist:
-             1. Die Zeile <template ...> und das </template> weiter unten löschen.
-                Sonst nichts. Alles dazwischen bleibt, wie es ist.
-             2. Namen eintragen: den <span class="ph-inline">-Platzhalter durch
-                seinen Namen ersetzen (das span-Element ganz weg, nur der Name bleibt).
-             3. Bilder einbauen — Anleitung steht unten im Block.
-             4. Ihn vorher anrufen und fragen, ob er einverstanden ist.
-           ============================================================================ -->
-      <template id="fall-kommunalpolitiker">
-
-      <!-- Wenn die Bilder da sind: seine Website in denselben Geräte-Rahmen
-           setzen wie agrarkit.de weiter unten — den <div class="geraete">-Block
-           kopieren, Bilder und Adresse austauschen, fertig. Ein Foto von den
-           Bannern an der Straße passt als <figure class="bild"> daneben. -->
-      <article class="fall fall--karte">
-        <div>
-          <p class="arbeit__wer"><span class="ph-inline">Platzhalter: Name</span> · Kommunalpolitik</p>
-          <h4 class="arbeit__titel">Einmal alles, aus einer Hand</h4>
-        </div>
-        <div class="fall__text">
-          <p class="arbeit__text">
-            Eine Website, auf der steht, wofür er steht. Banner, die man an die Straße
-            stellen kann. Und die Konten, über die man ihn erreicht.
-          </p>
-          <p class="arbeit__text">
-            Der Vorteil, wenn das einer macht: Es sieht überall gleich aus. Wer das Banner
-            an der Landstraße sieht und danach die Seite aufmacht, erkennt sofort, dass das
-            zusammengehört.
-          </p>
-        </div>
-      </article>
-
-      </template>
-      <!-- ===================== Ende stillgelegter Block ===================== -->
-
-      <article class="fall fall--breit">
-        <div class="fall__text">
-          <p class="arbeit__wer">agrarkit.de · eigene Entwicklung</p>
-          <h4 class="arbeit__titel">Die Website zu meiner Software</h4>
-          <p class="arbeit__text">
-            Zu Agrarkit gehört eine Seite, die Landwirten erklärt, was das Programm
-            macht, wenn sie zum ersten Mal draufgucken. Was drin ist, was es kostet,
-            wie man anfängt. Kein Fachchinesisch und keine Preisliste mit acht Paketen.
-          </p>
-          <p class="arbeit__text">
-            So eine Seite bau ich dir genauso. Der Aufbau ist eigentlich immer der
-            gleiche: oben in einem Satz, worum es geht, darunter der Reihe nach die
-            Fragen, die die Leute wirklich stellen, und ganz unten, wie man dich erreicht.
-          </p>
-          <p class="fall__schluss">
-            Dieselbe Handschrift wie das Programm darüber. Das ist kein Zufall,
-            sondern der Punkt.
-          </p>
-        </div>
-
-        <div class="geraete">
-          <div class="geraete__buehne">
-            <div class="fenster">
-              <div class="fenster__leiste" aria-hidden="true">
-                <span class="fenster__punkte"></span>
-                <span class="fenster__adresse">agrarkit.de</span>
-              </div>
-              <img class="fenster__bild" src="bilder/agrarkit-web.webp"
-                   alt="Die Startseite von agrarkit.de: ein Trecker beim Pflügen, darüber die Überschrift Schläge, Düngung und ENDO-SH in einem Programm"
-                   width="1500" height="938" loading="lazy" decoding="async">
-            </div>
-            <div class="handy geraete__handy">
-              <img class="handy__bild" src="bilder/agrarkit-web-handy.webp"
-                   alt="Dieselbe Startseite auf dem Handy"
-                   width="620" height="1342" loading="lazy" decoding="async">
-            </div>
-          </div>
-          <p class="geraete__zeile">Eine Seite, die auf beidem funktioniert — nicht zwei Seiten</p>
-        </div>
-      </article>
-
-      <!-- NOCH OFFEN (steht bewusst nicht mehr sichtbar auf der Seite, damit sie
+      <!-- NOCH OFFEN (steht bewusst nicht sichtbar auf der Seite, damit sie
            jederzeit online gehen kann; dieselbe Liste steht auch im README):
 
            1. Petersens und Lasse anrufen und fragen, ob ich ihre Zitate mit Namen
-              zeigen darf. Ihre Namen stehen oben auch in der Leiste "Gearbeitet für".
-              Solange das nicht geklärt ist: entweder kurz durchklingeln oder die
-              beiden <blockquote class="zitat">-Blöcke oben rausnehmen.
+              zeigen darf. Ihre Namen stehen oben auch in der Logo-Laufleiste.
            2. Der Kommunalpolitiker liegt fertig im Quelltext, ist aber stillgelegt,
-              bis seine Website fertig ist. Siehe den Kommentar weiter oben. -->
+              bis seine Website fertig ist. Siehe den Kommentar oben. -->
     </div>
   </section>
 
   <!-- ============ ÜBER MICH ======================================================
-       Auch hier bewusst kein Portraitfoto. Rechts steht stattdessen der Satz, an dem
-       du gemessen werden willst. Wenn du irgendwann ein Portrait hast, kann es über
-       die grüne Karte — dann bleibt die Reihenfolge Text, Foto, Versprechen.
+       Kein Portraitfoto, und bewusst auch keine grüne Karte mehr daneben: die
+       Zuverlässigkeit steht schon oben im Hero, zweimal wäre einmal zu viel.
+       Wenn du irgendwann ein Portrait hast, passt es rechts neben den Text.
        ============================================================================= -->
   <section class="abschnitt abschnitt--creme" id="ueber">
-    <div class="wrap ueber">
-      <div class="ueber__text">
-        <p class="vorzeile">Über mich</p>
-        <h2 class="h2">Moin, ich bin Oskar Jacobsen</h2>
-        <p>
-          Ich wohne schon mein ganzes Leben in Angeln. Die Leute, für die ich arbeite,
-          kenn ich zum Teil, seit ich klein bin.
-        </p>
-        <p>
-          Mir ist irgendwann aufgefallen: Hier machen richtig viele Leute richtig gute
-          Sachen, und im Internet findet man nichts davon. Nicht weil sie schlecht sind,
-          sondern weil abends um acht keiner mehr Lust hat, sich um sowas zu kümmern.
-          Verständlich.
-        </p>
-        <p>
-          Ich bin jung genug, dass mir der ganze digitale Kram leichtfällt, und ich bin
-          von hier. Man kann mich einfach anrufen und fragen. Auch wenn es am Ende nur
-          zwei Minuten dauert.
-        </p>
-        <ul class="fakten">
-          <li><strong>Ich komm zu dir raus.</strong> In den Betrieb, aufs Grundstück, ans Wasser, wo es eben ist.</li>
-          <li><strong>Unterwegs</strong> in Angeln, Flensburg, Kappeln, Schleswig und drumherum.</li>
-          <li><strong>Erreichbar</strong> auch mal abends, wenn tagsüber nichts geht.</li>
-        </ul>
-      </div>
-
-      <div class="versprechen">
-        <p class="vorzeile vorzeile--hell">Woran du mich messen kannst</p>
-        <p class="versprechen__satz">
-          Womit ich es selber genau nehme: <span class="hl">zurückrufen, Termine halten,
-          Bescheid sagen, wenn was nicht klappt.</span>
-        </p>
-        <p>
-          Klingt selbstverständlich. Ist es aber nicht immer und deshalb schreib ich es
-          hier hin, damit du mich daran messen kannst.
-        </p>
-        <p class="versprechen__fuss">
-          <a href="tel:+4915151223742">0151 5122 3742</a> — probier es aus.
-        </p>
-      </div>
+    <div class="wrap ueber__text">
+      <p class="vorzeile">Über mich</p>
+      <h2 class="h2">Moin, ich bin Oskar Jacobsen</h2>
+      <p>
+        Ich wohne schon mein ganzes Leben in Angeln. Die Leute, für die ich arbeite,
+        kenn ich zum Teil, seit ich klein bin.
+      </p>
+      <p>
+        Mir ist irgendwann aufgefallen: Hier machen richtig viele Leute richtig gute
+        Sachen, und im Internet findet man nichts davon. Nicht weil sie schlecht sind,
+        sondern weil abends um acht keiner mehr Lust hat, sich um sowas zu kümmern.
+        Verständlich.
+      </p>
+      <p>
+        Womit ich es selber genau nehme: zurückrufen, Termine halten, Bescheid sagen,
+        wenn was nicht klappt. Klingt selbstverständlich. Ist es aber nicht immer und
+        deshalb schreib ich es hier hin, damit du mich daran messen kannst.
+      </p>
+      <p>
+        Ich bin jung genug, dass mir der ganze digitale Kram leichtfällt, und ich bin
+        von hier. Man kann mich einfach anrufen und fragen. Auch wenn es am Ende nur
+        zwei Minuten dauert.
+      </p>
     </div>
   </section>
 
@@ -538,6 +484,6 @@
   </div>
 </footer>
 
-<script src="script.js?v=2026-08-29c" defer></script>
+<script src="script.js?v=2026-08-30" defer></script>
 </body>
 </html>

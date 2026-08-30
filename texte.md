@@ -152,36 +152,11 @@ weiter unten.
 
 ---
 
-## 5 — Wie das bei mir läuft
+## 5 — (gelöscht)
 
-Schwarzer Abschnitt. Hier steht deine Zuverlässigkeit — aber als Beispiel, nicht
-als Behauptung. Jetzt vier Stück (zwei hast du gestrichen), immer eine fette Zeile
-plus zwei Sätze. Vier liegen als 2×2 nebeneinander, das geht auf.
-
-[H2] Wie das bei mir läuft
-
-[H3] Wenn ich was zusage, steht das.
-Sag ich Dienstag, bin ich Dienstag da. Und wenn wirklich mal was dazwischenkommt,
-hörst du das vorher von mir — nicht hinterher.
-
-[H3] Du musst nichts vorbereiten.
-Kein Konzept, keine Liste, keine Beispielseiten raussuchen. Ruf an und erzähl
-einfach drauflos.
-
-[H3] Du kannst mich alles fragen.
-Auch das, wo du denkst, das müsste man ja eigentlich wissen. Muss man nicht. Ist
-mein Job, nicht deiner.
-
-[H3] Du wartest nicht lang auf Antwort.
-Ich mach das allein. Da muss keiner erst Rücksprache halten. Meistens meld ich
-mich am selben Tag.
-
-[H3] Du weißt vorher, was es kostet.
-Ich sag dir einen Preis, bevor ich anfange. Und dabei bleibt es dann auch.
-
-[H3] Du redest immer mit mir.
-Keine Warteschleife, kein Ticket, kein wechselnder Ansprechpartner. Meine
-Handynummer, mein Handy.
+Der Abschnitt „Wie das bei mir läuft" ist raus. Preis, Antwortzeit und
+Erreichbarkeit standen sinngemäß schon in der grünen Karte im Hero — zweimal
+dasselbe liest niemand zweimal.
 
 ---
 

@@ -86,19 +86,27 @@ sind genau so entstanden: aus den Originalen in `bilder/original/` beschnitten u
 umgerechnet, zusammen keine 300 kB.
 
 **Erledigt:**
-- [x] Agrarkit-Bildschirmfotos — Karte, „Umriss bearbeiten" und ENDO-SH-Export
-      sind drin. Die beiden kleinen sind auf dasselbe Seitenverhältnis beschnitten,
-      damit sie im Zweier-Raster gleich hoch stehen.
-- [x] Impressum, Umsatzsteuer — du bist Kleinunternehmer, also steht dort jetzt
-      fest die Regelung nach § 19 UStG. Die Alternative und beide gelben Kästen
-      sind raus, das Impressum ist fertig.
-- [x] Kundenlogos — Gemeinde Gelting, Petersens und Lasse.PTS stehen jetzt als
-      echte Logos in der Leiste unter dem Hero. Geholt aus dem Repo
-      `oskar-hq/jacobsen-website`, Ordner `kunden-logos/`. Beim Lasse-Logo war
-      ein weißer Kasten drumherum, der ist freigestellt.
-- [x] agrarkit.de — die Website zur Software ist als eigene Referenz drin, in
-      der neuen Gruppe „Websites". Damit zeigt die Seite wieder Website-Arbeit,
-      auch solange der Kommunalpolitiker stillgelegt ist.
+- [x] Agrarkit-Bildschirmfotos und die von agrarkit.de sind drin, in Geräte-Rahmen.
+- [x] Impressum, Umsatzsteuer — du bist Kleinunternehmer, also steht dort die
+      Regelung nach § 19 UStG. Das Impressum ist fertig.
+- [x] Kundenlogos — Gemeinde Gelting, Petersens, Lasse.PTS und Agrarkit laufen in
+      der Leiste unter dem Hero durch. Die drei Kundenlogos kommen aus dem Repo
+      `oskar-hq/jacobsen-website`, Ordner `kunden-logos/`; beim Lasse-Logo war ein
+      weißer Kasten drumherum, der ist freigestellt.
+
+**Noch nicht angekommen:**
+- [ ] Die zwei Logos in besserer Auflösung. Bei mir kam nur das Agrarkit-Logo an,
+      und das als Bildschirmfoto — deshalb ist es als SVG nachgebaut. Wenn du die
+      Dateien schickst, tausche ich sie aus.
+
+**Gelöscht, weil es sich wiederholt hat:**
+- Der ganze Abschnitt „Wie das bei mir läuft". Preis, Antwortzeit und
+  Erreichbarkeit standen sinngemäß schon in der grünen Karte im Hero.
+- Die grüne Karte „Woran du mich messen kannst" neben „Über mich". Der Satz
+  darin ist nicht verloren — er steht jetzt als normaler Absatz im Fließtext,
+  wo er ursprünglich herkam.
+- Die drei Zeilen „Ich komm zu dir raus / Unterwegs / Erreichbar" unter „Über
+  mich". Das erste stand wortgleich auch in der Hero-Karte.
 
 **Rechtstexte:** Beide Seiten sind fertig. Sie sind nach bestem Wissen an der
 aktuellen Rechtslage gebaut (DDG statt des alten TMG, TDDDG, DSGVO) und decken
@@ -162,15 +170,33 @@ Die Reihenfolge erzählt absichtlich etwas: erst das Programm, das ich gebaut ha
 und gleich darunter die Website, die dafür wirbt. Wer bis dahin gelesen hat,
 versteht ohne einen Satz Erklärung, wie weit das reicht.
 
+### Das Karussell
+
+Alle Arbeiten liegen in **einer Spur nebeneinander**, nicht mehr untereinander.
+Am Rechner klickt man sich mit den Pfeilen durch, auf dem Handy wischt man.
+
+Dahinter steckt kein nachgebautes Scrollen, sondern ein ganz normaler seitlicher
+Scroll-Bereich mit Einrastpunkten (`scroll-snap`). Die Pfeile schieben nur um eine
+Folie weiter. Dadurch funktionieren Wischen, Trackpad, Scrollrad und Tastatur ohne
+eine Zeile extra — und ohne JavaScript bleibt es eine Spur, die man schieben kann;
+nur Pfeile und Punkte sind dann ausgeblendet.
+
+**Neue Arbeit einbauen:** ein `<article class="folie">` in die Spur hängen. Die
+Punkte darunter zählt `script.js` selbst, da ist nichts nachzutragen.
+
+Alle Folien sind so hoch wie die höchste — deshalb ist das Paar Hochkant-Videos
+im CSS auf 430 px Breite begrenzt. Ohne die Grenze macht diese eine Folie das
+ganze Karussell unnötig hoch.
+
 ### Geräte-Rahmen
 
-Bildschirmfotos stehen nicht mehr nackt in der Seite. Jeder der beiden Fälle zeigt
-**ein Browserfenster mit einem Handy davor** — der Rechner groß, das Handy überlappend
-unten rechts. Auf schmalen Bildschirmen stehen beide untereinander.
+Bildschirmfotos stehen nicht nackt in der Seite. Beide Software-Folien zeigen
+**ein Browserfenster mit einem Handy davor** — der Rechner groß, das Handy
+überlappend unten rechts. Auf schmalen Bildschirmen stehen beide untereinander.
 
-Beide Rahmen sind komplett in CSS gebaut: kein fremdes Mockup-Bild, keine zusätzliche
-Datei, und sie nehmen die Farben der Seite an. Die Adresszeile im Browserfenster ist
-echter Text, den man einfach überschreibt.
+Beide Rahmen sind komplett in CSS gebaut: kein fremdes Mockup-Bild, keine
+zusätzliche Datei, und sie nehmen die Farben der Seite an. Die Adresszeile im
+Browserfenster ist echter Text, den man einfach überschreibt.
 
 So sieht ein Block aus (in `index.html` zweimal vorhanden, zum Kopieren):
 
@@ -188,12 +214,33 @@ So sieht ein Block aus (in `index.html` zweimal vorhanden, zum Kopieren):
       <img class="handy__bild" src="bilder/…" alt="…" width="620" height="1342" loading="lazy">
     </div>
   </div>
-  <p class="geraete__zeile">Unterschrift</p>
 </div>
 ```
 
-Für neue Referenzen brauchst du also genau zwei Bildschirmfotos: eins am Rechner
-(quer) und eins vom Handy (hochkant, etwa 620 px breit reicht).
+Für eine neue Referenz brauchst du also genau zwei Bildschirmfotos: eins am
+Rechner (quer) und eins vom Handy (hochkant, etwa 620 px breit reicht).
+
+### Die Logo-Laufleiste
+
+Die Kundenlogos laufen langsam durch. Im Quelltext steht jedes Logo **genau
+einmal**; `script.js` verdoppelt die Spur so oft, bis sie breiter als der
+Bildschirm ist, und dann noch einmal komplett — dadurch sieht die Bewegung aus
+wie eine Endlosschleife. Beim Darüberfahren hält sie an.
+
+Ohne JavaScript und bei „Bewegung reduzieren" stehen die Logos einfach umgebrochen
+nebeneinander. Die Leiste funktioniert also auch dann.
+
+Die Logos sind entsättigt und leicht zurückgenommen, damit die Leiste ruhig bleibt
+und das bunte Gelting-Wappen nicht alles an sich zieht; beim Darüberfahren kommt
+die echte Farbe.
+
+**Neues Logo:** ein `<li>` mit `<img class="logo logo--name">` ergänzen und im CSS
+eine Höhe für `.logo--name` setzen. **Nicht alle gleich hoch machen** — ein hohes
+Wappen und eine flache Wortmarke wirken bei gleicher Pixelhöhe völlig
+unterschiedlich groß. Die Werte sind nach Augenmaß gesetzt.
+
+Das Agrarkit-Logo steht als **SVG direkt im HTML**, nicht als Datei: so nimmt die
+Wortmarke die Schrift der Seite an und bleibt bei jeder Größe scharf.
 
 ## Die Videos
 
@@ -245,12 +292,9 @@ ist das Gegenteil von zuverlässig. Deshalb ist der Bildbedarf einfach aus dem
 Entwurf herausgenommen worden:
 
 - **Im Hero** steht rechts die grüne Karte mit der Nummer statt eines Fotos.
-- **Direkt darunter** die Leiste „Gearbeitet für" mit den drei Kundenlogos. Jedes
-  hat im CSS seine eigene Höhe — ein hohes Wappen und eine flache Wortmarke wirken
-  bei gleicher Pixelhöhe völlig unterschiedlich groß.
-- **Bei „Über mich"** steht statt des Portraits der Satz, an dem du gemessen
-  werden willst, auf grüner Fläche.
-- **Beim Kommunalpolitiker** ist der Fall eine reine Textkarte mit Rahmen.
+- **Direkt darunter** die Logo-Laufleiste mit den vier Logos.
+- **Bei „Über mich"** trägt der Text allein — auch die grüne Karte daneben ist
+  raus, weil die Zuverlässigkeit schon oben im Hero steht.
 - Bilder gibt es nur da, wo es echte gibt: die Videoflächen und die vier
   Bildschirmfotos in den Geräte-Rahmen.
 
