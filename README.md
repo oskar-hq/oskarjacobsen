@@ -195,6 +195,43 @@ Punkte sind dann ausgeblendet, weil sie nichts täten.
 **Neue Arbeit einbauen:** ein `<article class="folie">` in die Spur hängen. Die
 Punkte zählt `script.js` selbst, da ist nichts nachzutragen.
 
+### Die Punkte und der Läufer
+
+Die Punkte selbst ändern sich nie. Welche Folie dran ist, zeigt ein einzelner
+**Läufer**, der darüber liegt und **direkt an der Scrollposition hängt**: seine
+Position ist `Scrollstand ÷ Scrollstrecke`, als Kommazahl. Bei halber Strecke
+steht er zwischen zwei Punkten.
+
+Genau deshalb hat er **bewusst keine eigene Animation**. Ein Übergang würde erst
+starten, wenn der Wert sich ändert, und dann hinter der Bewegung herlaufen — das
+war das Hängen vorher. So kommt die Bewegung vom Scrollen selbst und kann gar
+nicht nachlaufen.
+
+Gerechnet wird bei jedem Scrollereignis, aber gebündelt auf das nächste Bild des
+Browsers (`requestAnimationFrame`): 60 Bilder je Sekunde, trotzdem nur eine
+Rechnung pro Bild. Zähler, Pfeile und `aria-current` werden nur angefasst, wenn
+sich die Folie wirklich ändert — sonst würde die Zahl bei jedem Pixel flackern.
+
+Der Abstand von Punktmitte zu Punktmitte wird **aus dem fertigen Layout gemessen**,
+nicht aus dem CSS abgeschrieben. Dadurch stimmt es auch, wenn später jemand Größe
+oder Abstand der Punkte ändert.
+
+### Die Reihenfolge der Folien
+
+Nicht erst alle Filme und dann der Rest, sondern nach Wirkung sortiert und im
+Wechsel der Machart:
+
+1. **Agrarkit** — die Ackerschlagkartei. Das Beeindruckendste zuerst: eigene
+   Software, Karte und Handy in einem Bild.
+2. **Gemeinde Gelting** — Imagefilm. Bekannter Name aus der Gegend, sofort
+   verständlich.
+3. **agrarkit.de** — die Website dazu. Wieder ein anderes Gewerk.
+4. **Petersens Ferienwohnungen** — Imagefilm mit Kundenzitat.
+5. **Lasse.PTS** — Hochkant-Videos mit Kundenzitat.
+
+Nie steht zweimal dasselbe direkt hintereinander, und die beiden Kundenzitate
+stehen am Schluss — da wirken sie am meisten.
+
 Am Rechner sind alle Folien so hoch wie die höchste — deshalb ist das Paar
 Hochkant-Videos im CSS auf 430 px Breite begrenzt. Ohne die Grenze macht diese
 eine Folie das ganze Karussell unnötig hoch.

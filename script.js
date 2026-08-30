@@ -121,8 +121,10 @@
       var folien = spur.querySelectorAll('.folie');
       if (folien.length < 2) return;
 
-      // Punkte anlegen — so viele, wie es Folien gibt.
+      // Punkte anlegen — so viele, wie es Folien gibt. Dazu ein Läufer, der
+      // darüber liegt und die aktuelle Stelle zeigt.
       var punkte = [];
+      var laeufer = null;
       if (punkteliste) {
         Array.prototype.forEach.call(folien, function (folie, i) {
           var li = document.createElement('li');
@@ -135,6 +137,29 @@
           punkteliste.appendChild(li);
           punkte.push(knopf);
         });
+        laeufer = document.createElement('span');
+        laeufer.className = 'karussell__laeufer';
+        punkteliste.appendChild(laeufer);
+      }
+
+      // Abstand von Punktmitte zu Punktmitte. Wird aus dem fertigen Layout
+      // gemessen, nicht aus dem CSS abgeschrieben — dann stimmt es auch, wenn
+      // jemand später die Größe oder den Abstand ändert.
+      function schritt() {
+        if (punkte.length < 2) return 0;
+        return punkte[1].getBoundingClientRect().left -
+               punkte[0].getBoundingClientRect().left;
+      }
+
+      // Der eigentliche Trick: die Position kommt direkt aus dem Scrollstand,
+      // als Kommazahl. Bei halber Strecke steht der Läufer zwischen zwei
+      // Punkten. Nichts wartet, nichts rastet nach.
+      function laeuferSetzen() {
+        if (!laeufer) return;
+        var weite = spur.scrollWidth - spur.clientWidth;
+        var anteil = weite > 0 ? spur.scrollLeft / weite : 0;
+        laeufer.style.transform =
+          'translate(' + (anteil * (folien.length - 1) * schritt()) + 'px, -50%)';
       }
 
       function aktuell() {
@@ -165,13 +190,21 @@
         return spur.scrollWidth - spur.clientWidth > 4;
       }
 
+      // Text und Pfeile nur anfassen, wenn sich die Folie wirklich ändert —
+      // sonst flackert der Zähler bei jedem Scrollschritt.
+      var letzte = -1;
       function auffrischen() {
         if (!istSpur()) {
           spur.removeAttribute('tabindex');
           return;
         }
         spur.setAttribute('tabindex', '0');
+        laeuferSetzen();
+
         var i = aktuell();
+        if (i === letzte) return;
+        letzte = i;
+
         punkte.forEach(function (knopf, n) {
           knopf.setAttribute('aria-current', n === i ? 'true' : 'false');
         });
@@ -184,14 +217,23 @@
       if (zurueck) zurueck.addEventListener('click', function () { zeige(aktuell() - 1); });
       if (vor) vor.addEventListener('click', function () { zeige(aktuell() + 1); });
 
-      // Beim Scrollen nur nachziehen, wenn es zur Ruhe gekommen ist.
-      var wartet;
+      // Bei jedem Scrollereignis nachziehen, aber gebündelt auf das nächste
+      // Bild des Browsers. Dadurch läuft der Läufer mit 60 Bildern je Sekunde
+      // mit und trotzdem wird pro Bild nur einmal gerechnet.
+      var geplant = false;
       spur.addEventListener('scroll', function () {
-        window.clearTimeout(wartet);
-        wartet = window.setTimeout(auffrischen, 90);
+        if (geplant) return;
+        geplant = true;
+        window.requestAnimationFrame(function () {
+          geplant = false;
+          auffrischen();
+        });
       }, { passive: true });
 
-      window.addEventListener('resize', auffrischen);
+      window.addEventListener('resize', function () {
+        letzte = -1;
+        auffrischen();
+      });
       auffrischen();
     }
   );
