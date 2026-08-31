@@ -374,6 +374,30 @@ sonst um und deckt den halben Ausschnitt zu.
    nach `bilder/` und als `<img class="video__bild">` in den Button, vor die
    `.video__play`-Zeile. Nicht von YouTube laden, siehe oben.
 
+## Die Links auf die echten Seiten
+
+Zwei Folien führen weiter zu dem, was dort zu sehen ist:
+
+    app.agrarkit.de   auf der Folie „Eine Ackerschlagkartei für Schleswig-Holstein"
+    agrarkit.de       auf der Folie „Die Website für Agrarkit"
+
+Die Adresse ist die Beschriftung — dann weiß man vorher, wo man landet. Beide gehen
+über `target="_blank"` in einen neuen Tab, damit man den Faden auf dieser Seite nicht
+verliert, und tragen `rel="noopener"`: ohne das kann die geöffnete Seite über
+`window.opener` auf diese hier zugreifen. Kein `noreferrer` — so sieht Agrarkit in
+der eigenen Statistik, dass der Besuch von hier kam.
+
+Im Knopf steckt ein `<span class="nur-vorlesen">`, das den neuen Tab ansagt. **Hier
+ist eine Falle drin, die einmal zugeschnappt ist:** die Klasse arbeitet mit
+`position: absolute` und sucht sich den nächsten positionierten Vorfahren. Ohne
+`position: relative` am Link war das die Karussell-Bühne — also ein Kasten
+*außerhalb* der scrollenden Spur. Damit entkam das unsichtbare Span der
+Beschneidung und zog die ganze Seite auf 2922 px Breite. Wer die Klasse woanders
+einbaut: der Elternteil braucht `position: relative`.
+
+Die nachgebaute Adresszeile im Browser-Rahmen zeigt jetzt auch die echte Adresse
+(`app.agrarkit.de` statt der vorher erfundenen `agrarkit.de/schlaege`).
+
 ## Design
 
 Stand August 2026 einmal überarbeitet: gleiche Einfachheit, moderneres Bild.

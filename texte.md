@@ -219,6 +219,9 @@ Und was das Programm dahinter kann, steht gleich darunter.
 Unterschrift unter dem Geräte-Rahmen:
 - Eine Seite, die auf beidem funktioniert — nicht zwei Seiten
 
+Link darunter (öffnet in einem neuen Tab):
+- agrarkit.de
+
 **Der Kommunalpolitiker** steht in derselben Gruppe, ist aber stillgelegt, bis seine
 Website fertig ist. Der Text dazu (unverändert, kommt wieder):
 
@@ -253,6 +256,9 @@ gibt: so weit.
 
 Unterschrift unter dem Geräte-Rahmen:
 - Am Rechner die Karte, am Feldrand dasselbe auf dem Handy
+
+Link darunter (öffnet in einem neuen Tab):
+- app.agrarkit.de
 
 > Zu Agrarkit erklär ich bewusst nicht, was die Software alles kann — auf dieser
 > Seite ist sie kein Produkt, sondern der Beweis, wie weit du gehst. Der letzte

@@ -108,6 +108,24 @@ p:last-child { margin-bottom: 0; }
   padding-inline: var(--luft);
 }
 
+/* Nur für Vorlesesoftware. Nicht display:none — das würde auch dort
+   verschwinden. Stattdessen auf einen Punkt zusammengezogen.
+
+   Achtung beim Einbauen: das Ding ist position:absolute und sucht sich den
+   nächsten positionierten Vorfahren. Liegt der außerhalb eines scrollenden
+   Kastens — etwa der Karussell-Spur —, entkommt es dessen Beschneidung und
+   zieht die ganze Seite in die Breite. Der Elternteil muss deshalb selbst
+   position:relative haben, siehe .seitenlink. */
+.nur-vorlesen {
+  position: absolute;
+  width: 1px; height: 1px;
+  margin: -1px; padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
 .skip { position: absolute; left: -9999px; }
 .skip:focus {
   left: 1rem; top: 1rem;
@@ -594,6 +612,38 @@ h1 {
 }
 .folie__text p { color: var(--tinte-70); font-size: 1rem; }
 
+/* Link auf die echte Seite. Bewusst kleiner als die Knöpfe im Hero — hier
+   soll man weiterlesen können, nicht abbiegen müssen. Die Adresse ist die
+   Beschriftung: dann weiß man vorher, wo man landet. */
+.seitenlink {
+  /* hält .nur-vorlesen bei sich — siehe Kommentar dort */
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  margin-top: 1.2rem;
+  padding: .55rem 1.05rem;
+  border: 1.5px solid var(--linie-satt);
+  border-radius: var(--pille);
+  color: var(--tinte);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: .9375rem;
+  line-height: 1.2;
+  transition: border-color .15s ease, background-color .15s ease, transform .15s ease;
+}
+.seitenlink:hover {
+  border-color: var(--tinte);
+  background: var(--karte);
+  transform: translateY(-1px);
+}
+.seitenlink__pfeil {
+  width: 12px; height: 12px;
+  flex: none;
+  transition: transform .15s ease;
+}
+.seitenlink:hover .seitenlink__pfeil { transform: translate(1px, -1px); }
+
 /* --- Handy: gar kein Karussell ---
    Untereinander, ohne Knöpfe, ohne Wischen. Auf einem kleinen Bildschirm ist
    scrollen die Bedienung, die jeder kennt. */
@@ -1074,7 +1124,8 @@ h1 {
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   * { transition: none !important; animation: none !important; }
-  .btn:hover, .leistungen li:hover { transform: none; }
+  .btn:hover, .leistungen li:hover, .seitenlink:hover { transform: none; }
+  .seitenlink:hover .seitenlink__pfeil { transform: none; }
   /* Laufleiste steht still und bricht wieder um, statt abgeschnitten
      an einer Stelle zu verharren. */
   .laufband__spur.ist-bewegt { flex-wrap: wrap; width: auto; justify-content: center; }
