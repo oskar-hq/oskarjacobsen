@@ -328,24 +328,41 @@ Das `<img>` steht **im Knopf**, nicht dahinter. `script.js` ersetzt beim Klick d
 ganzen Knopf durch den Player — dadurch verschwindet das Standbild mit, ohne dass
 dafür eine Zeile Extra-Code nötig wäre.
 
-### Warum Knopf und Beschriftung unten sitzen
+### Der Play-Knopf ist Milchglas
 
-Über einem Standbild ist der Untergrund nicht vorhersehbar. Zwei Konsequenzen:
+Erst war die Scheibe deckend orange und musste deshalb aus der Mitte weichen: beim
+Gelting-Film ist der Satz „Heimat ist kein Ort - Heimat ist ein Gefühl." mittig ins
+Bild eingebrannt, die Scheibe hat die halbe Zeile verdeckt, und bei den Hochkant-
+Videos lag sie auf den Gesichtern.
 
-- **Beschriftung auf eigener Fläche** (`.video__marke`, deckendes Dunkelgrün).
-  Direkt aufs Foto gesetzter Text hätte je nach Aufnahme 2:1 Kontrast. So sind es
-  im schlechtesten Fall — strahlend weißes Foto — 11,3:1 für „Video starten" und
-  7,0:1 für den Hinweis.
-- **Ring um die Play-Scheibe.** Orange auf hellem Himmel wären 1,4:1, zu wenig für
-  ein Bedienelement. Der dunkle 2-px-Ring hebt sie auf jedem Bild ab.
+Jetzt ist sie **durchscheinend** — dieselbe Machart wie die Kopfleiste beim Scrollen,
+getönte Fläche plus Weichzeichner:
 
-Der Knopf steht **nicht in der Mitte**, und das ist Absicht: beim Gelting-Film ist
-der Satz „Heimat ist kein Ort - Heimat ist ein Gefühl." ins Bild eingebrannt, genau
-mittig, und die Scheibe hat die halbe Zeile verdeckt. Bei den Hochkant-Videos war es
-dasselbe mit den Gesichtern. Also: Querformat Beschriftung links, Knopf rechts;
-Hochformat Knopf unten rechts, Hinweis als schmaler Streifen über die ganze Breite —
-nebeneinander wird es auf dem Handy bei 167 px Breite zu eng und „LÄDT YOUTUBE"
-bricht um.
+    background: rgba(250, 248, 242, .65);
+    backdrop-filter: saturate(140%) blur(8px);
+
+Damit darf sie zurück in die Mitte, wo man einen Play-Knopf sucht, ohne dass sie
+etwas zudeckt: man liest den eingebrannten Satz durch sie hindurch und sieht das
+Gesicht dahinter. Sie ist außerdem kleiner geworden, 46 px statt 58 (Hochformat
+38 px).
+
+Die 65 % sind eine Untergrenze, keine Geschmacksfrage. Weiter runter und das dunkle
+Dreieck verliert über einem dunklen Standbild den Kontrast; so sind es im
+schlechtesten Fall 5,6:1, bei hellen Bildern rund 10:1.
+
+Zwei Dinge halten das über **jedem** Foto zusammen, auch über einem, das erst später
+dazukommt:
+
+- **Ring um die Scheibe** (`box-shadow`, 1,5 px). Eine helle Scheibe auf hellem
+  Himmel wäre sonst kaum zu sehen. Mit Ring sind es an beiden Extremen mindestens
+  4:1.
+- **Beschriftung auf eigener deckender Fläche** (`.video__marke`). Direkt aufs Foto
+  gesetzter Text hätte je nach Aufnahme 2:1. So sind es im schlechtesten Fall
+  11,3:1 für „Video starten" und 7,0:1 für den Hinweis.
+
+Beim Hochformat ist der Hinweis ein schmaler Streifen über die ganze Breite statt
+eines Kästchens in der Ecke — bei 167 px Breite auf dem Handy bricht „LÄDT YOUTUBE"
+sonst um und deckt den halben Ausschnitt zu.
 
 ### Ein Video tauschen oder ergänzen
 
