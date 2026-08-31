@@ -595,6 +595,10 @@ h1 {
 .folie__text { min-width: 0; }
 .folie__medium { min-width: 0; }
 
+/* Die beiden Endlos-Kopien legt script.js an. Untereinander wären sie
+   doppelte Einträge, deshalb gibt es sie erst, wenn daraus eine Spur wird. */
+.folie--kopie { display: none; }
+
 .folie__wer {
   font-weight: 500;
   font-size: .6875rem;
@@ -681,6 +685,10 @@ h1 {
     gap: 3rem;
     align-items: center;
   }
+  /* Sichtbar, aber nur zum Angucken: angefasst wird immer das Original.
+     `inert` im Skript regelt Tastatur und Vorlesesoftware, das hier den
+     Mauszeiger. */
+  .folie--kopie { display: grid; pointer-events: none; }
 
   /* Die Pfeile sitzen mittig neben der Spur — links zurück, rechts vor.
      Ohne JavaScript täten sie nichts, deshalb erscheinen sie erst mit .js. */

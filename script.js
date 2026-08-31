@@ -118,11 +118,39 @@
       var zaehler = karussell.querySelector('[data-zaehler]');
       if (!spur) return;
 
+      // Feste Liste: die echten Folien. Die gleich angehängten Kopien stehen
+      // absichtlich nicht drin.
       var folien = spur.querySelectorAll('.folie');
       if (folien.length < 2) return;
+      var letzteNr = folien.length - 1;
 
-      // Punkte anlegen — so viele, wie es Folien gibt. Dazu ein Läufer, der
-      // darüber liegt und die aktuelle Stelle zeigt.
+      /* --- Endlos ----------------------------------------------------------
+         Hinter der letzten Folie steht noch einmal die erste, vor der ersten
+         noch einmal die letzte. Man fährt also ganz normal weiter und sieht
+         dabei schon, was kommt. Sobald die Spur steht, wird sie ohne
+         Animation an die echte Stelle gesetzt — fürs Auge passiert dabei
+         nichts, es ist ja dasselbe Bild.
+
+         Die einfache Lösung wäre, bei 5 einfach auf 1 zu springen. Dann rast
+         die Spur aber sichtbar durch alle Folien zurück, und genau das soll
+         es nicht sein.
+
+         Die Kopien entstehen hier und nicht im Quelltext: dort soll jede
+         Arbeit genau einmal stehen. Sie sind `inert` — kein Tabstopp, kein
+         Klick, keine Ansage. Sonst gäbe es die Videos und die Links doppelt.
+         -------------------------------------------------------------------- */
+      var kopfKopie = folien[letzteNr].cloneNode(true);
+      var fussKopie = folien[0].cloneNode(true);
+      [kopfKopie, fussKopie].forEach(function (kopie) {
+        kopie.classList.add('folie--kopie');
+        kopie.setAttribute('aria-hidden', 'true');
+        kopie.setAttribute('inert', '');
+      });
+      spur.insertBefore(kopfKopie, folien[0]);
+      spur.appendChild(fussKopie);
+
+      // Punkte anlegen — so viele, wie es echte Folien gibt. Dazu ein Läufer,
+      // der darüber liegt und die aktuelle Stelle zeigt.
       var punkte = [];
       var laeufer = null;
       if (punkteliste) {
@@ -151,38 +179,6 @@
                punkte[0].getBoundingClientRect().left;
       }
 
-      // Der eigentliche Trick: die Position kommt direkt aus dem Scrollstand,
-      // als Kommazahl. Bei halber Strecke steht der Läufer zwischen zwei
-      // Punkten. Nichts wartet, nichts rastet nach.
-      function laeuferSetzen() {
-        if (!laeufer) return;
-        var weite = spur.scrollWidth - spur.clientWidth;
-        var anteil = weite > 0 ? spur.scrollLeft / weite : 0;
-        laeufer.style.transform =
-          'translate(' + (anteil * (folien.length - 1) * schritt()) + 'px, -50%)';
-      }
-
-      function aktuell() {
-        // Die Folie, deren linke Kante der linken Kante der Spur am nächsten ist.
-        var links = spur.scrollLeft;
-        var beste = 0;
-        var abstand = Infinity;
-        Array.prototype.forEach.call(folien, function (folie, i) {
-          var d = Math.abs(folie.offsetLeft - spur.offsetLeft - links);
-          if (d < abstand) { abstand = d; beste = i; }
-        });
-        return beste;
-      }
-
-      function zeige(i) {
-        if (!istSpur()) return;
-        var folie = folien[Math.max(0, Math.min(folien.length - 1, i))];
-        spur.scrollTo({
-          left: folie.offsetLeft - spur.offsetLeft,
-          behavior: ruhig ? 'auto' : 'smooth'
-        });
-      }
-
       // Auf schmalen Bildschirmen stehen die Folien untereinander, die Spur
       // scrollt also gar nicht. Dann gibt es nichts zu bedienen und nichts
       // anzufassen — auch keinen Tabstopp ins Leere.
@@ -190,8 +186,81 @@
         return spur.scrollWidth - spur.clientWidth > 4;
       }
 
-      // Text und Pfeile nur anfassen, wenn sich die Folie wirklich ändert —
-      // sonst flackert der Zähler bei jedem Scrollschritt.
+      // Stelle, an der Folie i einrastet. -1 meint die Kopie vorne,
+      // letzteNr + 1 die Kopie hinten.
+      function ziel(i) {
+        var el = i < 0 ? kopfKopie : (i > letzteNr ? fussKopie : folien[i]);
+        return el.offsetLeft - spur.offsetLeft;
+      }
+
+      // Stelle, an der die Spur gerade am ehesten steht — die Kopien zählen
+      // dabei mit.
+      function naechste() {
+        var beste = 0;
+        var abstand = Infinity;
+        for (var i = -1; i <= letzteNr + 1; i++) {
+          var d = Math.abs(ziel(i) - spur.scrollLeft);
+          if (d < abstand) { abstand = d; beste = i; }
+        }
+        return beste;
+      }
+
+      // Dieselbe Stelle, auf eine echte Folie umgerechnet: auf der Kopie
+      // vorne steht in Wahrheit die letzte, auf der hinten die erste.
+      function aktuell() {
+        var i = naechste();
+        if (i < 0) return letzteNr;
+        if (i > letzteNr) return 0;
+        return i;
+      }
+
+      // Umsetzen, ohne dass der Browser dabei animiert.
+      function ohneAnimation(tun) {
+        var vorher = spur.style.scrollBehavior;
+        spur.style.scrollBehavior = 'auto';
+        tun();
+        void spur.offsetWidth;
+        spur.style.scrollBehavior = vorher;
+      }
+
+      // Der stille Sprung. Läuft erst, wenn die Spur zur Ruhe gekommen ist —
+      // mitten in der Fahrt würde er die Bewegung abwürgen.
+      function nachhaken() {
+        if (!istSpur()) return;
+        var i = naechste();
+        if (i >= 0 && i <= letzteNr) return;
+        var hin = i < 0 ? ziel(letzteNr) : ziel(0);
+        ohneAnimation(function () { spur.scrollLeft = hin; });
+      }
+
+      function zeige(i) {
+        if (!istSpur()) return;
+        spur.scrollTo({
+          left: ziel(i),
+          behavior: ruhig ? 'auto' : 'smooth'
+        });
+        // Ohne Animation ist die Fahrt sofort vorbei, also gleich nachhaken.
+        if (ruhig) nachhaken();
+      }
+
+      // Die Position kommt direkt aus dem Scrollstand, als Kommazahl. Bei
+      // halber Strecke steht der Läufer zwischen zwei Punkten. Nichts wartet,
+      // nichts rastet nach. Gerechnet wird zwischen erster und letzter echter
+      // Folie; auf den Kopien bleibt der Läufer am Rand stehen und springt
+      // gleich darauf auf die andere Seite.
+      function laeuferSetzen() {
+        if (!laeufer) return;
+        var von = ziel(0);
+        var weite = ziel(letzteNr) - von;
+        var anteil = weite > 0 ? (spur.scrollLeft - von) / weite : 0;
+        anteil = Math.max(0, Math.min(1, anteil));
+        laeufer.style.transform =
+          'translate(' + (anteil * letzteNr * schritt()) + 'px, -50%)';
+      }
+
+      // Text nur anfassen, wenn sich die Folie wirklich ändert — sonst
+      // flackert der Zähler bei jedem Scrollschritt. Die Pfeile werden nicht
+      // mehr abgeschaltet, es geht ja in beide Richtungen endlos weiter.
       var letzte = -1;
       function auffrischen() {
         if (!istSpur()) {
@@ -209,9 +278,6 @@
           knopf.setAttribute('aria-current', n === i ? 'true' : 'false');
         });
         if (zaehler) zaehler.textContent = (i + 1) + ' von ' + folien.length;
-        // Am Anfang und am Ende ist der jeweilige Pfeil ohne Funktion.
-        if (zurueck) zurueck.disabled = i === 0;
-        if (vor) vor.disabled = i === folien.length - 1;
       }
 
       if (zurueck) zurueck.addEventListener('click', function () { zeige(aktuell() - 1); });
@@ -219,9 +285,14 @@
 
       // Bei jedem Scrollereignis nachziehen, aber gebündelt auf das nächste
       // Bild des Browsers. Dadurch läuft der Läufer mit 60 Bildern je Sekunde
-      // mit und trotzdem wird pro Bild nur einmal gerechnet.
+      // mit und trotzdem wird pro Bild nur einmal gerechnet. Der Timer daneben
+      // meldet, wann es aufgehört hat zu scrollen — das ist der Moment für den
+      // stillen Sprung.
       var geplant = false;
+      var haltUhr;
       spur.addEventListener('scroll', function () {
+        window.clearTimeout(haltUhr);
+        haltUhr = window.setTimeout(nachhaken, 140);
         if (geplant) return;
         geplant = true;
         window.requestAnimationFrame(function () {
@@ -231,9 +302,18 @@
       }, { passive: true });
 
       window.addEventListener('resize', function () {
+        var merk = letzte < 0 ? 0 : letzte;
         letzte = -1;
+        if (istSpur()) {
+          ohneAnimation(function () { spur.scrollLeft = ziel(merk); });
+        }
         auffrischen();
       });
+
+      // Startpunkt ist die erste echte Folie, nicht die Kopie davor.
+      if (istSpur()) {
+        ohneAnimation(function () { spur.scrollLeft = ziel(0); });
+      }
       auffrischen();
     }
   );

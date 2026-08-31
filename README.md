@@ -202,12 +202,57 @@ Punkte sind dann ausgeblendet, weil sie nichts täten.
 **Neue Arbeit einbauen:** ein `<article class="folie">` in die Spur hängen. Die
 Punkte zählt `script.js` selbst, da ist nichts nachzutragen.
 
+### Endlos — und warum das zwei Kopien braucht
+
+Die Spur hört nicht auf: von 5 geht es weiter auf 1, von 1 zurück auf 5.
+
+Der naheliegende Weg wäre, am Ende einfach den Scrollstand auf Folie 1 zu setzen.
+Das sieht aber schlecht aus — die Spur rast sichtbar durch alle Folien zurück, und
+genau dieses Zurückrasen soll ja weg.
+
+Deshalb hängt `script.js` beim Start **zwei Kopien** an die Enden:
+
+    [Kopie von 5] [1] [2] [3] [4] [5] [Kopie von 1]
+                   ^ hier steht die Spur beim Laden
+
+Klickt man auf Folie 5 weiter, fährt die Spur ganz normal eine Folie nach rechts —
+und dort steht schon die Kopie von Folie 1. Sobald die Fahrt steht, wird der
+Scrollstand **ohne Animation** auf die echte Folie 1 gesetzt. Fürs Auge passiert
+dabei nichts: es ist ja dasselbe Bild an derselben Stelle. Nach links funktioniert
+es spiegelverkehrt.
+
+Drei Dinge, die daran hängen:
+
+- **Die Kopien stehen nicht im Quelltext.** Dort soll jede Arbeit genau einmal
+  stehen — dieselbe Regel wie bei der Logo-Laufleiste. `cloneNode` macht den Rest.
+- **Sie sind `inert` und `aria-hidden`.** Kein Tabstopp, kein Klick, keine Ansage
+  für Vorlesesoftware. Sonst gäbe es die Videos und die Links doppelt — und die
+  Kopien haben ohnehin keine Klick-Behandlung, weil `cloneNode` keine
+  Ereignisbehandlung mitkopiert. Dazu im CSS `pointer-events: none` für die Maus.
+- **Auf dem Handy sind sie ausgeblendet** (`.folie--kopie { display: none }`), sonst
+  stünden in der Liste untereinander zwei Arbeiten doppelt drin. Erst ab 820 px,
+  wenn wirklich eine Spur daraus wird, tauchen sie auf.
+
+Wann die Fahrt zu Ende ist, meldet ein Timer: 140 ms nach dem letzten
+Scrollereignis gilt die Spur als stehend. Das deckt auch den Fall ab, dass jemand
+mit dem Trackpad von Hand über das Ende hinausschiebt — dann wird genauso still
+umgesetzt. `scrollend` gibt es noch nicht überall, deshalb der Timer.
+
+Die Pfeile werden dadurch **nie mehr abgeschaltet**. Es geht in beide Richtungen
+immer weiter.
+
 ### Die Punkte und der Läufer
 
 Die Punkte selbst ändern sich nie. Welche Folie dran ist, zeigt ein einzelner
 **Läufer**, der darüber liegt und **direkt an der Scrollposition hängt**: seine
-Position ist `Scrollstand ÷ Scrollstrecke`, als Kommazahl. Bei halber Strecke
-steht er zwischen zwei Punkten.
+Position ist der Anteil der Strecke **zwischen erster und letzter echter Folie**,
+als Kommazahl. Bei halber Strecke steht er zwischen zwei Punkten.
+
+Nicht über die ganze Spur gerechnet — die ist wegen der beiden Kopien sieben Folien
+breit, und dann stünde der Läufer überall daneben. Auf den Kopien bleibt er am Rand
+stehen und ist nach dem stillen Sprung auf der anderen Seite. Beim Umlauf 5 → 1
+rutscht er also nicht rückwärts durch alle Punkte, sondern wartet kurz und ist dann
+vorn.
 
 Genau deshalb hat er **bewusst keine eigene Animation**. Ein Übergang würde erst
 starten, wenn der Wert sich ändert, und dann hinter der Bewegung herlaufen — das
@@ -216,8 +261,8 @@ nicht nachlaufen.
 
 Gerechnet wird bei jedem Scrollereignis, aber gebündelt auf das nächste Bild des
 Browsers (`requestAnimationFrame`): 60 Bilder je Sekunde, trotzdem nur eine
-Rechnung pro Bild. Zähler, Pfeile und `aria-current` werden nur angefasst, wenn
-sich die Folie wirklich ändert — sonst würde die Zahl bei jedem Pixel flackern.
+Rechnung pro Bild. Zähler und `aria-current` werden nur angefasst, wenn sich die
+Folie wirklich ändert — sonst würde die Zahl bei jedem Pixel flackern.
 
 Der Abstand von Punktmitte zu Punktmitte wird **aus dem fertigen Layout gemessen**,
 nicht aus dem CSS abgeschrieben. Dadurch stimmt es auch, wenn später jemand Größe
