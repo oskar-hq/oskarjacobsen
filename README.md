@@ -300,17 +300,62 @@ Wortmarke die Schrift der Seite an und bleibt bei jeder Größe scharf.
 ## Die Videos
 
 Vier Arbeitsproben, eingebunden als **Zwei-Klick-Lösung**: vor dem Klick geht kein
-einziges Byte an Google, es wird nicht mal ein Vorschaubild geladen. Die schwarze
-Fläche mit dem Play-Knopf erzeugt der Browser selbst. Erst der Klick lädt den Player,
-und zwar über `youtube-nocookie.com`.
+einziges Byte an Google. Erst der Klick lädt den Player, und zwar über
+`youtube-nocookie.com`.
 
 Das ist der Grund, warum die Seite **ohne Cookie-Banner** auskommt. Wer hier auf ein
 normales YouTube-Embed umstellt, braucht ein Banner und muss `datenschutz.html`
 anpassen — das hängt zusammen.
 
-Video tauschen oder ergänzen: nur die `data-video`-ID im Button ändern (der Teil der
-YouTube-Adresse nach `/shorts/` oder `youtu.be/`) und `data-titel` dazu. Querformat
-bekommt `video--quer`, Hochformat `video--hoch`.
+### Die Standbilder
+
+Jedes Video zeigt vorab ein Standbild. Das ist der eine Punkt, an dem man es leicht
+falsch macht: YouTube bietet unter `i.ytimg.com` fertige Vorschaubilder an — die
+holen würde bedeuten, dass beim bloßen Aufrufen der Seite doch wieder ein Request an
+Google geht, und dann ist die Zwei-Klick-Lösung wertlos. Deshalb **liegen die Bilder
+hier im Ordner**:
+
+    bilder/video-gelting.webp     1200 x 675   Imagefilm Gemeinde Gelting
+    bilder/video-petersens.webp   1200 x 675   Imagefilm Petersens
+    bilder/video-lasse-1.webp      473 x 841   Social-Media-Video Lasse.PTS
+    bilder/video-lasse-2.webp      537 x 955   Social-Media-Video Lasse.PTS
+
+Zusammen 132 kB. Sie sind schon auf 16:9 beziehungsweise 9:16 beschnitten, damit
+keine Pixel mitgeschickt werden, die der Browser ohnehin wegschneidet. Die
+unbeschnittenen Fassungen liegen in `bilder/original/`.
+
+Das `<img>` steht **im Knopf**, nicht dahinter. `script.js` ersetzt beim Klick den
+ganzen Knopf durch den Player — dadurch verschwindet das Standbild mit, ohne dass
+dafür eine Zeile Extra-Code nötig wäre.
+
+### Warum Knopf und Beschriftung unten sitzen
+
+Über einem Standbild ist der Untergrund nicht vorhersehbar. Zwei Konsequenzen:
+
+- **Beschriftung auf eigener Fläche** (`.video__marke`, deckendes Dunkelgrün).
+  Direkt aufs Foto gesetzter Text hätte je nach Aufnahme 2:1 Kontrast. So sind es
+  im schlechtesten Fall — strahlend weißes Foto — 11,3:1 für „Video starten" und
+  7,0:1 für den Hinweis.
+- **Ring um die Play-Scheibe.** Orange auf hellem Himmel wären 1,4:1, zu wenig für
+  ein Bedienelement. Der dunkle 2-px-Ring hebt sie auf jedem Bild ab.
+
+Der Knopf steht **nicht in der Mitte**, und das ist Absicht: beim Gelting-Film ist
+der Satz „Heimat ist kein Ort - Heimat ist ein Gefühl." ins Bild eingebrannt, genau
+mittig, und die Scheibe hat die halbe Zeile verdeckt. Bei den Hochkant-Videos war es
+dasselbe mit den Gesichtern. Also: Querformat Beschriftung links, Knopf rechts;
+Hochformat Knopf unten rechts, Hinweis als schmaler Streifen über die ganze Breite —
+nebeneinander wird es auf dem Handy bei 167 px Breite zu eng und „LÄDT YOUTUBE"
+bricht um.
+
+### Ein Video tauschen oder ergänzen
+
+1. `data-video`-ID im Button ändern (der Teil der YouTube-Adresse nach `/shorts/`
+   oder `youtu.be/`) und `data-titel` dazu.
+2. Querformat bekommt `video--quer`, Hochformat `video--hoch`.
+3. **Standbild nicht vergessen** — sonst steht dort wieder die leere grüne Fläche.
+   Einen Screenshot aus dem Video ziehen, auf 16:9 bzw. 9:16 beschneiden, als WebP
+   nach `bilder/` und als `<img class="video__bild">` in den Button, vor die
+   `.video__play`-Zeile. Nicht von YouTube laden, siehe oben.
 
 ## Design
 
@@ -350,8 +395,8 @@ Entwurf herausgenommen worden:
 - **Direkt darunter** die Logo-Laufleiste mit den vier Logos.
 - **Bei „Über mich"** trägt der Text allein — auch die grüne Karte daneben ist
   raus, weil die Zuverlässigkeit schon oben im Hero steht.
-- Bilder gibt es nur da, wo es echte gibt: die Videoflächen und die vier
-  Bildschirmfotos in den Geräte-Rahmen.
+- Bilder gibt es nur da, wo es echte gibt: die vier Video-Standbilder und die
+  vier Bildschirmfotos in den Geräte-Rahmen.
 
 Kommen später Fotos dazu, müssen sie nichts reparieren, sondern kommen zu einer
 Seite hinzu, die schon steht. An den drei Stellen oben steht jeweils ein Kommentar
