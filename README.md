@@ -90,14 +90,21 @@ umgerechnet, zusammen keine 300 kB.
 - [x] Impressum, Umsatzsteuer — du bist Kleinunternehmer, also steht dort die
       Regelung nach § 19 UStG. Das Impressum ist fertig.
 - [x] Kundenlogos — Gemeinde Gelting, Petersens, Lasse.PTS und Agrarkit laufen in
-      der Leiste unter dem Hero durch. Die drei Kundenlogos kommen aus dem Repo
-      `oskar-hq/jacobsen-website`, Ordner `kunden-logos/`; beim Lasse-Logo war ein
-      weißer Kasten drumherum, der ist freigestellt.
+      der Leiste unter dem Hero durch. Gelting und Petersens kommen aus dem Repo
+      `oskar-hq/jacobsen-website`, Ordner `kunden-logos/`.
+- [x] Lasse.PTS als Vektor. Du hast `Lassepts.svg` hochgeladen, die war weiß auf
+      1920×1080 Leinwand — also für dunklen Hintergrund gebaut. Daraus ist
+      `bilder/logos/lasse-pts.svg` geworden: enger Rahmen um die Wortmarke und
+      dieselbe Tinte wie beim Petersens-Logo (`#191d14`), damit sie auf dem
+      cremefarbenen Grund überhaupt zu sehen ist. Deine Originaldatei liegt
+      unverändert in `bilder/original/Lassepts.svg`. Das alte freigestellte
+      `lasse-pts.png` ist raus.
 
 **Noch nicht angekommen:**
-- [ ] Die zwei Logos in besserer Auflösung. Bei mir kam nur das Agrarkit-Logo an,
-      und das als Bildschirmfoto — deshalb ist es als SVG nachgebaut. Wenn du die
-      Dateien schickst, tausche ich sie aus.
+- [ ] Das zweite Logo in besserer Auflösung. Angekommen ist bisher nur Lasse.PTS.
+      Das Agrarkit-Logo kam nur als Bildschirmfoto — deshalb ist es als SVG
+      nachgebaut (im Quelltext von `index.html`, damit es die Schrift der Seite
+      nimmt). Wenn die Originaldatei kommt, tausche ich sie aus.
 
 **Gelöscht, weil es sich wiederholt hat:**
 - Der ganze Abschnitt „Wie das bei mir läuft". Preis, Antwortzeit und
