@@ -167,8 +167,8 @@ dann Agrarkit. Die Gruppentitel sind die kleinen grauen Zeilen mit Strich darunt
 
 [H2] Sachen, die ich gemacht hab
 
-Alles hier aus der Gegend. Guck es dir an — dauert nur ein paar Minuten, und du
-bekommst direkt einen Eindruck.
+Das meiste hier aus der Gegend, dazu ein eigenes Stück. Guck es dir an — dauert nur
+ein paar Minuten, und du bekommst direkt einen Eindruck.
 
 ### Gruppe 1: FILME
 
@@ -264,6 +264,28 @@ Link darunter (öffnet in einem neuen Tab):
 > Seite ist sie kein Produkt, sondern der Beweis, wie weit du gehst. Der letzte
 > Satz macht genau das. Ausführlich wird es auf der eigenen Agrarkit-Website,
 > die du später bauen willst.
+
+**Antriebsstrang** — kein Auftrag, sondern selbst gebaut, um three.js zu lernen.
+Steht deshalb in derselben Gruppe wie Agrarkit.
+
+[KLEIN] Eigenes Projekt · three.js
+
+[H3] Ein Antriebsstrang, der im Browser läuft
+
+Wie kommt die Kraft vom Kolben bis auf die Straße? Das kann man erzählen — oder man
+dreht selbst dran. Elf Stationen zum Durchscrollen: Kolben, Ventiltrieb, Kupplung,
+Getriebe, Kardanwelle, Differenzial. Drehzahl, Gang und Kupplung stellst du ein,
+alles dreht sich live mit, und Übersetzung und Tempo rechnen sich nebenher aus.
+
+(Fett:)
+Erklären klappt besser, wenn man dran drehen kann.
+
+Link darunter (öffnet in einem neuen Tab):
+- oskar-hq.github.io/3d-website
+
+> Auf der Folie steht ein Bildschirmfoto, kein Video. Die Seite rechnet und zeichnet
+> live; ein abgefilmter Mitschnitt würde so tun, als könnte man dran drehen, und
+> genau das ist der Punkt — dafür ist der Link da.
 
 ---
 

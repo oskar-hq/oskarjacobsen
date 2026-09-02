@@ -8,7 +8,7 @@ impressum.html
 datenschutz.html
 styles.css
 script.js           Mobile-Menü + Zwei-Klick-Videos (~2 kB)
-bilder/             Bildschirmfotos aus Agrarkit und von agrarkit.de (webp)
+bilder/             Bildschirmfotos: Agrarkit, agrarkit.de, Antriebsstrang (webp)
 bilder/logos/       die drei Kundenlogos
 bilder/original/    die Originaldateien, so wie du sie hochgeladen hast
 fonts/              Space Grotesk, lokal (OFL 1.1, Lizenz liegt bei)
@@ -81,9 +81,10 @@ Einbauen geht immer gleich:
 ```
 
 Bilder vorher auf ca. 1600 px Breite bringen und als `.webp` speichern, sonst lädt
-die Seite auf dem Handy im Funkloch ewig. Die Agrarkit-Bildschirmfotos in `bilder/`
-sind genau so entstanden: aus den Originalen in `bilder/original/` beschnitten und
-umgerechnet, zusammen keine 300 kB.
+die Seite auf dem Handy im Funkloch ewig. Die Bildschirmfotos in `bilder/` sind
+genau so entstanden: aus den Originalen in `bilder/original/` beschnitten und
+umgerechnet, zusammen keine 350 kB. `antriebsstrang.webp` ist 1600 x 900 groß und
+57 kB schwer, das Original liegt daneben als `antriebsstrang-original.png`.
 
 **Erledigt:**
 - [x] Agrarkit-Bildschirmfotos und die von agrarkit.de sind drin, in Geräte-Rahmen.
@@ -278,11 +279,19 @@ Wechsel der Machart:
 2. **Gemeinde Gelting** — Imagefilm. Bekannter Name aus der Gegend, sofort
    verständlich.
 3. **agrarkit.de** — die Website dazu. Wieder ein anderes Gewerk.
-4. **Petersens Ferienwohnungen** — Imagefilm mit Kundenzitat.
-5. **Lasse.PTS** — Hochkant-Videos mit Kundenzitat.
+4. **Antriebsstrang** — die 3D-Seite mit three.js. Kein Auftrag, sondern ein
+   eigenes Stück; steht bei den beiden anderen selbstgebauten Sachen und nicht
+   am Anfang, weil vorne die Arbeiten für andere hingehören.
+5. **Petersens Ferienwohnungen** — Imagefilm mit Kundenzitat.
+6. **Lasse.PTS** — Hochkant-Videos mit Kundenzitat.
 
 Nie steht zweimal dasselbe direkt hintereinander, und die beiden Kundenzitate
 stehen am Schluss — da wirken sie am meisten.
+
+Weil eine Folie ohne Auftraggeber dazugekommen ist, heißt die Zeile unter der
+Überschrift nicht mehr „Alles hier aus der Gegend", sondern „Das meiste hier aus
+der Gegend, dazu ein eigenes Stück" — sonst stünde da eine Behauptung, die die
+vierte Folie widerlegt.
 
 Am Rechner sind alle Folien so hoch wie die höchste — deshalb ist das Paar
 Hochkant-Videos im CSS auf 430 px Breite begrenzt. Ohne die Grenze macht diese
@@ -290,9 +299,13 @@ eine Folie das ganze Karussell unnötig hoch.
 
 ### Geräte-Rahmen
 
-Bildschirmfotos stehen nicht nackt in der Seite. Beide Software-Folien zeigen
+Bildschirmfotos stehen nicht nackt in der Seite. Die beiden Agrarkit-Folien zeigen
 **ein Browserfenster mit einem Handy davor** — der Rechner groß, das Handy
 überlappend unten rechts. Auf schmalen Bildschirmen stehen beide untereinander.
+
+Die Antriebsstrang-Folie hat **nur das Browserfenster**, ohne `.geraete`-Bühne und
+ohne Handy: die Seite ist zum Drehen und Gucken am großen Bildschirm gebaut. Ein
+Handy daneben würde etwas behaupten, was das Bildschirmfoto nicht zeigt.
 
 Beide Rahmen sind komplett in CSS gebaut: kein fremdes Mockup-Bild, keine
 zusätzliche Datei, und sie nehmen die Farben der Seite an. Die Adresszeile im
@@ -421,14 +434,15 @@ sonst um und deckt den halben Ausschnitt zu.
 
 ## Die Links auf die echten Seiten
 
-Zwei Folien führen weiter zu dem, was dort zu sehen ist:
+Drei Folien führen weiter zu dem, was dort zu sehen ist:
 
-    app.agrarkit.de   auf der Folie „Eine Ackerschlagkartei für Schleswig-Holstein"
-    agrarkit.de       auf der Folie „Die Website für Agrarkit"
+    app.agrarkit.de                 auf der Folie „Eine Ackerschlagkartei für Schleswig-Holstein"
+    agrarkit.de                     auf der Folie „Die Website für Agrarkit"
+    oskar-hq.github.io/3d-website   auf der Folie „Ein Antriebsstrang, der im Browser läuft"
 
-Die Adresse ist die Beschriftung — dann weiß man vorher, wo man landet. Beide gehen
-über `target="_blank"` in einen neuen Tab, damit man den Faden auf dieser Seite nicht
-verliert, und tragen `rel="noopener"`: ohne das kann die geöffnete Seite über
+Die Adresse ist die Beschriftung — dann weiß man vorher, wo man landet. Alle drei
+gehen über `target="_blank"` in einen neuen Tab, damit man den Faden auf dieser Seite
+nicht verliert, und tragen `rel="noopener"`: ohne das kann die geöffnete Seite über
 `window.opener` auf diese hier zugreifen. Kein `noreferrer` — so sieht Agrarkit in
 der eigenen Statistik, dass der Besuch von hier kam.
 
